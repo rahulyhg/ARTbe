@@ -6,7 +6,7 @@ import com.kampherbeek.art.json.converters.VersionJsonConverter;
 import com.kampherbeek.art.json.representation.VersionRequest;
 import com.kampherbeek.art.json.representation.VersionResponse;
 import com.kampherbeek.art.json.validators.VersionValidator;
-import com.kampherbeek.art.util.PropertiesReader;
+import com.kampherbeek.art.solvers.VersionSolver;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -33,24 +33,24 @@ public class VersionHandlerTest {
     @Mock
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
     @Mock
-    private VersionResponse responseMock = mock(VersionResponse.class);
-    @Mock
     private VersionRequest requestMock = mock(VersionRequest.class);
     @Mock
-    private PropertiesReader readerMock = mock(PropertiesReader.class);
+    private VersionResponse responseMock = mock(VersionResponse.class);
+    @Mock
+    private VersionSolver solverMock = mock(VersionSolver.class);
     private VersionHandler handler;
 
     @Before
     public void setUp() throws Exception {
-        when(readerMock.getValueForProperty(anyString())).thenReturn(versionId);
         when(responseMock.getVersionType()).thenReturn(versionType);
         when(responseMock.getVersionId()).thenReturn(versionId);
         when(requestMock.getVersionType()).thenReturn(versionType);
+        when(solverMock.solveRequest(anyObject())).thenReturn(responseMock);
         when(validatedObjectMock.isValid()).thenReturn(true);
         when(validatedObjectMock.getObject()).thenReturn(requestMock);
         when(validatorMock.handleJson(anyString())).thenReturn(validatedObjectMock);
         when(converterMock.java2JsonResponse(anyObject())).thenReturn(correctResponse);
-        handler = new VersionHandler(validatorMock, converterMock, readerMock);
+        handler = new VersionHandler(validatorMock, converterMock, solverMock);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class VersionHandlerTest {
         when(validatedObjectMock.getObject()).thenReturn("Wrong value");
         when(converterMock.jsonRequest2Java(anyString())).thenThrow(JsonProcessingException.class);
         String result = handler.handleRequest(invalidJsonType);
-        assertTrue(result.indexOf("Error") > -1);
+        assertTrue(result.contains("Error"));
     }
 
 

@@ -1,6 +1,6 @@
 package com.kampherbeek.art.json.representation;
 
-public class VersionResponse {
+public class VersionResponse implements ResponseInterface{
 
     private final String versionType;
     private final String versionId;

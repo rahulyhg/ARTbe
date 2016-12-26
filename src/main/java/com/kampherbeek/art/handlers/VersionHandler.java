@@ -26,7 +26,7 @@ public class VersionHandler {
     }
 
     public String handleRequest(String requestJson) {
-        ValidatedObject validatedObject = validator.handleJson(requestJson);
+        ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
         if (validatedObject.isValid()) {
             VersionResponse response = solver.solveRequest((VersionRequest) validatedObject.getObject());
             try {

@@ -1,6 +1,6 @@
 package com.kampherbeek.art.json.representation;
 
-public class HouseSystemsRequest {
+public class HouseSystemsRequest implements RequestInterface {
 
     private String locale = "en";
 

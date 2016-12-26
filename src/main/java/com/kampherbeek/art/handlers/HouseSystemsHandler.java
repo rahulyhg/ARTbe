@@ -28,7 +28,8 @@ public class HouseSystemsHandler {
     }
 
     public String handleRequest(String requestJson) {
-        ValidatedObject validatedObject = validator.handleJson(requestJson);
+
+        ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
         if (validatedObject.isValid()) {
             HouseSystemsResponse response = solver.solveRequest((HouseSystemsRequest) validatedObject.getObject());
             try {

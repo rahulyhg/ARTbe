@@ -1,6 +1,6 @@
 package com.kampherbeek.art.json.representation;
 
-public class VersionRequest {
+public class VersionRequest implements RequestInterface {
 
     private String versionType;
 

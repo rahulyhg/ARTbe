@@ -15,4 +15,9 @@ public class HouseSystemsTest {
     public void getId() throws Exception {
         assertEquals(16, HouseSystems.APC.getId());
     }
+
+    @Test
+    public void getRbKey() throws Exception {
+        assertEquals("housesystems.apc", HouseSystems.APC.getRbKey());
+    }
 }

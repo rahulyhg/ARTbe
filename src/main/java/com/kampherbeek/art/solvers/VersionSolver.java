@@ -16,6 +16,7 @@ public class VersionSolver {
     private final PropertiesReader reader;
     private final String VERSION_KEY = "version";
     private final String TYPE_FULL = "full";
+    private final String TYPE_SHORT = "short";
     private final String PROP_VERSION_FULL = "version.full";
     private final String PROP_VERSION_SHORT = "version.short";
 
@@ -25,13 +26,13 @@ public class VersionSolver {
     }
 
     public VersionResponse solveRequest(VersionRequest request) {
-        // TODO remove prefix from resource bundle
         String property;
         String versionType = request.getVersionType();
         if (versionType.equalsIgnoreCase(TYPE_FULL)) {
             property = PROP_VERSION_FULL;
         } else {
             property = PROP_VERSION_SHORT;
+            versionType = TYPE_SHORT;
         }
         String versionLabel = bundle.getString(VERSION_KEY);
         String versionId = versionLabel + " " + reader.getValueForProperty(property);

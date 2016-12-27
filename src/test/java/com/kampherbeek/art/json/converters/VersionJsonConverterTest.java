@@ -9,10 +9,10 @@ import static org.junit.Assert.assertEquals;
 
 public class VersionJsonConverterTest {
 
-    String jsonRequest = "{\"versionType\":\"full\"}";
-    String jsonResponse = "{\"versionType\":\"full\",\"versionId\":\"1.2.3\"}";
-    VersionResponse versionResponse;
-    VersionJsonConverter converter;
+    private final String jsonRequest = "{\"versionType\":\"full\"}";
+    private final String jsonResponse = "{\"versionType\":\"full\",\"versionId\":\"1.2.3\"}";
+    private VersionResponse versionResponse;
+    private VersionJsonConverter converter;
 
     @Before
     public void setUp() throws Exception {

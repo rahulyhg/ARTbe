@@ -16,6 +16,4 @@ public class VersionValidator extends ValidatorParent{
         return (versionType.equalsIgnoreCase(shortType) || versionType.equalsIgnoreCase(fullType));
     }
 
-
-
 }

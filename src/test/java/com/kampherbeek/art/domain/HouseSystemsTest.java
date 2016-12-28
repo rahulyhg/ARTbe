@@ -13,7 +13,7 @@ public class HouseSystemsTest {
 
     @Test
     public void getId() throws Exception {
-        assertEquals(16, HouseSystems.APC.getId());
+        assertEquals(16, HouseSystems.APC.getInternalId());
     }
 
     @Test

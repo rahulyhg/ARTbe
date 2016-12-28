@@ -1,8 +1,8 @@
 package com.kampherbeek.art.solvers;
 
-import com.kampherbeek.art.domain.HouseSystems;
-import com.kampherbeek.art.json.representation.HouseSystemsRequest;
-import com.kampherbeek.art.json.representation.HouseSystemsResponse;
+import com.kampherbeek.art.domain.Bodynames;
+import com.kampherbeek.art.json.representation.BodynamesRequest;
+import com.kampherbeek.art.json.representation.BodynamesResponse;
 import com.kampherbeek.art.json.representation.StandardSelectionItem;
 import org.springframework.stereotype.Component;
 
@@ -12,20 +12,20 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 @Component
-public class HouseSystemsSolver {
+public class BodynamesSolver {
 
     private ResourceBundle bundle;
 
-    public HouseSystemsResponse solveRequest(HouseSystemsRequest request) {
+    public BodynamesResponse solveRequest(BodynamesRequest request) {
         bundle = ResourceBundle.getBundle("messages/messages", new Locale(request.getLocale()));
         List<StandardSelectionItem> allHouses = new ArrayList<>();
-        for (HouseSystems system : HouseSystems.values()) {
-            String id = String.valueOf(system.getInternalId());
-            String key = system.getRbKey();
+        for (Bodynames bodyname : Bodynames.values()) {
+            String id = String.valueOf(bodyname.getInternalId());
+            String key = bodyname.getRbKey();
             String label =  bundle.getString(key);
             allHouses.add(new StandardSelectionItem(id, label));
         }
-        return new HouseSystemsResponse(allHouses);
+        return new BodynamesResponse(allHouses);
     }
 }
 

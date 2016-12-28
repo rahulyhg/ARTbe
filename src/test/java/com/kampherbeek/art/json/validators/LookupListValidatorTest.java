@@ -1,6 +1,6 @@
 package com.kampherbeek.art.json.validators;
 
-import com.kampherbeek.art.json.representation.HouseSystemsRequest;
+import com.kampherbeek.art.json.representation.BodynamesRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -10,18 +10,18 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class HouseSystemsValidatorTest {
+public class LookupListValidatorTest {
 
     private final String correctLocale = "nl";
     private final String wrongLocale = "wrong";
-    private final String invalidJsonType = "{\"dummyType\":\"wrong\"}";
+
     @Mock
-    private HouseSystemsRequest requestMock = mock(HouseSystemsRequest.class);
-    private HouseSystemsValidator validator;
+    private BodynamesRequest requestMock = mock(BodynamesRequest.class);
+    private LookupListValidator validator;
 
     @Before
     public void setUp() throws Exception {
-        validator = new HouseSystemsValidator();
+        validator = new LookupListValidator();
     }
 
     @Test
@@ -35,8 +35,4 @@ public class HouseSystemsValidatorTest {
         when(requestMock.getLocale()).thenReturn(wrongLocale);
         assertFalse(validator.isValid(requestMock));
     }
-
-
-
 }
-

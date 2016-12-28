@@ -25,7 +25,7 @@ public class HouseSystemsController {
 
     @RequestMapping(method= RequestMethod.GET)
     public @ResponseBody
-    String getHouseSytems(@RequestParam(value="json", required=true) String json) {
+    String getHouseSytems(@RequestParam(value="json") String json) {
         return handler.handleRequest(json);
     }
 }

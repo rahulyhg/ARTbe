@@ -17,16 +17,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HouseSystemsControllerTest {
+public class BodynamesControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void getHouseSytems() throws Exception {
+    public void getBodyNames() throws Exception {
         String jsonParam = "{\"locale\":\"en\"}";
-        this.mockMvc.perform(get("/housesystems").param("json", jsonParam)).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("houseSystems")));
+        this.mockMvc.perform(get("/bodynames").param("json", jsonParam)).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("bodynames")));
     }
 }
-

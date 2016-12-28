@@ -3,7 +3,7 @@ package com.kampherbeek.art.domain;
 /**
  * Enum for HouseSystems. The value for seId corresponds with the indexes as used by the Swiss Ephemeris.
  * IF the system is not supported by the SE the value for seId = '#'.
- * id is the value used internally in ART.
+ * internalId is the value used internally in ART.
  */
 public enum HouseSystems {
 
@@ -27,30 +27,26 @@ public enum HouseSystems {
 
 
         private final char seId;
-        private final int id;
+        private final int internalId;
         private final String rbKey;
 
-        HouseSystems(char seId, int id, String rbKey) {
+        HouseSystems(char seId, int internalId, String rbKey) {
             this.seId = seId;
-            this.id = id;
+            this.internalId = internalId;
             this.rbKey = rbKey;
         }
 
         /**
          * Getter for seId, the value as used by the Swiss Ephemeris.
          * If a system is not supported by the SE, this value will be '#'.
-         * @return Value for seId, the id as used by the Swiss Ephemeris, or '#' if SE does not handle the system.
+         * @return Value for seId, the internalId as used by the Swiss Ephemeris, or '#' if SE does not handle the system.
          */
         public char getSeId() {
             return seId;
         }
 
-        /**
-         * Getter for id.
-         * @return Value for the internally used id.
-         */
-        public int getId() {
-            return id;
+        public int getInternalId() {
+            return internalId;
         }
 
         /**

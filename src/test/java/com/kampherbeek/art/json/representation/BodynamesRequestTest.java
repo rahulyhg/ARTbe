@@ -5,15 +5,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class HouseSystemsRequestTest {
+public class BodynamesRequestTest {
 
     private String locale = "nl";
-    private String defaultLOcale = "en";
-    private HouseSystemsRequest request;
+    private String defaultLocale = "en";
+    BodynamesRequest request;
 
     @Before
     public void setUp() throws Exception {
-        request = new HouseSystemsRequest();
+        request = new BodynamesRequest();
     }
 
     @Test
@@ -24,6 +24,7 @@ public class HouseSystemsRequestTest {
 
     @Test
     public void getDefaultLocale() throws Exception {
-        assertEquals(defaultLOcale, request.getLocale());
+        assertEquals(defaultLocale, request.getLocale());
     }
 }
+

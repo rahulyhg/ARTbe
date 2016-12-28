@@ -5,7 +5,7 @@ import com.kampherbeek.art.json.ValidatedObject;
 import com.kampherbeek.art.json.converters.HouseSystemsJsonConverter;
 import com.kampherbeek.art.json.representation.HouseSystemsRequest;
 import com.kampherbeek.art.json.representation.HouseSystemsResponse;
-import com.kampherbeek.art.json.validators.HouseSystemsValidator;
+import com.kampherbeek.art.json.validators.LookupListValidator;
 import com.kampherbeek.art.solvers.HouseSystemsSolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class HouseSystemsHandler {
 
-    private final HouseSystemsValidator validator;
+    private final LookupListValidator validator;
     private final HouseSystemsJsonConverter converter;
     private final HouseSystemsSolver solver;
     private final String ERROR_TEXT = "Error in HouseSystemsHandler";
 
     @Autowired
-    public HouseSystemsHandler(final HouseSystemsValidator validator,
+    public HouseSystemsHandler(final LookupListValidator validator,
                                final HouseSystemsJsonConverter converter,
                                final HouseSystemsSolver solver) {
         this.validator = validator;

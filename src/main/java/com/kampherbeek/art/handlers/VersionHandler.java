@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class VersionHandler {
 
-    private static final Logger LOG = LoggerFactory.getLogger(VersionValidator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(VersionHandler.class);
     private final VersionValidator validator;
     private final VersionJsonConverter converter;
     private final VersionSolver solver;
@@ -35,7 +35,7 @@ public class VersionHandler {
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error("VersionHandler: " + e.getMessage());
+                LOG.error("Exception: " + e.getMessage());
                 return ERROR_TEXT;
             }
         }

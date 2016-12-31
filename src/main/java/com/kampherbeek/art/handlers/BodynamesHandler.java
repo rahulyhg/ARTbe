@@ -6,7 +6,6 @@ import com.kampherbeek.art.json.converters.BodynamesJsonConverter;
 import com.kampherbeek.art.json.representation.BodynamesRequest;
 import com.kampherbeek.art.json.representation.BodynamesResponse;
 import com.kampherbeek.art.json.validators.LookupListValidator;
-import com.kampherbeek.art.json.validators.VersionValidator;
 import com.kampherbeek.art.solvers.BodynamesSolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +18,7 @@ public class BodynamesHandler {
     private final LookupListValidator validator;
     private final BodynamesJsonConverter converter;
     private final BodynamesSolver solver;
-    private static final Logger LOG = LoggerFactory.getLogger(VersionValidator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BodynamesHandler.class);
     private final String ERROR_TEXT = "Error in BodynamesHandler";
 
 @Autowired
@@ -40,7 +39,7 @@ public class BodynamesHandler {
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error("BodynamesHandler: " + e.getMessage());
+                LOG.error("Exception: " + e.getMessage());
                 return ERROR_TEXT;
             }
         }

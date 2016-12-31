@@ -27,7 +27,7 @@ public class HousePositionsCalculator {
             returnCode = swissEph.swe_houses(jdnr, flagValue, location.getLatitude(), location.getLongitude(),
                     system.getSeId(), cuspPositions, additionalPositions);
         } catch(Exception e) {
-            LOG.error("HousePositionsCalculator. Exception: " + e.getMessage());
+            LOG.error("Exception: " + e.getMessage());
             throw new RuntimeException(String.format("Error when calculating houses, flagValue: %1$d . Returncode: %2$d .",
                     flagValue, returnCode));
         }
@@ -40,7 +40,7 @@ public class HousePositionsCalculator {
                 return system;
             }
         }
-        LOG.error("HousePositionsCalculator. Searching for non-existing system: " + internalId);
+        LOG.error("Searching for non-existing system: " + internalId);
         throw new RuntimeException("HouseSystem not found");
     }
 }

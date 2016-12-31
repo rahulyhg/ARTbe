@@ -19,7 +19,7 @@ public class HousePositionsValidator extends ValidatorParent {
             HousePositionsRequest hpRequest = (HousePositionsRequest)request;
             return (jdnrIsValid(hpRequest.getJdnr())) && (locationIsValid(hpRequest.getLocation()));
         } catch (Exception e) {
-            LOG.error("HousePositionsValidator: " + e.getMessage());
+            LOG.error("Exception: " + e.getMessage());
             return false;
         }
     }

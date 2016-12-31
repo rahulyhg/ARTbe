@@ -6,7 +6,6 @@ import com.kampherbeek.art.json.converters.HouseSystemsJsonConverter;
 import com.kampherbeek.art.json.representation.HouseSystemsRequest;
 import com.kampherbeek.art.json.representation.HouseSystemsResponse;
 import com.kampherbeek.art.json.validators.LookupListValidator;
-import com.kampherbeek.art.json.validators.VersionValidator;
 import com.kampherbeek.art.solvers.HouseSystemsSolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class HouseSystemsHandler {
 
-    private static final Logger LOG = LoggerFactory.getLogger(VersionValidator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HouseSystemsHandler.class);
     private final LookupListValidator validator;
     private final HouseSystemsJsonConverter converter;
     private final HouseSystemsSolver solver;
@@ -39,7 +38,7 @@ public class HouseSystemsHandler {
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error("HouseSysemsHandler: " + e.getMessage());
+                LOG.error("Exception: " + e.getMessage());
                 return ERROR_TEXT;
             }
         }

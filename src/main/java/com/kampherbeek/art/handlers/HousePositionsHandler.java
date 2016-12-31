@@ -6,7 +6,6 @@ import com.kampherbeek.art.json.converters.HousePositionsJsonConverter;
 import com.kampherbeek.art.json.representation.HousePositionsRequest;
 import com.kampherbeek.art.json.representation.HousePositionsResponse;
 import com.kampherbeek.art.json.validators.HousePositionsValidator;
-import com.kampherbeek.art.json.validators.VersionValidator;
 import com.kampherbeek.art.solvers.HousePositionsSolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class HousePositionsHandler {
 
-    private static final Logger LOG = LoggerFactory.getLogger(VersionValidator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HousePositionsHandler.class);
     private final HousePositionsValidator validator;
     private final HousePositionsJsonConverter converter;
     private final HousePositionsSolver solver;

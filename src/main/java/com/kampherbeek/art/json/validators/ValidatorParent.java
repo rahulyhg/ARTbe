@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public abstract class ValidatorParent {
 
-    private static final Logger LOG = LoggerFactory.getLogger(VersionValidator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ValidatorParent.class);
 
     public ValidatedObject handleJson(String jsonInput, ConverterParent converter) {
         try {

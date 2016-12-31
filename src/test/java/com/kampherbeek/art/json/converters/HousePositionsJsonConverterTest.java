@@ -1,6 +1,5 @@
 package com.kampherbeek.art.json.converters;
 
-import com.kampherbeek.art.domain.HouseSystems;
 import com.kampherbeek.art.json.representation.HousePositionsRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +13,7 @@ public class HousePositionsJsonConverterTest {
     private final double latitude = 52.23;
     private final double margin = 0.000000001;
     private final String jsonRequest =
-            "{\"system\":\"ALCABITIUS\",\"jdnr\":2457139.8,\"location\":{\"longitude\":6.9,\"latitude\":52.23}}";
+            "{\"system\":4,\"jdnr\":2457139.8,\"location\":{\"longitude\":6.9,\"latitude\":52.23}}";
     private HousePositionsJsonConverter converter;
 
 
@@ -29,7 +28,7 @@ public class HousePositionsJsonConverterTest {
         assertEquals(jdnr, request.getJdnr(), margin);
         assertEquals(longitude, request.getLocation().getLongitude(),margin);
         assertEquals(latitude, request.getLocation().getLatitude(), margin);
-        assertEquals(HouseSystems.ALCABITIUS, request.getSystem());
+        assertEquals(4, request.getSystem());
     }
 }
 

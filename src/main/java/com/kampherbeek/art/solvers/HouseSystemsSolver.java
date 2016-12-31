@@ -27,5 +27,6 @@ public class HouseSystemsSolver {
         }
         return new HouseSystemsResponse(allHouses);
     }
+
 }
 

@@ -11,14 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class HousePositionsValidator extends ValidatorParent {
 
-    private static final Logger LOG = LoggerFactory.getLogger(VersionValidator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HousePositionsValidator.class);
 
     @Override
     protected boolean isValid(RequestInterface request) {
         try {
             HousePositionsRequest hpRequest = (HousePositionsRequest)request;
-            return (jdnrIsValid(hpRequest.getJdnr())) && (locationIsValid(hpRequest.getLocation())
-                    && (hpRequest.getSystem() != null));
+            return (jdnrIsValid(hpRequest.getJdnr())) && (locationIsValid(hpRequest.getLocation()));
         } catch (Exception e) {
             LOG.error("HousePositionsValidator: " + e.getMessage());
             return false;

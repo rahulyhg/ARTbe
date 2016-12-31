@@ -11,14 +11,16 @@ public class HousePositionsSolver {
 
     private final SEFrontend seFrontend;
 
-
     public HousePositionsSolver(SEFrontend seFrontend) {
         this.seFrontend = seFrontend;
     }
 
     public HousePositionsResponse solveRequest(HousePositionsRequest request) {
+
         HousePositions housePositions = seFrontend.calcHouses(request);
         return new HousePositionsResponse(housePositions);
     }
+
+
 
 }

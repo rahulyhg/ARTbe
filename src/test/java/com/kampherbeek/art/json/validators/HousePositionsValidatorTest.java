@@ -37,7 +37,7 @@ public class HousePositionsValidatorTest {
         when(locationMock.getLongitude()).thenReturn(longitudeCorrect);
         when(requestMock.getLocation()).thenReturn(locationMock);
         when(requestMock.getJdnr()).thenReturn(jdnrCorrect);
-        when(requestMock.getSystem()).thenReturn(HouseSystems.ALCABITIUS);
+        when(requestMock.getSystem()).thenReturn(HouseSystems.ALCABITIUS.getInternalId());
         validator = new HousePositionsValidator();
     }
 
@@ -82,10 +82,5 @@ public class HousePositionsValidatorTest {
         assertFalse(validator.isValid(requestMock));
     }
 
-    @Test
-    public void isValidSystemNull() throws Exception {
-        when(requestMock.getSystem()).thenReturn(null);
-        assertFalse(validator.isValid(requestMock));
-    }
 
 }

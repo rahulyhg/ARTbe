@@ -1,19 +1,18 @@
 package com.kampherbeek.art.json.representation;
 
-import com.kampherbeek.art.domain.HouseSystems;
 import com.kampherbeek.art.domain.Location;
 
 public class HousePositionsRequest implements RequestInterface{
 
-    private HouseSystems system;
+    private int system;
     private double jdnr;
     private Location location;
 
-    public HouseSystems getSystem() {
+    public int getSystem() {
         return system;
     }
 
-    public void setSystem(HouseSystems system) {
+    public void setSystem(int system) {
         this.system = system;
     }
 
@@ -28,7 +27,6 @@ public class HousePositionsRequest implements RequestInterface{
     public void setLocation(Location location) {
         this.location = location;
     }
-
 
     public Location getLocation() {
         return location;

@@ -25,7 +25,6 @@ public enum HouseSystems {
         GAUQUELIN('G',15, 36, "housesystems.gauquelin"),
         APC('Y',16, 12, "housesystems.apc");
 
-
         private final char seId;
         private final int internalId;
         private final int nrOfCusps;

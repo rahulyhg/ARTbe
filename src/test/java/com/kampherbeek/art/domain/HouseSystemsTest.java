@@ -25,4 +25,5 @@ public class HouseSystemsTest {
     public void getRbKey() throws Exception {
         assertEquals("housesystems.apc", HouseSystems.APC.getRbKey());
     }
+
 }

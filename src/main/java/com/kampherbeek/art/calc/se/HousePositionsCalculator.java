@@ -14,7 +14,7 @@ public class HousePositionsCalculator {
     private static final Logger LOG = LoggerFactory.getLogger(HousePositionsCalculator.class);
     private SwissEph swissEph;
 
-    public void setSwissEph(final SwissEph swissEph) {
+    void setSwissEph(final SwissEph swissEph) {
         this.swissEph = swissEph;
     }
 

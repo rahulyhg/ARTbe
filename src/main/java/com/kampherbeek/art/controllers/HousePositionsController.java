@@ -26,7 +26,7 @@ public class HousePositionsController {
 
     @RequestMapping(method= RequestMethod.GET)
     public @ResponseBody
-    String getHousePOsitions(@RequestParam(value="json") String json) {
+    String getHousePositions(@RequestParam(value="json") String json) {
         return handler.handleRequest(json);
     }
 }

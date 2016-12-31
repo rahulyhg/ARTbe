@@ -82,5 +82,11 @@ public class HousePositionsValidatorTest {
         assertFalse(validator.isValid(requestMock));
     }
 
+    @Test
+    public void isValidNullValue() throws Exception {
+        when(requestMock.getLocation()).thenReturn(null);
+        assertFalse(validator.isValid(requestMock));
+    }
+
 
 }

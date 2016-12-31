@@ -21,13 +21,20 @@ public class VersionJsonConverterTest {
     }
 
     @Test
-    public void json2Java() throws Exception {
+    public void json2JavaRequest() throws Exception {
         VersionRequest request = converter.jsonRequest2Java(jsonRequest);
         assertEquals("full", request.getVersionType());
     }
 
     @Test
-    public void java2Json() throws Exception {
+    public void java2JsonResponse() throws Exception {
         assertEquals(jsonResponse, converter.java2JsonResponse(versionResponse));
+    }
+
+    @Test
+    public void java2JsonRequest() throws Exception {
+        VersionRequest request = new VersionRequest();
+        request.setVersionType("full");
+        assertEquals(jsonRequest, converter.java2JsonRequest(request));
     }
 }

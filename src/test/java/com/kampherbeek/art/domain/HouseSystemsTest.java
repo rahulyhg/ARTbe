@@ -17,6 +17,11 @@ public class HouseSystemsTest {
     }
 
     @Test
+    public void getNrOfCusps() throws Exception {
+        assertEquals(12, HouseSystems.APC.getNrOfCusps());
+    }
+
+    @Test
     public void getRbKey() throws Exception {
         assertEquals("housesystems.apc", HouseSystems.APC.getRbKey());
     }

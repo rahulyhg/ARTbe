@@ -16,4 +16,9 @@ public abstract class ConverterParent {
     public String java2JsonResponse(ResponseInterface response) throws JsonProcessingException {
         return mapper.writeValueAsString(response);
     }
+
+    public String java2JsonRequest(RequestInterface request) throws JsonProcessingException {
+        return mapper.writeValueAsString(request);
+    }
+
 }

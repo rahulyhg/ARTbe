@@ -11,6 +11,7 @@ public class VersionValidator extends ValidatorParent{
     private final String shortType = "Short";
     private final String fullType = "Full";
 
+    @Override
     protected boolean isValid(RequestInterface request) {
         String versionType = ((VersionRequest)request).getVersionType();
         return (versionType.equalsIgnoreCase(shortType) || versionType.equalsIgnoreCase(fullType));

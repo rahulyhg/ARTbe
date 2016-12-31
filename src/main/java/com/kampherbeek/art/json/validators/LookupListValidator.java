@@ -10,6 +10,7 @@ public class LookupListValidator extends ValidatorParent{
     private final String LOCALE_EN = "en";
     private final String LOCALE_NL = "nl";
 
+    @Override
     protected boolean isValid(RequestInterface request) {
         String localeTxt = ((RequestLookupInterface)request).getLocale();
         return (localeTxt.equalsIgnoreCase(LOCALE_EN) || localeTxt.equalsIgnoreCase(LOCALE_NL));

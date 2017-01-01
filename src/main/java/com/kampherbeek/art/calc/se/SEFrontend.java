@@ -21,6 +21,8 @@ public class SEFrontend {
         this.housesCalculator = housesCalculator;
         swissEph = new SwissEph();
         housesCalculator.setSwissEph(swissEph);
+
+
     }
 
 //    static SEFrontend getSEFrontEnd() {

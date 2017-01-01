@@ -1,6 +1,6 @@
 package com.kampherbeek.art.json.validators;
 
-import com.kampherbeek.art.domain.Limits;
+import com.kampherbeek.art.domain.FloatingLimits;
 import com.kampherbeek.art.domain.Location;
 import com.kampherbeek.art.json.representation.HousePositionsRequest;
 import com.kampherbeek.art.json.representation.RequestInterface;
@@ -25,13 +25,13 @@ public class HousePositionsValidator extends ValidatorParent {
     }
 
     private boolean jdnrIsValid(double jdnr) {
-        return jdnr >= Limits.MIN_JULIAN_DAY_NR.getValue() && jdnr <= Limits.MAX_JULIAN_DAY_NR.getValue();
+        return jdnr >= FloatingLimits.MIN_JULIAN_DAY_NR.getValue() && jdnr <= FloatingLimits.MAX_JULIAN_DAY_NR.getValue();
     }
 
     private boolean locationIsValid(Location location) {
-        return location.getLongitude() >= Limits.MIN_LONGITUDE.getValue()
-                && location.getLongitude() <= Limits.MAX_LONGITUDE.getValue()
-                && location.getLatitude() >= Limits.MIN_LATITUDE.getValue()
-                && location.getLatitude() <= Limits.MAX_LATITUDE.getValue();
+        return location.getLongitude() >= FloatingLimits.MIN_LONGITUDE.getValue()
+                && location.getLongitude() <= FloatingLimits.MAX_LONGITUDE.getValue()
+                && location.getLatitude() >= FloatingLimits.MIN_LATITUDE.getValue()
+                && location.getLatitude() <= FloatingLimits.MAX_LATITUDE.getValue();
     }
 }

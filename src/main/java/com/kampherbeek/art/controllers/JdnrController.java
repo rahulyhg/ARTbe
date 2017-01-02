@@ -21,7 +21,7 @@ public class JdnrController {
 
     @RequestMapping(method= RequestMethod.GET)
     public @ResponseBody
-    String getVersion(@RequestParam(value="json") String json) {
+    String getJdnr(@RequestParam(value="json") String json) {
         return handler.handleRequest(json);
     }
 

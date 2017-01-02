@@ -11,5 +11,6 @@ public class JdnrJsonConverter extends ConverterParent{
     public JdnrRequest jsonRequest2Java(String input) throws IOException {
         return mapper.readValue(input, JdnrRequest.class);
     }
-        
+
+
 }

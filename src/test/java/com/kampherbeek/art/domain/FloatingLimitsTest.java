@@ -2,14 +2,21 @@ package com.kampherbeek.art.domain;
 
 import org.junit.Test;
 
+import static com.kampherbeek.art.TestConstants.DOUBLE_MARGIN;
 import static org.junit.Assert.assertEquals;
 
 public class FloatingLimitsTest {
 
-    private final double margin = 0.000000001;
+
 
     @Test
-    public void getValue() throws Exception {
-        assertEquals(180.0, FloatingLimits.MAX_LONGITUDE.getValue(), margin);
+    public void getMaxValue() throws Exception {
+        assertEquals(180.0, FloatingLimits.LONGITUDE.getMaxValue(), DOUBLE_MARGIN.getValue());
     }
+
+    @Test
+    public void getMinValue() throws Exception {
+        assertEquals(-180.0, FloatingLimits.LONGITUDE.getMinValue(), DOUBLE_MARGIN.getValue());
+    }
+
 }

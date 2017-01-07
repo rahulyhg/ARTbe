@@ -25,13 +25,13 @@ public class HousePositionsValidator extends ValidatorParent {
     }
 
     private boolean jdnrIsValid(double jdnr) {
-        return jdnr >= FloatingLimits.MIN_JULIAN_DAY_NR.getValue() && jdnr <= FloatingLimits.MAX_JULIAN_DAY_NR.getValue();
+        return jdnr >= FloatingLimits.JULIAN_DAY_NR.getMinValue() && jdnr <= FloatingLimits.JULIAN_DAY_NR.getMaxValue();
     }
 
     private boolean locationIsValid(Location location) {
-        return location.getLongitude() >= FloatingLimits.MIN_LONGITUDE.getValue()
-                && location.getLongitude() <= FloatingLimits.MAX_LONGITUDE.getValue()
-                && location.getLatitude() >= FloatingLimits.MIN_LATITUDE.getValue()
-                && location.getLatitude() <= FloatingLimits.MAX_LATITUDE.getValue();
+        return location.getLongitude() >= FloatingLimits.LONGITUDE.getMinValue()
+                && location.getLongitude() <= FloatingLimits.LONGITUDE.getMaxValue()
+                && location.getLatitude() >= FloatingLimits.LATITUDE.getMinValue()
+                && location.getLatitude() <= FloatingLimits.LATITUDE.getMaxValue();
     }
 }

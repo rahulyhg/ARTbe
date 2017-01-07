@@ -3,6 +3,7 @@ package com.kampherbeek.art.domain;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.kampherbeek.art.TestConstants.DOUBLE_MARGIN;
 import static org.junit.Assert.assertEquals;
 
 public class HousePositionsTest {
@@ -13,7 +14,6 @@ public class HousePositionsTest {
     private final double armc = 272.30;
     private final double vertex = 183.0;
     private final double eastPoint = 2.0;
-    private final double margin = 0.000000001;
     private double[] cusps;
     private double[] additionalPositions;
     private HousePositions positions;
@@ -28,27 +28,27 @@ public class HousePositionsTest {
 
     @Test
     public void getMC() throws Exception {
-        assertEquals(longMC, positions.getMC(), margin);
+        assertEquals(longMC, positions.getMC(), DOUBLE_MARGIN.getValue());
     }
 
     @Test
     public void getArmc() throws Exception {
-        assertEquals(armc, positions.getArmc(), margin);
+        assertEquals(armc, positions.getArmc(), DOUBLE_MARGIN.getValue());
     }
 
     @Test
     public void getAscendant() throws Exception {
-        assertEquals(longAsc, positions.getAscendant(), margin);
+        assertEquals(longAsc, positions.getAscendant(), DOUBLE_MARGIN.getValue());
     }
 
     @Test
     public void getVertex() throws Exception {
-        assertEquals(vertex, positions.getVertex(), margin);
+        assertEquals(vertex, positions.getVertex(), DOUBLE_MARGIN.getValue());
     }
 
     @Test
     public void getEastPoint() throws Exception {
-        assertEquals(eastPoint, positions.getEastPoint(), margin);
+        assertEquals(eastPoint, positions.getEastPoint(), DOUBLE_MARGIN.getValue());
     }
 
     @Test

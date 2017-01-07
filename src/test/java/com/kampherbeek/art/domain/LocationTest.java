@@ -3,13 +3,13 @@ package com.kampherbeek.art.domain;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.kampherbeek.art.TestConstants.DOUBLE_MARGIN;
 import static org.junit.Assert.assertEquals;
 
 public class LocationTest {
 
     private final double latitude = 52.23;
     private final double longitude = 6.9;
-    private final double margin = 0.000000001;
 
     private Location location;
 
@@ -20,11 +20,11 @@ public class LocationTest {
 
     @Test
     public void getLongitude() throws Exception {
-        assertEquals(longitude, location.getLongitude(), margin);
+        assertEquals(longitude, location.getLongitude(), DOUBLE_MARGIN.getValue());
     }
 
     @Test
     public void getLatitude() throws Exception {
-        assertEquals(latitude, location.getLatitude(), margin);
+        assertEquals(latitude, location.getLatitude(), DOUBLE_MARGIN.getValue());
     }
 }

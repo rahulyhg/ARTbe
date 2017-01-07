@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 public class JdnrJsonConverterTest {
 
     private final String jsonRequest =
-            "{\"year\":2016,\"month\":1,\"day\":2,\"hours\":20,\"minutes\":41,\"seconds\":0,\"gregorian\":true}";;
+            "{\"year\":2016,\"month\":1,\"day\":2,\"hours\":20,\"minutes\":41,\"seconds\":0,\"gregorian\":true}";
     private final int year = 2016;
     private final int month = 1;
     private final int day = 2;

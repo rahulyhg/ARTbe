@@ -1,6 +1,9 @@
 package com.kampherbeek.art.domain;
 
+import static swisseph.SweConst.SE_ECL_NUT;
+
 public enum Bodynames {
+    EPSILON(SE_ECL_NUT, 100, "bodynames.epsilon"),
     SUN(0, 0, "bodynames.sun"),
     MOON(1, 1, "bodynames.moon"),
     MERCURY(2, 2, "bodynames.mercury"),
@@ -26,8 +29,8 @@ public enum Bodynames {
 
     /**
      * Getter for seId, the value as used by the Swiss Ephemeris.
-     * If a body is not supported by the SE, this value will be -1.
-     * @return Value for seId, the internalId as used by the Swiss Ephemeris, or -1 if SE does not handle the body.
+     * If a body is not supported by the SE, this value will be -999.
+     * @return Value for seId, the internalId as used by the Swiss Ephemeris, or -999 if SE does not handle the body.
      */
     public int getSeId() {
         return seId;

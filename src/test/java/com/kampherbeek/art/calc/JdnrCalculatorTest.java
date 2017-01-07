@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import static com.kampherbeek.art.TestConstants.DOUBLE_MARGIN;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -14,7 +15,6 @@ public class JdnrCalculatorTest {
     @Mock
     private JdnrRequest requestMock = mock(JdnrRequest.class);
     private JdnrCalculator calculator;
-    private final double margin = 0.000000001;
 
     @Before
     public void setUp() throws Exception {
@@ -30,6 +30,6 @@ public class JdnrCalculatorTest {
     @Test
     public void calcJd() throws Exception {
         double jdnr = calculator.calcJd(requestMock);
-        assertEquals(2457768.5355613427, jdnr, margin);
+        assertEquals(2457768.5355613427, jdnr, DOUBLE_MARGIN.getValue());
     }
 }

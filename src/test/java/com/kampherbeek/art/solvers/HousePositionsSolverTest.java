@@ -3,7 +3,6 @@ package com.kampherbeek.art.solvers;
 import com.kampherbeek.art.calc.se.SEFrontend;
 import com.kampherbeek.art.domain.HousePositions;
 import com.kampherbeek.art.json.representation.HousePositionsRequest;
-import com.kampherbeek.art.json.representation.HousePositionsResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -18,8 +17,6 @@ public class HousePositionsSolverTest {
     @Mock
     private HousePositionsRequest requestMock = mock(HousePositionsRequest.class);
     @Mock
-    private HousePositionsResponse responseMock = mock(HousePositionsResponse.class);
-    @Mock
     private SEFrontend seFrontendMock = mock(SEFrontend.class);
     @Mock
     private HousePositions housePositionsMock = mock(HousePositions.class);
@@ -29,7 +26,6 @@ public class HousePositionsSolverTest {
 
     @Before
     public void setUp() throws Exception {
-        when(responseMock.getPositions()).thenReturn(housePositionsMock);
         when(seFrontendMock.calcHouses(anyObject())).thenReturn(housePositionsMock);
         solver = new HousePositionsSolver(seFrontendMock);
     }

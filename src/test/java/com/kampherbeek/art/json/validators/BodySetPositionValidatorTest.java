@@ -75,4 +75,9 @@ public class BodySetPositionValidatorTest {
         when(requestMock.getInternalIds()).thenReturn(internalIdsFalse);
         assertFalse(validator.isValid(requestMock));
     }
+
+    @Test
+    public void isValidRequestNull() throws Exception {
+        assertFalse(validator.isValid(null));
+    }
 }

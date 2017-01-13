@@ -13,7 +13,7 @@ public class ArtBeStart {
     public static void main(String[] args) {
         SpringApplication.run(ArtBeStart.class, args);
         LOG.info("ART started");
-        System.out.println("ART backend started: in your browser type http://localhost:8080/....");
+        System.out.println("ART backend started: in your browser type http://localhost:8080/[request]");
     }
 
 

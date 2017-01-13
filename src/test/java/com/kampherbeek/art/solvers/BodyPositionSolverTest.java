@@ -32,4 +32,10 @@ public class BodyPositionSolverTest {
     public void solveRequest() throws Exception {
         assertEquals(bodyPositionMock, solver.solveRequest(requestMock).getPosition());
     }
+
+    @Test (expected = RuntimeException.class)
+    public void solveRequestWrongBody() throws Exception {
+        when (requestMock.getInternalId()).thenReturn(-999);
+        solver.solveRequest(requestMock);
+    }
 }

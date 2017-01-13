@@ -29,7 +29,7 @@ public class EpsilonHandlerTest {
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
     @Mock
     private EpsilonRequest requestMock = mock(EpsilonRequest.class);
-    private final String correctJsonRequest = "{\"jdnr\": 1234567.89}";
+    private final String jsonRequest = "{\"jdnr\": 1234567.89}";
     private final String invalidJsonRequest = "{\"xxx\": \"yyy\"}";
     private final String correctResponse = "{\"dummy4correct\":\"response\"}";
 
@@ -48,16 +48,20 @@ public class EpsilonHandlerTest {
 
     @Test
     public void handleRequest() throws Exception {
-        String result = handler.handleRequest(correctJsonRequest);
+        String result = handler.handleRequest(jsonRequest);
         assertEquals(correctResponse, result);
     }
 
-    @SuppressWarnings("unchecked")
+    @Test
+    public void handleRequestResponseNull() throws Exception {
+        when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
+        String result = handler.handleRequest(jsonRequest);
+        assertTrue(result.contains("Error in EpsilonHandler"));
+    }
+
     @Test
     public void handleRequestInvalidJson() throws Exception {
         when(validatedObjectMock.isValid()).thenReturn(false);
-        when(validatedObjectMock.getObject()).thenReturn("Wrong value");
-        when(converterMock.jsonRequest2Java(anyString())).thenThrow(JsonProcessingException.class);
         String result = handler.handleRequest(invalidJsonRequest);
         assertTrue(result.contains("Error in EpsilonHandler"));
     }

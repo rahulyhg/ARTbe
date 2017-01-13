@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyDouble;
 import static org.mockito.Matchers.anyObject;
@@ -44,4 +45,8 @@ public class HousePositionsValidatorTest {
         assertTrue(validator.isValid(requestMock));
     }
 
+    @Test
+    public void isValidRequestNull() throws Exception {
+        assertFalse(validator.isValid(null));
+    }
 }

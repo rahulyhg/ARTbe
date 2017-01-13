@@ -31,7 +31,7 @@ public class JdnrHandler {
     public String handleRequest(String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
         if (validatedObject.isValid()) {
-            JdnrResponse response = solver.solveResponse((JdnrRequest) validatedObject.getObject());
+            JdnrResponse response = solver.solveRequest((JdnrRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {

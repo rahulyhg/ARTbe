@@ -1,6 +1,8 @@
 package com.kampherbeek.art.json.validators;
 
 import com.kampherbeek.art.domain.IntegerLimits;
+import com.kampherbeek.art.domain.SimpleDate;
+import com.kampherbeek.art.domain.SimpleTime;
 import com.kampherbeek.art.json.representation.JdnrRequest;
 import com.kampherbeek.art.json.representation.RequestInterface;
 import org.slf4j.Logger;
@@ -16,12 +18,14 @@ public class JdnrValidator extends ValidatorParent{
     protected boolean isValid(RequestInterface request) {
         try {
             JdnrRequest jdRequest = (JdnrRequest)request;
-            return checkValue(jdRequest.getYear(), IntegerLimits.YEAR)
-                    && checkValue(jdRequest.getMonth(), IntegerLimits.MONTH)
-                    && checkValue(jdRequest.getDay(), IntegerLimits.DAY)
-                    && checkValue(jdRequest.getHours(), IntegerLimits.HOUR)
-                    && checkValue(jdRequest.getMinutes(), IntegerLimits.MINUTE)
-                    && checkValue(jdRequest.getSeconds(), IntegerLimits.SECOND);
+            SimpleDate simpleDate = jdRequest.getSimpleDateTime().getSimpleDate();
+            SimpleTime simpleTime = jdRequest.getSimpleDateTime().getSimpleTime();
+            return checkValue(simpleDate.getYear(), IntegerLimits.YEAR)
+                    && checkValue(simpleDate.getMonth(), IntegerLimits.MONTH)
+                    && checkValue(simpleDate.getDay(), IntegerLimits.DAY)
+                    && checkValue(simpleTime.getHour(), IntegerLimits.HOUR)
+                    && checkValue(simpleTime.getMinute(), IntegerLimits.MINUTE)
+                    && checkValue(simpleTime.getSecond(), IntegerLimits.SECOND);
         } catch (Exception e) {
             LOG.error("Exception when validating JdnrRequest: " + e.getMessage());
             return false;

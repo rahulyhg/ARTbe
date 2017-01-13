@@ -7,7 +7,7 @@ public class Location {
 
     public Location(){
         // empty constructor for Json
-    };
+    }
 
     public Location(double longitude, double latitude) {
         this.longitude = longitude;

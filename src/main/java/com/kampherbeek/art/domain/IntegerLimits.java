@@ -9,8 +9,8 @@ public enum IntegerLimits {
     MINUTE(0, 59),
     SECOND(0, 59);
 
-    private int minValue;
-    private int maxValue;
+    private final int minValue;
+    private final int maxValue;
 
     IntegerLimits(int minValue, int maxValue) {
         this.minValue = minValue;

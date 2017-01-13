@@ -6,7 +6,7 @@ public class VersionRequest implements RequestInterface {
 
     public VersionRequest(){
         this.versionType = "Short";
-    };
+    }
 
     public void setVersionType(String versionType) {
         this.versionType = versionType;

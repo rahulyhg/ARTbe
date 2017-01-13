@@ -14,7 +14,7 @@ public class JdnrSolver {
         this.calculator = calculator;
     }
 
-    public JdnrResponse solveResponse(JdnrRequest request) {
+    public JdnrResponse solveRequest(JdnrRequest request) {
         JdnrResponse response = new JdnrResponse();
         response.setJdnr(calculator.calcJd(request));
         return response;

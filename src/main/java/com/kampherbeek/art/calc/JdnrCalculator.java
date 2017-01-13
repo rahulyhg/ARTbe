@@ -1,5 +1,7 @@
 package com.kampherbeek.art.calc;
 
+import com.kampherbeek.art.domain.SimpleDate;
+import com.kampherbeek.art.domain.SimpleTime;
 import com.kampherbeek.art.json.representation.JdnrRequest;
 import org.springframework.stereotype.Component;
 import swisseph.SweDate;
@@ -13,8 +15,11 @@ public class JdnrCalculator {
 
     private SweDate defineDate(JdnrRequest request) {
         // TODO magic values 2 constants enum
-        double ut = request.getHours() / 24.0 + request.getMinutes() / 1440.0 + request.getSeconds() / 86400.0;
-        return new SweDate(request.getYear(), request.getMonth(), request.getDay(), ut, request.isGregorian());
+        SimpleDate simpleDate = request.getSimpleDateTime().getSimpleDate();
+        SimpleTime simpleTime = request.getSimpleDateTime().getSimpleTime();
+        double ut = simpleTime.getHour() / 24.0 + simpleTime.getMinute() / 1440.0 + simpleTime.getSecond() / 86400.0;
+        return new SweDate(simpleDate.getYear(), simpleDate.getMonth(), simpleDate.getDay(), ut,
+                simpleDate.isGregorian());
     }
 
 }

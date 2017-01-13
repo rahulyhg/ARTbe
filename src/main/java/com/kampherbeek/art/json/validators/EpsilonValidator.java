@@ -19,14 +19,14 @@ public class EpsilonValidator extends ValidatorParent{
     protected boolean isValid(RequestInterface request) {
         try {
             EpsilonRequest epsRequest = (EpsilonRequest) request;
-            return checkValue(epsRequest.getJdnr(), FloatingLimits.JULIAN_DAY_NR);
+            return checkValue(epsRequest.getJdnr());
         } catch (Exception e) {
             LOG.error("Exception when validating EpsilonRequest: " + e.getMessage());
             return false;
         }
     }
 
-    private boolean checkValue(double value, FloatingLimits limits) {
-        return value >= limits.getMinValue() && value <= limits.getMaxValue();
+    private boolean checkValue(double value) {
+        return value >= FloatingLimits.JULIAN_DAY_NR.getMinValue() && value <= FloatingLimits.JULIAN_DAY_NR.getMaxValue();
     }
 }

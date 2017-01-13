@@ -12,8 +12,12 @@ import org.springframework.core.env.Environment;
 @PropertySource("classpath:application.properties")
 public class PropertiesReader {
 
+    private final Environment env;
+
     @Autowired
-    private Environment env;
+    public PropertiesReader(Environment env) {
+        this.env = env;
+    }
 
     public String getValueForProperty(String searchProp){
         return env.getProperty(searchProp);

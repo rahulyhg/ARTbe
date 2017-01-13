@@ -4,9 +4,9 @@ import static swisseph.SweConst.*;
 
 public class HousePositions {
 
-    private HouseSystems system;
-    private double[] cusps;
-    private double[] additionalPoints;
+    private final HouseSystems system;
+    private final double[] cusps;
+    private final double[] additionalPoints;
     // additionalPoints has 1- positions, but it only uses the following values:
     // [0] = [SE_ASC] = Longitude Ascendant.
     // [1] = [SE_MC} = Longitude MC.

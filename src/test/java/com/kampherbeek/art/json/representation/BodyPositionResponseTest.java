@@ -13,7 +13,7 @@ public class BodyPositionResponseTest {
 
     @Mock
     private BodyPosition positionMock = mock(BodyPosition.class);
-    private Bodynames bodyname = Bodynames.NEPTUNE;
+    private final Bodynames bodyname = Bodynames.NEPTUNE;
     private BodyPositionResponse response;
 
     @Before

@@ -48,6 +48,7 @@ public class ValidatorParentTest {
         assertEquals("Wrong value.", result.getObject());
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void handleJsonInvalid() throws Exception{
         when(converterMock.jsonRequest2Java(anyString())).thenThrow(IOException.class);

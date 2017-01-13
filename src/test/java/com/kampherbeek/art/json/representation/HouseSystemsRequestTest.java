@@ -7,8 +7,8 @@ import static org.junit.Assert.assertEquals;
 
 public class HouseSystemsRequestTest {
 
-    private String locale = "nl";
-    private String defaultLOcale = "en";
+    private final String locale = "nl";
+    private final String defaultLOcale = "en";
     private HouseSystemsRequest request;
 
     @Before

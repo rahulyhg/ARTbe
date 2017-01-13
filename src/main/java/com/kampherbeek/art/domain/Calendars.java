@@ -5,7 +5,7 @@ public enum Calendars {
     GREGORIAN(true),
     JULIAN(false);
 
-    private boolean gregorianCal;
+    private final boolean gregorianCal;
 
     Calendars(boolean gregorianCal) {
         this.gregorianCal = gregorianCal;

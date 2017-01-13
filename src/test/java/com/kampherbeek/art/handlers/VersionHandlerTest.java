@@ -1,6 +1,5 @@
 package com.kampherbeek.art.handlers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kampherbeek.art.json.ValidatedObject;
 import com.kampherbeek.art.json.converters.VersionJsonConverter;
 import com.kampherbeek.art.json.representation.VersionRequest;
@@ -12,7 +11,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -55,32 +53,4 @@ public class VersionHandlerTest {
         assertEquals(correctResponse, result);
     }
 
-//    @Test
-    public void handleRequestInvalidJson() throws Exception {
-        Object wrappedString = new String("Wrong value");
-        when(validatedObjectMock.isValid()).thenReturn(true);
-        when(validatedObjectMock.getObject()).thenReturn(wrappedString);
-        when(responseMock.getVersionId()).thenReturn("myId");
-        when(solverMock.solveRequest(anyObject())).thenReturn(responseMock);
-        when(converterMock.jsonRequest2Java(anyObject())).thenThrow(JsonProcessingException.class);
-        String result = handler.handleRequest(invalidJsonRequest);
-        assertTrue(result.contains("Error in VersionHandler"));
-    }
-
 }
-
-
-/*
-    public String handleRequest(String requestJson) {
-        ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
-        if (validatedObject.isValid()) {
-            VersionResponse response = solver.solveRequest((VersionRequest) validatedObject.getObject());
-            try {
-                return converter.java2JsonResponse(response);
-            } catch (JsonProcessingException e) {
-                return ERROR_TEXT;
-            }
-        }
-        return ERROR_TEXT;
-    }
- */

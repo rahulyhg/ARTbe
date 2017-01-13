@@ -7,9 +7,9 @@ import static org.junit.Assert.assertEquals;
 
 public class BodynamesRequestTest {
 
-    private String locale = "nl";
-    private String defaultLocale = "en";
-    BodynamesRequest request;
+    private final String locale = "nl";
+    private final String defaultLocale = "en";
+    private BodynamesRequest request;
 
     @Before
     public void setUp() throws Exception {

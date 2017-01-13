@@ -13,8 +13,8 @@ import swisseph.SwissEph;
 public class SEFrontend {
 
 //    private static final SEFrontend oneAndOnlyInstance = new SEFrontend();
-    private SwissEph swissEph;
-    private BodyPositionCalculator bodyCalculator;
+    private final SwissEph swissEph;
+    private final BodyPositionCalculator bodyCalculator;
     private final HousePositionsCalculator housesCalculator;
 
 

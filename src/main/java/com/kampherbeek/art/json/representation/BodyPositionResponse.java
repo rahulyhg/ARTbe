@@ -5,8 +5,8 @@ import com.kampherbeek.art.domain.Bodynames;
 
 public class BodyPositionResponse implements ResponseInterface{
 
-    private BodyPosition position;
-    private Bodynames bodyname;
+    private final BodyPosition position;
+    private final Bodynames bodyname;
 
     public BodyPositionResponse(Bodynames bodyname, BodyPosition position) {
         this.bodyname = bodyname;

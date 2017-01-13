@@ -10,10 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/housesystems")
-/**
- * Returns list of available house systems.
- * You can call API with [server]:[port]/housesystems?json={"locale":"en"}  (or "nl" and not "en")
- */
 public class HouseSystemsController {
 
     private final HouseSystemsHandler handler;

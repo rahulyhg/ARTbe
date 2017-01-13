@@ -30,7 +30,7 @@ public class BodyPositionCalculator {
 //        }
         BasePosition coordinates = new BasePosition(values[0], values[1], values[2]);
         BasePosition speed = new BasePosition(values[3], values[4], values[5]);
-        return new BodyPosition(bodyname, coordinates, speed);
+        return new BodyPosition(coordinates, speed);
     }
 
 

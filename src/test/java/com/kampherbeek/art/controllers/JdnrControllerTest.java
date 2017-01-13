@@ -14,6 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@SuppressWarnings("SpringJavaAutowiredMembersInspection")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -25,7 +26,7 @@ public class JdnrControllerTest {
     @Test
     public void getJdnr() throws Exception {
         String jsonParam =
-                "{\"year\":2016,\"month\":1,\"day\":2,\"hours\":20,\"minutes\":41,\"seconds\":0,\"gregorian\":true}";
+                "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2016,\"month\":1,\"day\":2,\"gregorian\":true},\"simpleTime\":{\"hour\":20,\"minute\":41,\"second\":0}}}";
         this.mockMvc.perform(get("/jdnr").param("json", jsonParam)).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("jdnr")));
     }

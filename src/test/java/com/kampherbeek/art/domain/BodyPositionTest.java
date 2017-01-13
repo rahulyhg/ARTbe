@@ -14,19 +14,13 @@ public class BodyPositionTest {
     @Mock
     private BasePosition speedMock = mock(BasePosition.class);
     private BodyPosition bodyPosition;
-    private final Bodynames bodyname = Bodynames.JUPITER;
-
 
 
     @Before
     public void setUp() throws Exception {
-        bodyPosition = new BodyPosition(bodyname, coordinatesMock, speedMock);
+        bodyPosition = new BodyPosition(coordinatesMock, speedMock);
     }
 
-    @Test
-    public void getBodyname() throws Exception {
-        assertEquals(bodyname, bodyPosition.getBodyname());
-    }
 
     @Test
     public void getCoordinates() throws Exception {

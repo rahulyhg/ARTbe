@@ -1,5 +1,8 @@
 package com.kampherbeek.art.calc;
 
+import com.kampherbeek.art.domain.SimpleDate;
+import com.kampherbeek.art.domain.SimpleDateTime;
+import com.kampherbeek.art.domain.SimpleTime;
 import com.kampherbeek.art.json.representation.JdnrRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,16 +17,25 @@ public class JdnrCalculatorTest {
 
     @Mock
     private JdnrRequest requestMock = mock(JdnrRequest.class);
+    @Mock
+    private SimpleDateTime dateTimeMock = mock(SimpleDateTime.class);
+    @Mock
+    private SimpleDate dateMock = mock(SimpleDate.class);
+    @Mock
+    private SimpleTime timeMock = mock(SimpleTime.class);
     private JdnrCalculator calculator;
 
     @Before
     public void setUp() throws Exception {
-        when(requestMock.getYear()).thenReturn(2017);
-        when(requestMock.getMonth()).thenReturn(1);
-        when(requestMock.getDay()).thenReturn(2);
-        when(requestMock.getHours()).thenReturn(20);
-        when(requestMock.getMinutes()).thenReturn(29);
-        when(requestMock.getSeconds()).thenReturn(0);
+        when(dateMock.getYear()).thenReturn(2017);
+        when(dateMock.getMonth()).thenReturn(1);
+        when(dateMock.getDay()).thenReturn(2);
+        when(timeMock.getHour()).thenReturn(20);
+        when(timeMock.getMinute()).thenReturn(29);
+        when(timeMock.getSecond()).thenReturn(0);
+        when(dateTimeMock.getSimpleDate()).thenReturn(dateMock);
+        when(dateTimeMock.getSimpleTime()).thenReturn(timeMock);
+        when(requestMock.getSimpleDateTime()).thenReturn(dateTimeMock);
         calculator = new JdnrCalculator();
     }
 

@@ -19,6 +19,7 @@ public class BodyPositionJsonConverterTest {
 
     @Before
     public void setUp() throws Exception {
+
         converter = new BodyPositionJsonConverter();
     }
 

@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/version")
-/**
- * Returns current version of ART-BE
- * You can call API with [server]:[port]/version?json={"versionType":"full"} for the full version including buildversion.
- * Alternatively versionType can be short, indicating only the version itself.
- */
 public class VersionController {
 
     private final VersionHandler handler;

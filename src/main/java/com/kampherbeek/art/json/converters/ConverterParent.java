@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public abstract class ConverterParent {
 
-    ObjectMapper mapper = new ObjectMapper();
+    final ObjectMapper mapper = new ObjectMapper();
 
     public abstract RequestInterface jsonRequest2Java(String input) throws IOException;
 

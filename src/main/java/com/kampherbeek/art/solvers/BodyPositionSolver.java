@@ -37,16 +37,3 @@ public class BodyPositionSolver {
     }
 }
 
-
-
-/*
-
-
-    public HousePositionsResponse solveRequest(HousePositionsRequest request) {
-
-        HousePositions housePositions = seFrontend.calcHouses(request);
-        return new HousePositionsResponse(housePositions);
-    }
-
-
- */

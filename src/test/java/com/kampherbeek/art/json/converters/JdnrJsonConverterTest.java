@@ -12,9 +12,6 @@ import static org.junit.Assert.assertTrue;
 
 public class JdnrJsonConverterTest {
 
-    private final String jsonRequest =
-            "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2016,\"month\":1,\"day\":2,\"gregorian\":true},\"simpleTime\":{\"hour\":20,\"minute\":41,\"second\":0}}}";
-
     private final int year = 2016;
     private final int month = 1;
     private final int day = 2;
@@ -32,6 +29,7 @@ public class JdnrJsonConverterTest {
 
     @Test
     public void jsonRequest2Java() throws Exception {
+        String jsonRequest = "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2016,\"month\":1,\"day\":2,\"gregorian\":true},\"simpleTime\":{\"hour\":20,\"minute\":41,\"second\":0}}}";
         JdnrRequest request = converter.jsonRequest2Java(jsonRequest);
         SimpleDate simpleDate = request.getSimpleDateTime().getSimpleDate();
         SimpleTime simpleTime = request.getSimpleDateTime().getSimpleTime();
@@ -43,7 +41,6 @@ public class JdnrJsonConverterTest {
         assertEquals(minute, simpleTime.getMinute());
         assertEquals(second, simpleTime.getSecond());
     }
-
 
     // Convenience method to construct correct Json for request.
     @Test
@@ -57,6 +54,4 @@ public class JdnrJsonConverterTest {
         System.out.println(json);
         assertTrue(json.contains("year"));
     }
-
-
 }

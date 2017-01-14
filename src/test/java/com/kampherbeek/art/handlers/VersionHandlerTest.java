@@ -21,7 +21,6 @@ public class VersionHandlerTest {
 
     private final String jsonRequest = "{\"versionType\":\"full\"}";
     private final String correctResponse = "{\"versionType\":\"full\",\"versionId\":\"1.2.3\"}";
-    private final String versionType = "short";
     @Mock
     private VersionValidator validatorMock = mock(VersionValidator.class);
     @Mock
@@ -36,10 +35,11 @@ public class VersionHandlerTest {
 
     @Before
     public void setUp() throws Exception {
+        String versionType = "short";
         when(requestMock.getVersionType()).thenReturn(versionType);
         when(validatedObjectMock.isValid()).thenReturn(true);
         when(validatedObjectMock.getObject()).thenReturn(requestMock);
-        when(validatorMock.handleJson(anyString(),anyObject())).thenReturn(validatedObjectMock);
+        when(validatorMock.handleJson(anyString(), anyObject())).thenReturn(validatedObjectMock);
         when(converterMock.java2JsonResponse(anyObject())).thenReturn(correctResponse);
         handler = new VersionHandler(validatorMock, converterMock, solverMock);
     }
@@ -50,6 +50,7 @@ public class VersionHandlerTest {
         assertEquals(correctResponse, result);
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void handleRequestResponseNull() throws Exception {
         when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
@@ -63,5 +64,4 @@ public class VersionHandlerTest {
         String result = handler.handleRequest(jsonRequest);
         assertTrue(result.contains("Error in VersionHandler"));
     }
-
 }

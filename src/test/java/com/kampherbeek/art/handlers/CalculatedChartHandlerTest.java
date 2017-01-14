@@ -19,6 +19,8 @@ import static org.mockito.Mockito.when;
 
 public class CalculatedChartHandlerTest {
 
+    private final String jsonRequest = "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2002,\"month\":3,\"day\":15,\"gregorian\":true},\"simpleTime\":{\"hour\":13,\"minute\":54,\"second\":43}},\"location\":{\"longitude\":18.17,\"latitude\":55.44},\"flagValue\":258,\"houseSystemId\":12,\"bodyIds\":[0,1]}\n";
+    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
     @Mock
     private CalculatedChartValidator validatorMock = mock(CalculatedChartValidator.class);
     @Mock
@@ -29,11 +31,6 @@ public class CalculatedChartHandlerTest {
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
     @Mock
     private CalculatedChartRequest requestMock = mock(CalculatedChartRequest.class);
-
-
-    private final String jsonRequest = "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2002,\"month\":3,\"day\":15,\"gregorian\":true},\"simpleTime\":{\"hour\":13,\"minute\":54,\"second\":43}},\"location\":{\"longitude\":18.17,\"latitude\":55.44},\"flagValue\":258,\"houseSystemId\":12,\"bodyIds\":[0,1]}\n";
-    private final String invalidJsonRequest = "{\"xxx\":\"yyy\"}";
-    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
     private CalculatedChartHandler handler;
 
     @Before
@@ -52,6 +49,7 @@ public class CalculatedChartHandlerTest {
         assertEquals(correctResponse, result);
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void handleRequestResponseNull() throws Exception {
         when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
@@ -62,8 +60,8 @@ public class CalculatedChartHandlerTest {
     @Test
     public void handleRequestInvalidJson() throws Exception {
         when(validatedObjectMock.isValid()).thenReturn(false);
+        String invalidJsonRequest = "{\"xxx\":\"yyy\"}";
         String result = handler.handleRequest(invalidJsonRequest);
         assertTrue(result.contains("Error in CalculatedChartHandler"));
     }
-
 }

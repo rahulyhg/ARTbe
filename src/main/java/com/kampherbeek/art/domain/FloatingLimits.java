@@ -21,6 +21,4 @@ public enum FloatingLimits {
         return maxValue;
     }
 
-
-
 }

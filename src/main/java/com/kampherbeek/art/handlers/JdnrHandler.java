@@ -19,7 +19,6 @@ public class JdnrHandler {
     private final JdnrValidator validator;
     private final JdnrJsonConverter converter;
     private final JdnrSolver solver;
-    private final String ERROR_TEXT = "Error in JdnrHandler";
 
     @Autowired
     public JdnrHandler(JdnrValidator validator, JdnrJsonConverter converter, JdnrSolver solver) {
@@ -30,6 +29,7 @@ public class JdnrHandler {
 
     public String handleRequest(String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
+        String ERROR_TEXT = "Error in JdnrHandler";
         if (validatedObject.isValid()) {
             JdnrResponse response = solver.solveRequest((JdnrRequest) validatedObject.getObject());
             try {

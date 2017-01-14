@@ -17,9 +17,9 @@ public class JdnrCalculator {
         // TODO magic values 2 constants enum
         SimpleDate simpleDate = request.getSimpleDateTime().getSimpleDate();
         SimpleTime simpleTime = request.getSimpleDateTime().getSimpleTime();
-        double ut = simpleTime.getHour() / 24.0 + simpleTime.getMinute() / 1440.0 + simpleTime.getSecond() / 86400.0;
+        double ut = simpleTime.getHour() + simpleTime.getMinute() / 60.0
+                + simpleTime.getSecond() / 3600.0;
         return new SweDate(simpleDate.getYear(), simpleDate.getMonth(), simpleDate.getDay(), ut,
                 simpleDate.isGregorian());
     }
-
 }

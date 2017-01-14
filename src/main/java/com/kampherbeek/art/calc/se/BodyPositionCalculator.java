@@ -33,7 +33,6 @@ public class BodyPositionCalculator {
         return new BodyPosition(coordinates, speed);
     }
 
-
     private Bodynames getBodyname4InternalId(int internalId) {
         for (Bodynames bodyname : Bodynames.values()) {
             if (bodyname.getInternalId() == internalId) {
@@ -43,7 +42,6 @@ public class BodyPositionCalculator {
         LOG.error("Searching for non-existing body: " + internalId);
         throw new RuntimeException("Bodyname not found");
     }
-
 }
 
 

@@ -26,14 +26,13 @@ public class HousePositionsValidatorTest {
     private LocationHelper locationHelperMock = mock(LocationHelper.class);
     @Mock
     private JdnrHelper jdnrHelperMock = mock(JdnrHelper.class);
-    private final double jdnr = 1234567.89;
-
     private HousePositionsValidator validator;
 
     @Before
     public void setUp() throws Exception {
         when(requestMock.getLocation()).thenReturn(locationMock);
         when(requestMock.getSystem()).thenReturn(HouseSystems.ALCABITIUS.getInternalId());
+        double jdnr = 1234567.89;
         when(requestMock.getJdnr()).thenReturn(jdnr);
         when(locationHelperMock.isValid(anyObject())).thenReturn(true);
         when(jdnrHelperMock.isValid(anyDouble())).thenReturn(true);

@@ -12,11 +12,10 @@ import swisseph.SwissEph;
 @Component
 public class SEFrontend {
 
-//    private static final SEFrontend oneAndOnlyInstance = new SEFrontend();
+    //    private static final SEFrontend oneAndOnlyInstance = new SEFrontend();
     private final SwissEph swissEph;
     private final BodyPositionCalculator bodyCalculator;
     private final HousePositionsCalculator housesCalculator;
-
 
     @Autowired
     public SEFrontend(HousePositionsCalculator housesCalculator, BodyPositionCalculator bodyCalculator) {
@@ -28,13 +27,12 @@ public class SEFrontend {
     }
 
     public HousePositions calcHouses(HousePositionsRequest request) {
-        int flagValue =  CalculationFlags.SWIEPH.getFlagId();
+        int flagValue = CalculationFlags.SWIEPH.getFlagId();
         return housesCalculator.calcHouses(request.getSystem(), request.getLocation(), request.getJdnr(), flagValue);
     }
 
     public BodyPosition calcBody(BodyPositionRequest request) {
         return bodyCalculator.calcBody(request.getInternalId(), request.getJdnr(), request.getFlagValue());
     }
-
 }
 

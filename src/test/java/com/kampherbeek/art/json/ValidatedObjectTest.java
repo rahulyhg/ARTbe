@@ -9,15 +9,15 @@ import static org.junit.Assert.assertTrue;
 
 public class ValidatedObjectTest {
 
-    private final boolean isValid = true;
-    private final String versionType = "Short";
     private Object object;
     private ValidatedObject validatedObject;
 
     @Before
     public void setUp() throws Exception {
         object = new VersionRequest();
-        ((VersionRequest)object).setVersionType(versionType);
+        String versionType = "Short";
+        ((VersionRequest) object).setVersionType(versionType);
+        boolean isValid = true;
         validatedObject = new ValidatedObject(isValid, object);
     }
 

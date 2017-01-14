@@ -42,6 +42,6 @@ public class JdnrCalculatorTest {
     @Test
     public void calcJd() throws Exception {
         double jdnr = calculator.calcJd(requestMock);
-        assertEquals(2457768.5355613427, jdnr, DOUBLE_MARGIN.getValue());
+        assertEquals(2457769.353472222, jdnr, DOUBLE_MARGIN.getValue());
     }
 }

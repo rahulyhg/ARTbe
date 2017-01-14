@@ -19,7 +19,6 @@ public class HouseSystemsHandler {
     private final LookupListValidator validator;
     private final HouseSystemsJsonConverter converter;
     private final HouseSystemsSolver solver;
-    private final String ERROR_TEXT = "Error in HouseSystemsHandler";
 
     @Autowired
     public HouseSystemsHandler(final LookupListValidator validator,
@@ -33,6 +32,7 @@ public class HouseSystemsHandler {
     public String handleRequest(String requestJson) {
 
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
+        String ERROR_TEXT = "Error in HouseSystemsHandler";
         if (validatedObject.isValid()) {
             HouseSystemsResponse response = solver.solveRequest((HouseSystemsRequest) validatedObject.getObject());
             try {
@@ -44,5 +44,4 @@ public class HouseSystemsHandler {
         }
         return ERROR_TEXT;
     }
-
 }

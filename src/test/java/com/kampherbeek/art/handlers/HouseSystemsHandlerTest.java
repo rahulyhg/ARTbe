@@ -19,6 +19,8 @@ import static org.mockito.Mockito.when;
 
 public class HouseSystemsHandlerTest {
 
+    private final String jsonRequest = "{\"locale\":\"en\"}";
+    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
     @Mock
     private LookupListValidator validatorMock = mock(LookupListValidator.class);
     @Mock
@@ -29,9 +31,6 @@ public class HouseSystemsHandlerTest {
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
     @Mock
     private HouseSystemsRequest requestMock = mock(HouseSystemsRequest.class);
-    private final String jsonRequest = "{\"locale\":\"en\"}";
-    private final String invalidJsonRequest = "{\"xxx\":\"yyy\"}";
-    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
     private HouseSystemsHandler handler;
 
     @Before
@@ -50,6 +49,7 @@ public class HouseSystemsHandlerTest {
         assertEquals(correctResponse, result);
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void handleRequestResponseNull() throws Exception {
         when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
@@ -60,6 +60,7 @@ public class HouseSystemsHandlerTest {
     @Test
     public void handleRequestInvalidJson() throws Exception {
         when(validatedObjectMock.isValid()).thenReturn(false);
+        String invalidJsonRequest = "{\"xxx\":\"yyy\"}";
         String result = handler.handleRequest(invalidJsonRequest);
         assertTrue(result.contains("Error in HouseSystemsHandler"));
     }

@@ -14,5 +14,4 @@ public class ValueChecker {
     public boolean checkValue(double value, FloatingLimits limits) {
         return value >= limits.getMinValue() && value <= limits.getMaxValue();
     }
-
 }

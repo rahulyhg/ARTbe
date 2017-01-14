@@ -19,6 +19,8 @@ import static org.mockito.Mockito.when;
 
 public class BodyPositionHandlerTest {
 
+    private final String jsonRequest = "{\"internalId\":3,\"jdnr\":1234567.89,\"flagValue\":1}";
+    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
     @Mock
     private BodyPositionValidator validatorMock = mock(BodyPositionValidator.class);
     @Mock
@@ -29,11 +31,7 @@ public class BodyPositionHandlerTest {
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
     @Mock
     private BodyPositionRequest requestMock = mock(BodyPositionRequest.class);
-    private final String jsonRequest = "{\"internalId\":3,\"jdnr\":1234567.89,\"flagValue\":1}";
-    private final String invalidJsonRequest = "{\"xxx\": \"yyy\"}";
-    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
     private BodyPositionHandler handler;
-
 
     @Before
     public void setUp() throws Exception {
@@ -52,6 +50,7 @@ public class BodyPositionHandlerTest {
         assertEquals(correctResponse, result);
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void handleRequestResponseNull() throws Exception {
         when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
@@ -62,6 +61,7 @@ public class BodyPositionHandlerTest {
     @Test
     public void handleRequestInvalidJson() throws Exception {
         when(validatedObjectMock.isValid()).thenReturn(false);
+        String invalidJsonRequest = "{\"xxx\": \"yyy\"}";
         String result = handler.handleRequest(invalidJsonRequest);
         assertTrue(result.contains("Error in BodyPositionHandler"));
     }

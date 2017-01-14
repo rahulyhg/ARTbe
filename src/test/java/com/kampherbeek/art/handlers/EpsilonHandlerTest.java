@@ -19,6 +19,8 @@ import static org.mockito.Mockito.when;
 
 public class EpsilonHandlerTest {
 
+    private final String jsonRequest = "{\"jdnr\": 1234567.89}";
+    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
     @Mock
     private EpsilonValidator validatorMock = mock(EpsilonValidator.class);
     @Mock
@@ -29,10 +31,6 @@ public class EpsilonHandlerTest {
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
     @Mock
     private EpsilonRequest requestMock = mock(EpsilonRequest.class);
-    private final String jsonRequest = "{\"jdnr\": 1234567.89}";
-    private final String invalidJsonRequest = "{\"xxx\": \"yyy\"}";
-    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
-
     private EpsilonHandler handler;
 
     @Before
@@ -52,6 +50,7 @@ public class EpsilonHandlerTest {
         assertEquals(correctResponse, result);
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void handleRequestResponseNull() throws Exception {
         when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
@@ -62,8 +61,8 @@ public class EpsilonHandlerTest {
     @Test
     public void handleRequestInvalidJson() throws Exception {
         when(validatedObjectMock.isValid()).thenReturn(false);
+        String invalidJsonRequest = "{\"xxx\": \"yyy\"}";
         String result = handler.handleRequest(invalidJsonRequest);
         assertTrue(result.contains("Error in EpsilonHandler"));
     }
-
 }

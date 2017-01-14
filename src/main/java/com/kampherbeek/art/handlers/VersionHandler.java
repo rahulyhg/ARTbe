@@ -19,7 +19,6 @@ public class VersionHandler {
     private final VersionValidator validator;
     private final VersionJsonConverter converter;
     private final VersionSolver solver;
-    private final String ERROR_TEXT = "Error in VersionHandler";
 
     @Autowired
     public VersionHandler(VersionValidator validator, VersionJsonConverter converter, VersionSolver solver) {
@@ -30,6 +29,7 @@ public class VersionHandler {
 
     public String handleRequest(String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
+        String ERROR_TEXT = "Error in VersionHandler";
         if (validatedObject.isValid()) {
             VersionResponse response = solver.solveRequest((VersionRequest) validatedObject.getObject());
             try {

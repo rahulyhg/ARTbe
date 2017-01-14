@@ -19,7 +19,6 @@ public class HousePositionsHandler {
     private final HousePositionsValidator validator;
     private final HousePositionsJsonConverter converter;
     private final HousePositionsSolver solver;
-    private final String ERROR_TEXT = "Error in HousePositionsHandler";
 
     @Autowired
     public HousePositionsHandler(HousePositionsValidator validator, HousePositionsJsonConverter converter,
@@ -31,8 +30,9 @@ public class HousePositionsHandler {
 
     public String handleRequest(String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
+        String ERROR_TEXT = "Error in HousePositionsHandler";
         if (validatedObject.isValid()) {
-            HousePositionsResponse response =  solver.solveRequest((HousePositionsRequest) validatedObject.getObject());
+            HousePositionsResponse response = solver.solveRequest((HousePositionsRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
@@ -42,6 +42,4 @@ public class HousePositionsHandler {
         }
         return ERROR_TEXT;
     }
-
-
 }

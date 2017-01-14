@@ -22,7 +22,6 @@ public class SimpleDateHelperTest {
 
     private SimpleDateHelper validatorHelper;
 
-
     @Before
     public void setUp() throws Exception {
         when(checkerMock.checkValue(anyInt(), (IntegerLimits) anyObject())).thenReturn(true);
@@ -39,5 +38,4 @@ public class SimpleDateHelperTest {
         when(checkerMock.checkValue(anyInt(), (IntegerLimits) anyObject())).thenReturn(false);
         assertFalse(validatorHelper.isValid(dateMock));
     }
-
 }

@@ -15,13 +15,14 @@ public class HouseSystemsController {
     private final HouseSystemsHandler handler;
 
     @Autowired
-    public HouseSystemsController(HouseSystemsHandler handler)  {
+    public HouseSystemsController(HouseSystemsHandler handler) {
         this.handler = handler;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
-    public @ResponseBody
-    String getHouseSytems(@RequestParam(value="json") String json) {
+    @RequestMapping(method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getHouseSytems(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

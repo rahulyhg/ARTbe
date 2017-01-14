@@ -7,9 +7,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import swisseph.SwissEph;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -46,13 +44,13 @@ public class HousePositionsCalculatorTest {
         assertNotNull(positions);
     }
 
-    @Test (expected = RuntimeException.class)
+    @Test(expected = RuntimeException.class)
     public void calcHousesWrongId() throws Exception {
         calculator.setSwissEph(swissEphMock);
         calculator.calcHouses(34567, locationMock, 1234567.89, 1);
     }
 
-    @Test (expected = RuntimeException.class)
+    @Test(expected = RuntimeException.class)
     public void calcHousesSwissEphNull() throws Exception {
         calculator.setSwissEph(null);
         calculator.calcHouses(2, locationMock, 1234567.89, 1);

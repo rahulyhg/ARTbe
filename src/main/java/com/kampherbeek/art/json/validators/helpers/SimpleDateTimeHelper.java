@@ -20,5 +20,4 @@ public class SimpleDateTimeHelper {
         return dateHelper.isValid(simpleDateTime.getSimpleDate())
                 && timeHelper.isValid(simpleDateTime.getSimpleTime());
     }
-
 }

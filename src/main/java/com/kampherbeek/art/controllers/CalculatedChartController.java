@@ -19,11 +19,11 @@ public class CalculatedChartController {
         this.handler = handler;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
-    public @ResponseBody
-    String getCalculatedChart(@RequestParam(value="json") String json) {
+    @RequestMapping(method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getCalculatedChart(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
-
 }
 

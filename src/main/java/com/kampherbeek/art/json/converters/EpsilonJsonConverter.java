@@ -11,5 +11,4 @@ public class EpsilonJsonConverter extends ConverterParent {
     public EpsilonRequest jsonRequest2Java(String input) throws IOException {
         return mapper.readValue(input, EpsilonRequest.class);
     }
-
 }

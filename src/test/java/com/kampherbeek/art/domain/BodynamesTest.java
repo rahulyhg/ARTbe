@@ -6,7 +6,6 @@ import static org.junit.Assert.assertEquals;
 
 public class BodynamesTest {
 
-
     @Test
     public void getSeId() throws Exception {
         assertEquals(0, Bodynames.SUN.getSeId());

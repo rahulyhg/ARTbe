@@ -8,7 +8,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HouseSystemsJsonConverterTest {
 
-    private final String jsonRequest = "{\"locale\":\"en\"}";
     private HouseSystemsJsonConverter converter;
 
     @Before
@@ -18,6 +17,7 @@ public class HouseSystemsJsonConverterTest {
 
     @Test
     public void jsonRequest2Java() throws Exception {
+        String jsonRequest = "{\"locale\":\"en\"}";
         HouseSystemsRequest request = converter.jsonRequest2Java(jsonRequest);
         assertEquals("en", request.getLocale());
     }

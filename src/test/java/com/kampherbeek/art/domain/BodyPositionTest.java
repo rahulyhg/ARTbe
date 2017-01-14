@@ -15,12 +15,10 @@ public class BodyPositionTest {
     private BasePosition speedMock = mock(BasePosition.class);
     private BodyPosition bodyPosition;
 
-
     @Before
     public void setUp() throws Exception {
         bodyPosition = new BodyPosition(coordinatesMock, speedMock);
     }
-
 
     @Test
     public void getCoordinates() throws Exception {

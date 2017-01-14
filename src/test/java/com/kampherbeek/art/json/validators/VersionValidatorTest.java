@@ -12,9 +12,6 @@ import static org.mockito.Mockito.when;
 
 public class VersionValidatorTest {
 
-    private final String correctType = "full";
-    private final String wrongType = "wrong";
-
     @Mock
     private VersionRequest requestMock = mock(VersionRequest.class);
     private VersionValidator validator;
@@ -26,14 +23,15 @@ public class VersionValidatorTest {
 
     @Test
     public void isValid() throws Exception {
+        String correctType = "full";
         when(requestMock.getVersionType()).thenReturn(correctType);
         assertTrue(validator.isValid(requestMock));
     }
 
     @Test
     public void isValidWrongValue() throws Exception {
+        String wrongType = "wrong";
         when(requestMock.getVersionType()).thenReturn(wrongType);
         assertFalse(validator.isValid(requestMock));
     }
-
 }

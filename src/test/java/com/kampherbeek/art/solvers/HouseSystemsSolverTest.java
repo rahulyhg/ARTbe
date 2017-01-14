@@ -27,6 +27,5 @@ public class HouseSystemsSolverTest {
         when(requestMock.getLocale()).thenReturn("en");
         HouseSystemsResponse result = solver.solveRequest(requestMock);
         assertTrue(result.getHouseSystems().size() > 0);
-
     }
 }

@@ -18,8 +18,6 @@ public class CalculatedChartRequestTest {
     private SimpleDateTime dateTimeMock = mock(SimpleDateTime.class);
     @Mock
     private Location locationMock = mock(Location.class);
-    private final int flagValue = 258;
-    private final int houseSystemId = 7;
     private List<Integer> bodyIds;
 
     private CalculatedChartRequest request;
@@ -27,7 +25,6 @@ public class CalculatedChartRequestTest {
     @Before
     public void setUp() throws Exception {
         bodyIds = createBodyIds();
-        double[] bodyIdsArray = {0, 1, 2};
         request = new CalculatedChartRequest();
     }
 
@@ -45,12 +42,14 @@ public class CalculatedChartRequestTest {
 
     @Test
     public void setGetFlagValue() throws Exception {
+        int flagValue = 258;
         request.setFlagValue(flagValue);
         assertEquals(flagValue, request.getFlagValue());
     }
 
     @Test
     public void setGetHouseSystemId() throws Exception {
+        int houseSystemId = 7;
         request.setHouseSystemId(houseSystemId);
         assertEquals(houseSystemId, request.getHouseSystemId());
     }

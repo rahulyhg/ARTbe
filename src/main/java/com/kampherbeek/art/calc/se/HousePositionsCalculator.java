@@ -26,7 +26,7 @@ public class HousePositionsCalculator {
         try {
             returnCode = swissEph.swe_houses(jdnr, flagValue, location.getLatitude(), location.getLongitude(),
                     system.getSeId(), cuspPositions, additionalPositions);
-        } catch(Exception e) {
+        } catch (Exception e) {
             LOG.error("Exception: " + e.getMessage());
             throw new RuntimeException(String.format("Error when calculating houses, flagValue: %1$d . Returncode: %2$d .",
                     flagValue, returnCode));

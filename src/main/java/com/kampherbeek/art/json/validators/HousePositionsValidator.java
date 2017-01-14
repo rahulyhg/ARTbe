@@ -23,11 +23,10 @@ public class HousePositionsValidator extends ValidatorParent {
         this.jdnrHelper = jdnrHelper;
     }
 
-
     @Override
     protected boolean isValid(RequestInterface request) {
         try {
-            HousePositionsRequest hpRequest = (HousePositionsRequest)request;
+            HousePositionsRequest hpRequest = (HousePositionsRequest) request;
             return (jdnrHelper.isValid(hpRequest.getJdnr()))
                     && (locationHelper.isValid(hpRequest.getLocation()));
         } catch (Exception e) {
@@ -35,5 +34,4 @@ public class HousePositionsValidator extends ValidatorParent {
             return false;
         }
     }
-
 }

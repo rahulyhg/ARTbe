@@ -30,6 +30,7 @@ public enum Bodynames {
     /**
      * Getter for seId, the value as used by the Swiss Ephemeris.
      * If a body is not supported by the SE, this value will be -999.
+     *
      * @return Value for seId, the internalId as used by the Swiss Ephemeris, or -999 if SE does not handle the body.
      */
     public int getSeId() {
@@ -42,6 +43,7 @@ public enum Bodynames {
 
     /**
      * Getter for rbKey
+     *
      * @return key to access Resource Bundle.
      */
     public String getRbKey() {

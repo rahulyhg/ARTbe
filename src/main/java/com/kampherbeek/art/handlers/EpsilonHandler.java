@@ -20,7 +20,6 @@ public class EpsilonHandler {
     private final EpsilonValidator validator;
     private final EpsilonJsonConverter converter;
     private final EpsilonSolver solver;
-    private final String ERROR_TEXT = "Error in EpsilonHandler";
 
     @Autowired
     public EpsilonHandler(EpsilonValidator validator, EpsilonJsonConverter converter, EpsilonSolver solver) {
@@ -31,6 +30,7 @@ public class EpsilonHandler {
 
     public String handleRequest(String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
+        String ERROR_TEXT = "Error in EpsilonHandler";
         if (validatedObject.isValid()) {
             EpsilonResponse response = solver.solveRequest((EpsilonRequest) validatedObject.getObject());
             try {

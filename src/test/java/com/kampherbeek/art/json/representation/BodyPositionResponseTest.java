@@ -11,9 +11,9 @@ import static org.mockito.Mockito.mock;
 
 public class BodyPositionResponseTest {
 
+    private final Bodynames bodyname = Bodynames.NEPTUNE;
     @Mock
     private BodyPosition positionMock = mock(BodyPosition.class);
-    private final Bodynames bodyname = Bodynames.NEPTUNE;
     private BodyPositionResponse response;
 
     @Before

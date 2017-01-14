@@ -10,7 +10,6 @@ import static org.junit.Assert.assertEquals;
 public class VersionJsonConverterTest {
 
     private final String jsonRequest = "{\"versionType\":\"full\"}";
-    private final String jsonResponse = "{\"versionType\":\"full\",\"versionId\":\"1.2.3\"}";
     private VersionResponse versionResponse;
     private VersionJsonConverter converter;
 
@@ -28,6 +27,7 @@ public class VersionJsonConverterTest {
 
     @Test
     public void java2JsonResponse() throws Exception {
+        String jsonResponse = "{\"versionType\":\"full\",\"versionId\":\"1.2.3\"}";
         assertEquals(jsonResponse, converter.java2JsonResponse(versionResponse));
     }
 

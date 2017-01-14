@@ -40,10 +40,9 @@ public class BodyPositionCalculatorTest {
         assertNotNull(bodyPosition);
     }
 
-    @Test (expected = RuntimeException.class)
+    @Test(expected = RuntimeException.class)
     public void calcBodyWrongId() throws Exception {
         calculator.setSwissEph(swissEphMock);
         calculator.calcBody(987654, 1234567.89, 1);
     }
-
 }

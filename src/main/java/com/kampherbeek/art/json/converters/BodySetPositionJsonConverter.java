@@ -6,11 +6,10 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class BodySetPositionJsonConverter extends ConverterParent{
+public class BodySetPositionJsonConverter extends ConverterParent {
 
     public BodySetPositionRequest jsonRequest2Java(String input) throws IOException {
         return mapper.readValue(input, BodySetPositionRequest.class);
     }
-
 }
 

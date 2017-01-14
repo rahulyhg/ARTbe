@@ -8,10 +8,6 @@ import static org.junit.Assert.assertTrue;
 
 public class JdnrHelperTest {
 
-    private final double jdnrCorrect = 2857140.5;
-    private final double jdnr2High = 7857140.5;
-    private final double jdnr2Low = -3026605.5;
-
     private JdnrHelper validatorHelper;
 
     @Before
@@ -21,10 +17,11 @@ public class JdnrHelperTest {
 
     @Test
     public void jdnrIsValid() throws Exception {
+        double jdnrCorrect = 2857140.5;
         assertTrue(validatorHelper.isValid(jdnrCorrect));
+        double jdnr2High = 7857140.5;
         assertFalse(validatorHelper.isValid(jdnr2High));
+        double jdnr2Low = -3026605.5;
         assertFalse(validatorHelper.isValid(jdnr2Low));
     }
-
-
 }

@@ -15,18 +15,18 @@ public class BodySetPositionJsonConverterTest {
 
     private final int flagValue = 1;
     private final double jdnr = 1234567.89;
-    private final String jsonRequest = "{\"jdnr\":1234567.89,\"flagValue\":1,\"internalIds\":[0,1,2,3]}";
     private List<Integer> internalIds;
     private BodySetPositionJsonConverter converter;
 
     @Before
     public void setUp() throws Exception {
         internalIds = createInternalIds();
-        converter= new BodySetPositionJsonConverter();
+        converter = new BodySetPositionJsonConverter();
     }
 
     @Test
     public void jsonRequest2Java() throws Exception {
+        String jsonRequest = "{\"jdnr\":1234567.89,\"flagValue\":1,\"internalIds\":[0,1,2,3]}";
         BodySetPositionRequest request = converter.jsonRequest2Java(jsonRequest);
         assertEquals(jdnr, request.getJdnr(), DOUBLE_MARGIN.getValue());
         assertEquals(flagValue, request.getFlagValue());
@@ -51,5 +51,4 @@ public class BodySetPositionJsonConverterTest {
         }
         return ids;
     }
-
 }

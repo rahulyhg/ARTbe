@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class CalculatedChartHandler {
     private static final Logger LOG = LoggerFactory.getLogger(CalculatedChartHandler.class);
-    private final String ERROR_TEXT = "Error in CalculatedChartHandler.";
 
     private final CalculatedChartValidator validator;
     private final CalculatedChartJsonConverter converter;
@@ -30,6 +29,7 @@ public class CalculatedChartHandler {
 
     public String handleRequest(String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
+        String ERROR_TEXT = "Error in CalculatedChartHandler.";
         if (validatedObject.isValid()) {
             CalculatedChartResponse response = solver.solveRequest((CalculatedChartRequest) validatedObject.getObject());
             try {
@@ -41,5 +41,4 @@ public class CalculatedChartHandler {
         }
         return ERROR_TEXT;
     }
-
 }

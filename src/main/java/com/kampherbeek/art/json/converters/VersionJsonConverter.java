@@ -11,5 +11,4 @@ public class VersionJsonConverter extends ConverterParent {
     public VersionRequest jsonRequest2Java(String input) throws IOException {
         return mapper.readValue(input, VersionRequest.class);
     }
-
 }

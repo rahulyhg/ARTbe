@@ -2,13 +2,11 @@ package com.kampherbeek.art.json.validators.helpers;
 
 import com.kampherbeek.art.domain.IntegerLimits;
 import com.kampherbeek.art.domain.SimpleTime;
-import org.mockito.Mock;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SimpleTimeHelper {
 
-    @Mock
     private final ValueChecker valueChecker;
 
     public SimpleTimeHelper(ValueChecker valueChecker) {
@@ -20,5 +18,4 @@ public class SimpleTimeHelper {
                 && valueChecker.checkValue(simpleTime.getMinute(), IntegerLimits.MINUTE)
                 && valueChecker.checkValue(simpleTime.getSecond(), IntegerLimits.SECOND);
     }
-
 }

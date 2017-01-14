@@ -14,15 +14,13 @@ import java.util.ResourceBundle;
 @Component
 public class BodynamesSolver {
 
-    private ResourceBundle bundle;
-
     public BodynamesResponse solveRequest(BodynamesRequest request) {
-        bundle = ResourceBundle.getBundle("messages/messages", new Locale(request.getLocale()));
+        ResourceBundle bundle = ResourceBundle.getBundle("messages/messages", new Locale(request.getLocale()));
         List<StandardSelectionItem> allHouses = new ArrayList<>();
         for (Bodynames bodyname : Bodynames.values()) {
             String id = String.valueOf(bodyname.getInternalId());
             String key = bodyname.getRbKey();
-            String label =  bundle.getString(key);
+            String label = bundle.getString(key);
             allHouses.add(new StandardSelectionItem(id, label));
         }
         return new BodynamesResponse(allHouses);

@@ -20,11 +20,10 @@ public class BodySetPositionHandler {
     private final BodySetPositionValidator validator;
     private final BodySetPositionJsonConverter converter;
     private final BodySetPositionSolver solver;
-    private final String ERROR_TEXT = "Error in BodySetPositionHandler";
 
     @Autowired
     public BodySetPositionHandler(BodySetPositionValidator validator, BodySetPositionJsonConverter converter,
-                               BodySetPositionSolver solver) {
+                                  BodySetPositionSolver solver) {
         this.validator = validator;
         this.converter = converter;
         this.solver = solver;
@@ -32,8 +31,9 @@ public class BodySetPositionHandler {
 
     public String handleRequest(String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
+        String ERROR_TEXT = "Error in BodySetPositionHandler";
         if (validatedObject.isValid()) {
-            BodySetPositionResponse response =  solver.solveRequest((BodySetPositionRequest) validatedObject.getObject());
+            BodySetPositionResponse response = solver.solveRequest((BodySetPositionRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
@@ -43,6 +43,5 @@ public class BodySetPositionHandler {
         }
         return ERROR_TEXT;
     }
-
 }
 

@@ -8,7 +8,6 @@ import static org.junit.Assert.assertEquals;
 
 public class EpsilonResponseTest {
 
-    private final double epsilon = 23.447;
     private EpsilonResponse response;
 
     @Before
@@ -18,6 +17,7 @@ public class EpsilonResponseTest {
 
     @Test
     public void getSetEpsilon() throws Exception {
+        double epsilon = 23.447;
         response.setEpsilon(epsilon);
         assertEquals(epsilon, response.getEpsilon(), DOUBLE_MARGIN.getValue());
     }

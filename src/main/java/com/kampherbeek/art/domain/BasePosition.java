@@ -7,9 +7,10 @@ public class BasePosition {
 
     /**
      * Coordinates for a single positions , or the speed of these coordinates.
+     *
      * @param mainValue Main position along a great circle, e.g. right ascension.
      * @param deviation Deviation from main circle, e.g. declination.
-     * @param distance Distance in Astronomical Units.
+     * @param distance  Distance in Astronomical Units.
      */
     public BasePosition(double mainValue, double deviation, double distance) {
         this.mainValue = mainValue;

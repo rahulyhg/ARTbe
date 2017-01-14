@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class BodyPositionSolver {
 
-    private final SEFrontend seFrontend;
     private static final Logger LOG = LoggerFactory.getLogger(BodyPositionSolver.class);
+    private final SEFrontend seFrontend;
 
     public BodyPositionSolver(SEFrontend seFrontend) {
         this.seFrontend = seFrontend;
@@ -26,7 +26,7 @@ public class BodyPositionSolver {
     }
 
     private Bodynames getBodyname4Id(int id) {
-        for (Bodynames name: Bodynames.values()) {
+        for (Bodynames name : Bodynames.values()) {
             if (name.getInternalId() == id) {
                 return name;
             }

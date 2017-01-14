@@ -17,19 +17,16 @@ public class BodySetPositionValidatorTest {
 
     @Mock
     private BodySetPositionRequest requestMock = mock(BodySetPositionRequest.class);
-    private final double jdnrCorrect = 2857140.5;
-    private final double jdnr2High = 7857140.5;
-    private final double jdnr2Low = -3026605.5;
-    private final int flagValue = 1;
-    private List<Integer> internalIdsCorrect;
     private List<Integer> internalIdsFalse;
     private BodySetPositionValidator validator;
 
     @Before
     public void setUp() throws Exception {
-        internalIdsCorrect = createInternalIds();
+        List<Integer> internalIdsCorrect = createInternalIds();
         internalIdsFalse = createInternalIdsWithError();
+        double jdnrCorrect = 2857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnrCorrect);
+        int flagValue = 1;
         when(requestMock.getFlagValue()).thenReturn(flagValue);
         when(requestMock.getInternalIds()).thenReturn(internalIdsCorrect);
         validator = new BodySetPositionValidator();
@@ -39,7 +36,6 @@ public class BodySetPositionValidatorTest {
     public void isValid() throws Exception {
         assertTrue(validator.isValid(requestMock));
     }
-
 
     private List<Integer> createInternalIds() {
         List<Integer> ids = new ArrayList<>();
@@ -60,12 +56,14 @@ public class BodySetPositionValidatorTest {
 
     @Test
     public void isValidJdnr2High() throws Exception {
+        double jdnr2High = 7857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2High);
         assertFalse(validator.isValid(requestMock));
     }
 
     @Test
     public void isValidJdnr2Low() throws Exception {
+        double jdnr2Low = -3026605.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2Low);
         assertFalse(validator.isValid(requestMock));
     }

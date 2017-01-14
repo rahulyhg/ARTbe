@@ -5,7 +5,7 @@ import com.kampherbeek.art.domain.SimpleDateTime;
 
 import java.util.List;
 
-public class CalculatedChartRequest implements RequestInterface{
+public class CalculatedChartRequest implements RequestInterface {
 
     private SimpleDateTime simpleDateTime;
     private Location location;

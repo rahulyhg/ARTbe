@@ -7,13 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-
-
 @Component
-public class EpsilonValidator extends ValidatorParent{
+public class EpsilonValidator extends ValidatorParent {
 
     private static final Logger LOG = LoggerFactory.getLogger(EpsilonValidator.class);
-
 
     @Override
     protected boolean isValid(RequestInterface request) {

@@ -1,6 +1,9 @@
 package com.kampherbeek.art.solvers;
 
-import com.kampherbeek.art.json.representation.*;
+import com.kampherbeek.art.json.representation.BodySetPositionResponse;
+import com.kampherbeek.art.json.representation.CalculatedChartRequest;
+import com.kampherbeek.art.json.representation.HousePositionsResponse;
+import com.kampherbeek.art.json.representation.JdnrResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -26,12 +29,11 @@ public class CalculatedChartSolverTest {
     private HousePositionsResponse housePositionsResponseMock = mock(HousePositionsResponse.class);
     @Mock
     private JdnrResponse jdnrResponseMock = mock(JdnrResponse.class);
-    private final double jdnr = 1234567.89;
-
     private CalculatedChartSolver solver;
 
     @Before
     public void setUp() throws Exception {
+        double jdnr = 1234567.89;
         when(jdnrResponseMock.getJdnr()).thenReturn(jdnr);
         when(jdnrSolverMock.solveRequest(anyObject())).thenReturn(jdnrResponseMock);
         when(bodySetPositionSolverMock.solveRequest(anyObject())).thenReturn(bodySetPositionResponseMock);

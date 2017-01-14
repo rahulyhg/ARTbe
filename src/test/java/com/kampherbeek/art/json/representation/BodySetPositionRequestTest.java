@@ -11,8 +11,6 @@ import static org.junit.Assert.assertEquals;
 
 public class BodySetPositionRequestTest {
 
-    private final double jdnr = 1234567.89;
-    private final int flagValue = 1;
     private List<Integer> internalIds;
     private BodySetPositionRequest request;
 
@@ -24,12 +22,14 @@ public class BodySetPositionRequestTest {
 
     @Test
     public void getSetJdnr() throws Exception {
+        double jdnr = 1234567.89;
         request.setJdnr(jdnr);
         assertEquals(jdnr, request.getJdnr(), DOUBLE_MARGIN.getValue());
     }
 
     @Test
     public void getSetFlagValue() throws Exception {
+        int flagValue = 1;
         request.setFlagValue(flagValue);
         assertEquals(flagValue, request.getFlagValue());
     }

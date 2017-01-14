@@ -20,6 +20,9 @@ import static org.mockito.Mockito.when;
 
 public class JdnrHandlerTest {
 
+    private final String jsonRequest =
+            "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2016,\"month\":1,\"day\":2,\"gregorian\":true},\"simpleTime\":{\"hour\":20,\"minute\":41,\"second\":0}}}";
+    private final String jsonResponse = "xxx";
     @Mock
     private JdnrValidator validatorMock = mock(JdnrValidator.class);
     @Mock
@@ -32,22 +35,14 @@ public class JdnrHandlerTest {
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
     @Mock
     private SimpleDateTime dateTimeMock = mock(SimpleDateTime.class);
-
-    private final String jsonRequest =
-            "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2016,\"month\":1,\"day\":2,\"gregorian\":true},\"simpleTime\":{\"hour\":20,\"minute\":41,\"second\":0}}}";
-    private final String jsonResponse = "xxx";
-
     private JdnrHandler handler;
-
-
-
 
     @Before
     public void setUp() throws Exception {
         when(requestMock.getSimpleDateTime()).thenReturn(dateTimeMock);
         when(validatedObjectMock.isValid()).thenReturn(true);
         when(validatedObjectMock.getObject()).thenReturn(requestMock);
-        when(validatorMock.handleJson(anyString(),anyObject())).thenReturn(validatedObjectMock);
+        when(validatorMock.handleJson(anyString(), anyObject())).thenReturn(validatedObjectMock);
         when(converterMock.java2JsonResponse(anyObject())).thenReturn(jsonResponse);
         handler = new JdnrHandler(validatorMock, converterMock, solverMock);
     }
@@ -58,6 +53,7 @@ public class JdnrHandlerTest {
         assertEquals(jsonResponse, result);
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void handleRequestResponseNull() throws Exception {
         when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
@@ -71,6 +67,4 @@ public class JdnrHandlerTest {
         String result = handler.handleRequest(jsonRequest);
         assertTrue(result.contains("Error in JdnrHandler"));
     }
-
-
 }

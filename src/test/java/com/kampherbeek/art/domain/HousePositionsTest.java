@@ -15,14 +15,12 @@ public class HousePositionsTest {
     private final double vertex = 183.0;
     private final double eastPoint = 2.0;
     private double[] cusps;
-    private double[] additionalPositions;
     private HousePositions positions;
-
 
     @Before
     public void setUp() throws Exception {
         cusps = new double[]{0.0, longAsc, 30.0, 60.0, 90.0, 120.0, 150.0, 180.0, 210.0, 240.0, longMC, 300.0, 330.0};
-        additionalPositions = new double[]{longAsc, longMC, armc, vertex, eastPoint};
+        double[] additionalPositions = new double[]{longAsc, longMC, armc, vertex, eastPoint};
         positions = new HousePositions(system, cusps, additionalPositions);
     }
 

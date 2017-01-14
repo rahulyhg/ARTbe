@@ -20,5 +20,4 @@ public abstract class ConverterParent {
     public String java2JsonRequest(RequestInterface request) throws JsonProcessingException {
         return mapper.writeValueAsString(request);
     }
-
 }

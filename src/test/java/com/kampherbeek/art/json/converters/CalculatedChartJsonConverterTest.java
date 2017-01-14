@@ -17,18 +17,7 @@ import static org.mockito.Mockito.when;
 
 public class CalculatedChartJsonConverterTest {
 
-    @Mock
-    private Location locationMock = mock(Location.class);
-    @Mock
-    private SimpleDate dateMock = mock(SimpleDate.class);
-    @Mock
-    private SimpleTime timeMock = mock(SimpleTime.class);
-    @Mock
-    private SimpleDateTime dateTimeMock = mock(SimpleDateTime.class);
-
-    private List<Integer> bodyIds;
     private final int houseSystemId = HouseSystems.ALCABITIUS.getInternalId();
-    private final String jsonRequest = "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2002,\"month\":3,\"day\":15,\"gregorian\":true},\"simpleTime\":{\"hour\":13,\"minute\":54,\"second\":43}},\"location\":{\"longitude\":18.17,\"latitude\":55.44},\"flagValue\":258,\"houseSystemId\":12,\"bodyIds\":[0,1]}\n";
     private final int flagValue = 258;
     private final double latitude = 55.44;
     private final double longitude = 18.17;
@@ -39,6 +28,15 @@ public class CalculatedChartJsonConverterTest {
     private final int hour = 13;
     private final int minute = 54;
     private final int second = 43;
+    @Mock
+    private Location locationMock = mock(Location.class);
+    @Mock
+    private SimpleDate dateMock = mock(SimpleDate.class);
+    @Mock
+    private SimpleTime timeMock = mock(SimpleTime.class);
+    @Mock
+    private SimpleDateTime dateTimeMock = mock(SimpleDateTime.class);
+    private List<Integer> bodyIds;
     private CalculatedChartJsonConverter converter;
 
     @Before
@@ -60,6 +58,7 @@ public class CalculatedChartJsonConverterTest {
 
     @Test
     public void jsonRequest2Java() throws Exception {
+        String jsonRequest = "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2002,\"month\":3,\"day\":15,\"gregorian\":true},\"simpleTime\":{\"hour\":13,\"minute\":54,\"second\":43}},\"location\":{\"longitude\":18.17,\"latitude\":55.44},\"flagValue\":258,\"houseSystemId\":12,\"bodyIds\":[0,1]}\n";
         CalculatedChartRequest request = converter.jsonRequest2Java(jsonRequest);
         assertEquals(day, request.getSimpleDateTime().getSimpleDate().getDay());
         assertEquals(latitude, request.getLocation().getLatitude(), DOUBLE_MARGIN.getValue());
@@ -67,7 +66,6 @@ public class CalculatedChartJsonConverterTest {
         assertEquals(bodyIds.get(0), request.getBodyIds().get(0));
         assertEquals(houseSystemId, request.getHouseSystemId());
     }
-
 
     // Convenience method to construct correct Json for request.
     @Test

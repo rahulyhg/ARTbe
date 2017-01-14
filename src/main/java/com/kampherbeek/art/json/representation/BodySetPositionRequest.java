@@ -2,7 +2,7 @@ package com.kampherbeek.art.json.representation;
 
 import java.util.List;
 
-public class BodySetPositionRequest implements RequestInterface{
+public class BodySetPositionRequest implements RequestInterface {
 
     private double jdnr;
     private int flagValue;

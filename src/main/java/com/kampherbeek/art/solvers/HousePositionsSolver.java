@@ -20,7 +20,4 @@ public class HousePositionsSolver {
         HousePositions housePositions = seFrontend.calcHouses(request);
         return new HousePositionsResponse(housePositions);
     }
-
-
-
 }

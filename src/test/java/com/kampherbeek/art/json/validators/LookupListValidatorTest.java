@@ -12,9 +12,6 @@ import static org.mockito.Mockito.when;
 
 public class LookupListValidatorTest {
 
-    private final String correctLocale = "nl";
-    private final String wrongLocale = "wrong";
-
     @Mock
     private BodynamesRequest requestMock = mock(BodynamesRequest.class);
     private LookupListValidator validator;
@@ -26,12 +23,14 @@ public class LookupListValidatorTest {
 
     @Test
     public void isValid() throws Exception {
+        String correctLocale = "nl";
         when(requestMock.getLocale()).thenReturn(correctLocale);
         assertTrue(validator.isValid(requestMock));
     }
 
     @Test
     public void isValidWrongValue() throws Exception {
+        String wrongLocale = "wrong";
         when(requestMock.getLocale()).thenReturn(wrongLocale);
         assertFalse(validator.isValid(requestMock));
     }

@@ -5,7 +5,6 @@ public class BodyPosition {
     private final BasePosition coordinates;
     private final BasePosition speed;
 
-
     public BodyPosition(BasePosition coordinates, BasePosition speed) {
         this.coordinates = coordinates;
         this.speed = speed;

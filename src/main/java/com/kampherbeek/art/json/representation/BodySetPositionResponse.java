@@ -4,7 +4,6 @@ import java.util.List;
 
 public class BodySetPositionResponse implements ResponseInterface {
 
-
     private final List<BodyPositionResponse> positions;
 
     public BodySetPositionResponse(List<BodyPositionResponse> positions) {
@@ -14,5 +13,4 @@ public class BodySetPositionResponse implements ResponseInterface {
     public List<BodyPositionResponse> getPositions() {
         return positions;
     }
-
 }

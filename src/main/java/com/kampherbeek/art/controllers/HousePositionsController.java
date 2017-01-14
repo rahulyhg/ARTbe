@@ -19,9 +19,10 @@ public class HousePositionsController {
         this.handler = handler;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
-    public @ResponseBody
-    String getHousePositions(@RequestParam(value="json") String json) {
+    @RequestMapping(method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getHousePositions(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

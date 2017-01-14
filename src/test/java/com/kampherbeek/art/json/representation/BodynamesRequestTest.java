@@ -7,8 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 public class BodynamesRequestTest {
 
-    private final String locale = "nl";
-    private final String defaultLocale = "en";
     private BodynamesRequest request;
 
     @Before
@@ -18,12 +16,14 @@ public class BodynamesRequestTest {
 
     @Test
     public void setGetLocale() throws Exception {
+        String locale = "nl";
         request.setLocale(locale);
         assertEquals(locale, request.getLocale());
     }
 
     @Test
     public void getDefaultLocale() throws Exception {
+        String defaultLocale = "en";
         assertEquals(defaultLocale, request.getLocale());
     }
 }

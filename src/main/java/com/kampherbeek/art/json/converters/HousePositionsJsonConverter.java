@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class HousePositionsJsonConverter extends ConverterParent{
+public class HousePositionsJsonConverter extends ConverterParent {
 
     public HousePositionsRequest jsonRequest2Java(String input) throws IOException {
         return mapper.readValue(input, HousePositionsRequest.class);

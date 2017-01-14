@@ -6,7 +6,6 @@ import static org.junit.Assert.assertEquals;
 
 public class IntegerLimitsTest {
 
-
     @Test
     public void getMinValue() throws Exception {
         assertEquals(0, IntegerLimits.MINUTE.getMinValue());

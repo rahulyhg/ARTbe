@@ -24,11 +24,11 @@ public class EpsilonSolverTest {
     private EpsilonRequest requestMock = mock(EpsilonRequest.class);
     @Mock
     private SEFrontend seFrontendMock = mock(SEFrontend.class);
-    private final double epsilon = 23.447;
     private EpsilonSolver solver;
 
     @Before
     public void setUp() throws Exception {
+        double epsilon = 23.447;
         when(basePositionMock.getMainValue()).thenReturn(epsilon);
         when(positionMock.getCoordinates()).thenReturn(basePositionMock);
         when(seFrontendMock.calcBody(anyObject())).thenReturn(positionMock);

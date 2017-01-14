@@ -9,5 +9,4 @@ public class JdnrHelper {
     public boolean isValid(double jdnr) {
         return jdnr >= FloatingLimits.JULIAN_DAY_NR.getMinValue() && jdnr <= FloatingLimits.JULIAN_DAY_NR.getMaxValue();
     }
-
 }

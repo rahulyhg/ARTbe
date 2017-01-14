@@ -7,8 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 public class FloatingLimitsTest {
 
-
-
     @Test
     public void getMaxValue() throws Exception {
         assertEquals(180.0, FloatingLimits.LONGITUDE.getMaxValue(), DOUBLE_MARGIN.getValue());
@@ -18,5 +16,4 @@ public class FloatingLimitsTest {
     public void getMinValue() throws Exception {
         assertEquals(-180.0, FloatingLimits.LONGITUDE.getMinValue(), DOUBLE_MARGIN.getValue());
     }
-
 }

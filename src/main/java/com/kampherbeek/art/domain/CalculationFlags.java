@@ -23,6 +23,7 @@ public enum CalculationFlags {
 
     /**
      * Return the id of this flag, this id corresponds with the value as used in the Swiss Ephemeris.
+     *
      * @return id of the flag.
      */
     public int getFlagId() {

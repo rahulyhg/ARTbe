@@ -14,13 +14,11 @@ import static org.mockito.Mockito.when;
 
 public class VersionSolverTest {
 
+    private final String fullType = "full";
     @Mock
     private PropertiesReader readerMock = mock(PropertiesReader.class);
     @Mock
     private VersionRequest requestMock = mock(VersionRequest.class);
-    private final String fullType = "full";
-    private final String shortType = "short";
-    private final String wrongType = "X";
     private VersionSolver solver;
 
     @Before
@@ -38,9 +36,10 @@ public class VersionSolverTest {
 
     @Test
     public void solveRequestDefault() throws Exception {
+        String wrongType = "X";
         when(requestMock.getVersionType()).thenReturn(wrongType);
         VersionResponse response = solver.solveRequest(requestMock);
+        String shortType = "short";
         assertEquals(shortType, response.getVersionType());
     }
-
 }

@@ -1,8 +1,6 @@
 package com.kampherbeek.art.solvers;
 
 import com.kampherbeek.art.json.representation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +11,6 @@ public class CalculatedChartSolver {
     private final BodySetPositionSolver bodySetPositionSolver;
     private final HousePositionsSolver housePositionsSolver;
 
-
     @Autowired
     public CalculatedChartSolver(JdnrSolver jdnrSolver,
                                  BodySetPositionSolver bodySetPositionSolver,
@@ -22,8 +19,6 @@ public class CalculatedChartSolver {
         this.bodySetPositionSolver = bodySetPositionSolver;
         this.housePositionsSolver = housePositionsSolver;
     }
-
-    private static final Logger LOG = LoggerFactory.getLogger(CalculatedChartSolver.class);
 
     public CalculatedChartResponse solveRequest(CalculatedChartRequest chartRequest) {
         JdnrRequest jdnrRequest = createJdnrRequest(chartRequest);
@@ -56,6 +51,4 @@ public class CalculatedChartSolver {
         jdnrRequest.setSimpleDateTime(chartRequest.getSimpleDateTime());
         return jdnrRequest;
     }
-
-
 }

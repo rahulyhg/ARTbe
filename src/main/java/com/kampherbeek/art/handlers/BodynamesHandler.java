@@ -15,25 +15,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class BodynamesHandler {
 
+    private static final Logger LOG = LoggerFactory.getLogger(BodynamesHandler.class);
     private final LookupListValidator validator;
     private final BodynamesJsonConverter converter;
     private final BodynamesSolver solver;
-    private static final Logger LOG = LoggerFactory.getLogger(BodynamesHandler.class);
-    private final String ERROR_TEXT = "Error in BodynamesHandler";
 
-@Autowired
+    @Autowired
     public BodynamesHandler(final LookupListValidator validator,
                             final BodynamesJsonConverter converter,
                             final BodynamesSolver solver) {
-    this.validator = validator;
-    this.converter = converter;
-    this.solver = solver;
-}
-
+        this.validator = validator;
+        this.converter = converter;
+        this.solver = solver;
+    }
 
     public String handleRequest(String requestJson) {
 
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
+        String ERROR_TEXT = "Error in BodynamesHandler";
         if (validatedObject.isValid()) {
             BodynamesResponse response = solver.solveRequest((BodynamesRequest) validatedObject.getObject());
             try {
@@ -45,6 +44,4 @@ public class BodynamesHandler {
         }
         return ERROR_TEXT;
     }
-
-
 }

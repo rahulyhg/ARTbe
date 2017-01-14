@@ -20,11 +20,10 @@ public class VersionController {
         this.handler = handler;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
-    public @ResponseBody
-    String getVersion(@RequestParam(value="json", required=false, defaultValue=shortValue) String json) {
+    @RequestMapping(method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getVersion(@RequestParam(value = "json", required = false, defaultValue = shortValue) String json) {
         return handler.handleRequest(json);
     }
-
-
 }

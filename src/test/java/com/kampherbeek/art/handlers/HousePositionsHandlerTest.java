@@ -19,23 +19,19 @@ import static org.mockito.Mockito.when;
 
 public class HousePositionsHandlerTest {
 
+    private final String jsonRequest = "{\"system\":4,\"jdnr\":2457139.8,\"location\":{\"longitude\":6.9,\"latitude\":52.23}}";
+    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
     @Mock
     private HousePositionsValidator validatorMock = mock(HousePositionsValidator.class);
     @Mock
     private HousePositionsJsonConverter converterMock = mock(HousePositionsJsonConverter.class);
     @Mock
-    private HousePositionsSolver solverMock= mock(HousePositionsSolver.class);
+    private HousePositionsSolver solverMock = mock(HousePositionsSolver.class);
     @Mock
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
     @Mock
     private HousePositionsRequest requestMock = mock(HousePositionsRequest.class);
-
-    private final String jsonRequest = "{\"system\":4,\"jdnr\":2457139.8,\"location\":{\"longitude\":6.9,\"latitude\":52.23}}";
-    private final String invalidJsonRequest = "{\"xxx\": \"yyy\"}";
-    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
-
     private HousePositionsHandler handler;
-
 
     @Before
     public void setUp() throws Exception {
@@ -54,6 +50,7 @@ public class HousePositionsHandlerTest {
         assertEquals(correctResponse, result);
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void handleRequestResponseNull() throws Exception {
         when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
@@ -64,6 +61,7 @@ public class HousePositionsHandlerTest {
     @Test
     public void handleRequestInvalidJson() throws Exception {
         when(validatedObjectMock.isValid()).thenReturn(false);
+        String invalidJsonRequest = "{\"xxx\": \"yyy\"}";
         String result = handler.handleRequest(invalidJsonRequest);
         assertTrue(result.contains("Error in HousePositionsHandler"));
     }

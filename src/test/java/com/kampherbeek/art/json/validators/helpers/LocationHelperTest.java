@@ -14,7 +14,6 @@ import static org.mockito.Mockito.when;
 
 public class LocationHelperTest {
 
-
     @Mock
     private final Location locationMock = mock(Location.class);
     @Mock
@@ -24,7 +23,7 @@ public class LocationHelperTest {
 
     @Before
     public void setUp() throws Exception {
-        when(checkerMock.checkValue(anyDouble(),anyObject())).thenReturn(true);
+        when(checkerMock.checkValue(anyDouble(), anyObject())).thenReturn(true);
         validatorHelper = new LocationHelper(checkerMock);
     }
 
@@ -35,9 +34,7 @@ public class LocationHelperTest {
 
     @Test
     public void locationIsValidLongTooHigh() throws Exception {
-        when(checkerMock.checkValue(anyDouble(),anyObject())).thenReturn(false);
+        when(checkerMock.checkValue(anyDouble(), anyObject())).thenReturn(false);
         assertFalse(validatorHelper.isValid(locationMock));
     }
-
-
 }

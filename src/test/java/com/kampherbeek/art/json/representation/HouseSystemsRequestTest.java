@@ -7,8 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HouseSystemsRequestTest {
 
-    private final String locale = "nl";
-    private final String defaultLOcale = "en";
     private HouseSystemsRequest request;
 
     @Before
@@ -18,12 +16,14 @@ public class HouseSystemsRequestTest {
 
     @Test
     public void setGetLocale() throws Exception {
+        String locale = "nl";
         request.setLocale(locale);
         assertEquals(locale, request.getLocale());
     }
 
     @Test
     public void getDefaultLocale() throws Exception {
+        String defaultLOcale = "en";
         assertEquals(defaultLOcale, request.getLocale());
     }
 }

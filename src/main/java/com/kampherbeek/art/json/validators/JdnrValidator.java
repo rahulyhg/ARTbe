@@ -10,14 +10,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JdnrValidator extends ValidatorParent{
+public class JdnrValidator extends ValidatorParent {
 
     private static final Logger LOG = LoggerFactory.getLogger(JdnrValidator.class);
 
     @Override
     protected boolean isValid(RequestInterface request) {
         try {
-            JdnrRequest jdRequest = (JdnrRequest)request;
+            JdnrRequest jdRequest = (JdnrRequest) request;
             SimpleDate simpleDate = jdRequest.getSimpleDateTime().getSimpleDate();
             SimpleTime simpleTime = jdRequest.getSimpleDateTime().getSimpleTime();
             return checkValue(simpleDate.getYear(), IntegerLimits.YEAR)
@@ -35,5 +35,4 @@ public class JdnrValidator extends ValidatorParent{
     private boolean checkValue(int value, IntegerLimits limits) {
         return value >= limits.getMinValue() && value <= limits.getMaxValue();
     }
-
 }

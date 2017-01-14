@@ -17,9 +17,6 @@ import static org.mockito.Mockito.when;
 public class ValidatorParentTest {
 
     private final String jsonInputCorrect = "{\"versionType\":\"full\"}";
-    private final String jsonInputError = "{\"dummy\":\"xxx\"}";
-    private final String correctVersionType = "full";
-    private final String versionTypeError = "error";
     @Mock
     private VersionRequest requestMock = mock(VersionRequest.class);
     @Mock
@@ -34,6 +31,7 @@ public class ValidatorParentTest {
 
     @Test
     public void handleJson() throws Exception {
+        String correctVersionType = "full";
         when(requestMock.getVersionType()).thenReturn(correctVersionType);
         ValidatedObject result = validator.handleJson(jsonInputCorrect, converterMock);
         assertTrue(result.isValid());
@@ -42,6 +40,7 @@ public class ValidatorParentTest {
 
     @Test
     public void handleJsonWrongValue() throws Exception {
+        String versionTypeError = "error";
         when(requestMock.getVersionType()).thenReturn(versionTypeError);
         ValidatedObject result = validator.handleJson(jsonInputCorrect, converterMock);
         assertFalse(result.isValid());
@@ -50,12 +49,11 @@ public class ValidatorParentTest {
 
     @SuppressWarnings("unchecked")
     @Test
-    public void handleJsonInvalid() throws Exception{
+    public void handleJsonInvalid() throws Exception {
         when(converterMock.jsonRequest2Java(anyString())).thenThrow(IOException.class);
+        String jsonInputError = "{\"dummy\":\"xxx\"}";
         ValidatedObject validatedObject = validator.handleJson(jsonInputError, converterMock);
         assertFalse(validatedObject.isValid());
     }
-
-
 }
 

@@ -10,7 +10,6 @@ import static org.junit.Assert.assertTrue;
 
 public class BodyPositionJsonConverterTest {
 
-    private final String jsonRequest = "{\"internalId\":3,\"jdnr\":1234567.89,\"flagValue\":1}";
     private final int flagValue = 1;
     private final double jdnr = 1234567.89;
     private final int internalId = 3;
@@ -25,12 +24,12 @@ public class BodyPositionJsonConverterTest {
 
     @Test
     public void jsonRequest2Java() throws Exception {
+        String jsonRequest = "{\"internalId\":3,\"jdnr\":1234567.89,\"flagValue\":1}";
         BodyPositionRequest request = converter.jsonRequest2Java(jsonRequest);
         assertEquals(jdnr, request.getJdnr(), DOUBLE_MARGIN.getValue());
         assertEquals(flagValue, request.getFlagValue());
         assertEquals(internalId, request.getInternalId());
     }
-
 
     // Convenience method to construct correct Json for request.
     @Test
@@ -42,5 +41,4 @@ public class BodyPositionJsonConverterTest {
         String json = converter.java2JsonRequest(request);
         assertTrue(json.contains("internalId"));
     }
-
 }

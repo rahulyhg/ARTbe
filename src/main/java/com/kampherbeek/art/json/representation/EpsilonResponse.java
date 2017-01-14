@@ -1,6 +1,6 @@
 package com.kampherbeek.art.json.representation;
 
-public class EpsilonResponse implements ResponseInterface{
+public class EpsilonResponse implements ResponseInterface {
 
     private double epsilon;
 

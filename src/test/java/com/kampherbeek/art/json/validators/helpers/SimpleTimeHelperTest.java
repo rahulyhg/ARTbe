@@ -22,7 +22,6 @@ public class SimpleTimeHelperTest {
 
     private SimpleTimeHelper helper;
 
-
     @Before
     public void setUp() throws Exception {
         when(checkerMock.checkValue(anyInt(), (IntegerLimits) anyObject())).thenReturn(true);

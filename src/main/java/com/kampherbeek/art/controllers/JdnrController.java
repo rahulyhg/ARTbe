@@ -19,10 +19,10 @@ public class JdnrController {
         this.handler = handler;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
-    public @ResponseBody
-    String getJdnr(@RequestParam(value="json") String json) {
+    @RequestMapping(method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getJdnr(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
-
 }

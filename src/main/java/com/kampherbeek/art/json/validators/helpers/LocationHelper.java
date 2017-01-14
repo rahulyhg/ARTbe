@@ -17,6 +17,4 @@ public class LocationHelper {
         return valueChecker.checkValue(location.getLongitude(), FloatingLimits.LONGITUDE)
                 && valueChecker.checkValue(location.getLatitude(), FloatingLimits.LATITUDE);
     }
-
-
 }

@@ -22,8 +22,6 @@ public class HousePositionsSolverTest {
     private HousePositions housePositionsMock = mock(HousePositions.class);
     private HousePositionsSolver solver;
 
-
-
     @Before
     public void setUp() throws Exception {
         when(seFrontendMock.calcHouses(anyObject())).thenReturn(housePositionsMock);

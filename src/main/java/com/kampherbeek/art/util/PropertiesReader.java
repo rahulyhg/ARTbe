@@ -19,8 +19,7 @@ public class PropertiesReader {
         this.env = env;
     }
 
-    public String getValueForProperty(String searchProp){
+    public String getValueForProperty(String searchProp) {
         return env.getProperty(searchProp);
     }
-
 }

@@ -19,11 +19,11 @@ public class EpsilonController {
         this.handler = handler;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
-    public @ResponseBody
-    String getEpsilon(@RequestParam(value="json") String json) {
+    @RequestMapping(method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getEpsilon(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
-
 }
 

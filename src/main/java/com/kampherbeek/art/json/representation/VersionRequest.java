@@ -4,15 +4,15 @@ public class VersionRequest implements RequestInterface {
 
     private String versionType;
 
-    public VersionRequest(){
+    public VersionRequest() {
         this.versionType = "Short";
-    }
-
-    public void setVersionType(String versionType) {
-        this.versionType = versionType;
     }
 
     public String getVersionType() {
         return versionType;
+    }
+
+    public void setVersionType(String versionType) {
+        this.versionType = versionType;
     }
 }

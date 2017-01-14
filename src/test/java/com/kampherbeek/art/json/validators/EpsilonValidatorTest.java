@@ -12,10 +12,6 @@ import static org.mockito.Mockito.when;
 
 public class EpsilonValidatorTest {
 
-    private final double jdnrCorrect = 2857140.5;
-    private final double jdnr2High = 7857140.5;
-    private final double jdnr2Low = -3026605.5;
-
     @Mock
     private EpsilonRequest requestMock = mock(EpsilonRequest.class);
 
@@ -28,18 +24,21 @@ public class EpsilonValidatorTest {
 
     @Test
     public void isValid() throws Exception {
+        double jdnrCorrect = 2857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnrCorrect);
         assertTrue(validator.isValid(requestMock));
     }
 
     @Test
     public void isValidTooLow() throws Exception {
+        double jdnr2Low = -3026605.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2Low);
         assertFalse(validator.isValid(requestMock));
     }
 
     @Test
     public void isValidTooHigh() throws Exception {
+        double jdnr2High = 7857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2High);
         assertFalse(validator.isValid(requestMock));
     }
@@ -48,5 +47,4 @@ public class EpsilonValidatorTest {
     public void isValidNullValue() throws Exception {
         assertFalse(validator.isValid(null));
     }
-
 }

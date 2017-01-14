@@ -23,29 +23,24 @@ public class JdnrValidatorTest {
     private SimpleDate simpleDateMock = mock(SimpleDate.class);
     @Mock
     private SimpleTime simpleTimeMock = mock(SimpleTime.class);
-
-
-    private final int year = 2016;
-    private final int month = 1;
-    private final int invalidMonth = 13;
-    private final int day = 2;
-    private final int hour = 20;
-    private final int minute = 41;
-    private final int second = 0;
-    private final boolean isGregorian = true;
-
-
     private JdnrValidator validator;
 
     @Before
     public void setUp() throws Exception {
 
+        int year = 2016;
         when(simpleDateMock.getYear()).thenReturn(year);
+        int month = 1;
         when(simpleDateMock.getMonth()).thenReturn(month);
+        int day = 2;
         when(simpleDateMock.getDay()).thenReturn(day);
+        boolean isGregorian = true;
         when(simpleDateMock.isGregorian()).thenReturn(isGregorian);
+        int hour = 20;
         when(simpleTimeMock.getHour()).thenReturn(hour);
+        int minute = 41;
         when(simpleTimeMock.getMinute()).thenReturn(minute);
+        int second = 0;
         when(simpleTimeMock.getSecond()).thenReturn(second);
         when(simpleDateTimeMock.getSimpleDate()).thenReturn(simpleDateMock);
         when(simpleDateTimeMock.getSimpleTime()).thenReturn(simpleTimeMock);
@@ -60,6 +55,7 @@ public class JdnrValidatorTest {
 
     @Test
     public void isValidFalse() throws Exception {
+        int invalidMonth = 13;
         when(simpleDateMock.getMonth()).thenReturn(invalidMonth);
         assertFalse(validator.isValid(requestMock));
     }
@@ -68,5 +64,4 @@ public class JdnrValidatorTest {
     public void isValidException() throws Exception {
         assertFalse(validator.isValid(null));
     }
-
 }

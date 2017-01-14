@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class BodySetPositionValidator extends ValidatorParent{
+public class BodySetPositionValidator extends ValidatorParent {
 
     private static final Logger LOG = LoggerFactory.getLogger(BodySetPositionValidator.class);
 
     @Override
     protected boolean isValid(RequestInterface request) {
         try {
-            BodySetPositionRequest bspRequest = (BodySetPositionRequest)request;
+            BodySetPositionRequest bspRequest = (BodySetPositionRequest) request;
             return (jdnrIsValid(bspRequest.getJdnr()) && allInternalIdsAreValid(bspRequest.getInternalIds()));
         } catch (Exception e) {
             LOG.error("Exception: " + e.getMessage());
@@ -40,7 +40,9 @@ public class BodySetPositionValidator extends ValidatorParent{
     }
 
     private boolean internalIdIsValid(int internalId) {
-        if (internalId < 0) return false;       // added check for internalId for Epsilon, which is -1.
+        if (internalId < 0) {
+            return false;       // added check for internalId for Epsilon, which is -1.
+        }
         for (Bodynames name : Bodynames.values()) {
             if (name.getInternalId() == internalId) {
                 return true;

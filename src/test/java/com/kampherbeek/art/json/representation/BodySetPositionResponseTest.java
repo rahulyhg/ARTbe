@@ -10,10 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 public class BodySetPositionResponseTest {
 
-
     private List<BodyPositionResponse> positions;
     private BodySetPositionResponse response;
-
 
     @Before
     public void setUp() throws Exception {

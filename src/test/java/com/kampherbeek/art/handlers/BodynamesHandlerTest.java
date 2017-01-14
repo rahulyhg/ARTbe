@@ -19,6 +19,8 @@ import static org.mockito.Mockito.when;
 
 public class BodynamesHandlerTest {
 
+    private final String jsonRequest = "{\"locale\":\"en\"}";
+    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
     @Mock
     private LookupListValidator validatorMock = mock(LookupListValidator.class);
     @Mock
@@ -29,11 +31,6 @@ public class BodynamesHandlerTest {
     private BodynamesRequest requestMock = mock(BodynamesRequest.class);
     @Mock
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
-
-    private final String jsonRequest = "{\"locale\":\"en\"}";
-    private final String invalidJsonRequest = "{\"xxx\":\"yyy\"}";
-    private final String correctResponse = "{\"dummy4correct\":\"response\"}";
-
     private BodynamesHandler handler;
 
     @Before
@@ -52,6 +49,7 @@ public class BodynamesHandlerTest {
         assertEquals(correctResponse, result);
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void handleRequestResponseNull() throws Exception {
         when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
@@ -62,8 +60,8 @@ public class BodynamesHandlerTest {
     @Test
     public void handleRequestInvalidJson() throws Exception {
         when(validatedObjectMock.isValid()).thenReturn(false);
+        String invalidJsonRequest = "{\"xxx\":\"yyy\"}";
         String result = handler.handleRequest(invalidJsonRequest);
         assertTrue(result.contains("Error in BodynamesHandler"));
     }
-
 }

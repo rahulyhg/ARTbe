@@ -5,7 +5,7 @@ public class Location {
     private double longitude;
     private double latitude;
 
-    public Location(){
+    public Location() {
         // empty constructor for Json
     }
 

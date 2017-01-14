@@ -14,7 +14,6 @@ public class HousePositions {
     // [3] = [SE_VERTEX] = Longitude of Vertex.
     // [4] = [SE_EQUASC] = Longitude East Point (Equatorial ascendant).
 
-
     public HousePositions(HouseSystems system, double[] cusps, double[] additionalPoints) {
         this.system = system;
         this.cusps = cusps;
@@ -28,6 +27,7 @@ public class HousePositions {
     public double getArmc() {
         return additionalPoints[SE_ARMC];
     }
+
     public double getAscendant() {
         return additionalPoints[SE_ASC];
     }

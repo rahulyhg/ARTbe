@@ -59,4 +59,12 @@ public class BodyPositionValidatorTest {
         when(requestMock.getInternalId()).thenReturn(internalIdReserved);
         assertFalse(validator.isValid(null));
     }
+
+    @Test
+    public void isValidValueNegative() throws Exception {
+        int internalIdNegative = -2;
+        when(requestMock.getInternalId()).thenReturn(internalIdNegative);
+        assertFalse(validator.isValid(null));
+    }
+
 }

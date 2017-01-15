@@ -2,6 +2,7 @@ package com.kampherbeek.art.calc;
 
 import com.kampherbeek.art.domain.SimpleDate;
 import com.kampherbeek.art.domain.SimpleTime;
+import com.kampherbeek.art.domain.TimeConstants;
 import com.kampherbeek.art.json.representation.JdnrRequest;
 import org.springframework.stereotype.Component;
 import swisseph.SweDate;
@@ -14,11 +15,10 @@ public class JdnrCalculator {
     }
 
     private SweDate defineDate(JdnrRequest request) {
-        // TODO magic values 2 constants enum
         SimpleDate simpleDate = request.getSimpleDateTime().getSimpleDate();
         SimpleTime simpleTime = request.getSimpleDateTime().getSimpleTime();
-        double ut = simpleTime.getHour() + simpleTime.getMinute() / 60.0
-                + simpleTime.getSecond() / 3600.0;
+        double ut = simpleTime.getHour() + simpleTime.getMinute() / (double) TimeConstants.MINUTES_PER_HOUR.getValue()
+                + simpleTime.getSecond() / (double) TimeConstants.SECONDS_PER_HOUR.getValue();
         return new SweDate(simpleDate.getYear(), simpleDate.getMonth(), simpleDate.getDay(), ut,
                 simpleDate.isGregorian());
     }

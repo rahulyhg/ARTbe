@@ -6,6 +6,7 @@ import com.kampherbeek.art.domain.Bodynames;
 import com.kampherbeek.art.json.representation.BodyPositionRequest;
 import com.kampherbeek.art.json.representation.EpsilonRequest;
 import com.kampherbeek.art.json.representation.EpsilonResponse;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,11 +14,11 @@ public class EpsilonSolver {
 
     private final SEFrontend seFrontend;
 
-    public EpsilonSolver(SEFrontend seFrontend) {
+    public EpsilonSolver(@NonNull final SEFrontend seFrontend) {
         this.seFrontend = seFrontend;
     }
 
-    public EpsilonResponse solveRequest(EpsilonRequest request) {
+    public EpsilonResponse solveRequest(@NonNull final EpsilonRequest request) {
         BodyPositionRequest bodyRequest = new BodyPositionRequest();
         bodyRequest.setFlagValue(0);
         bodyRequest.setInternalId(Bodynames.EPSILON.getInternalId());

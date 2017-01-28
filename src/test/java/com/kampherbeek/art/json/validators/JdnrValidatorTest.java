@@ -50,18 +50,15 @@ public class JdnrValidatorTest {
 
     @Test
     public void isValid() throws Exception {
-        assertTrue(validator.isValid(requestMock));
+        assertTrue(validator.validated(requestMock));
     }
 
     @Test
     public void isValidFalse() throws Exception {
         int invalidMonth = 13;
         when(simpleDateMock.getMonth()).thenReturn(invalidMonth);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
-    @Test
-    public void isValidException() throws Exception {
-        assertFalse(validator.isValid(null));
-    }
+
 }

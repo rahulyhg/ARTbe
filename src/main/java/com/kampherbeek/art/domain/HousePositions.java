@@ -1,50 +1,43 @@
 package com.kampherbeek.art.domain;
 
+import lombok.Getter;
+import lombok.NonNull;
+
 import static swisseph.SweConst.*;
 
 public class HousePositions {
 
+
+    @Getter
     private final HouseSystems system;
+    @Getter
     private final double[] cusps;
-    private final double[] additionalPoints;
-    // additionalPoints has 1- positions, but it only uses the following values:
+    @Getter
+    private final double mc;
+    @Getter
+    private final double armc;
+    @Getter
+    private final double ascendant;
+    @Getter
+    private final double vertex;
+    @Getter
+    private final double eastPoint;
+
+    // additionalPoints has 10 positions, but it only uses the following values:
     // [0] = [SE_ASC] = Longitude Ascendant.
     // [1] = [SE_MC} = Longitude MC.
     // [2] = [SE_ARMC] = Right ascension MC.
     // [3] = [SE_VERTEX] = Longitude of Vertex.
     // [4] = [SE_EQUASC] = Longitude East Point (Equatorial ascendant).
 
-    public HousePositions(HouseSystems system, double[] cusps, double[] additionalPoints) {
+    public HousePositions(@NonNull HouseSystems system, @NonNull double[] cusps, @NonNull double[] additionalPoints) {
         this.system = system;
         this.cusps = cusps;
-        this.additionalPoints = additionalPoints;
+        mc = additionalPoints[SE_MC];
+        armc = additionalPoints[SE_ARMC];
+        ascendant = additionalPoints[SE_ASC];
+        vertex = additionalPoints[SE_VERTEX];
+        eastPoint = additionalPoints[SE_EQUASC];
     }
 
-    public double getMC() {
-        return additionalPoints[SE_MC];
-    }
-
-    public double getArmc() {
-        return additionalPoints[SE_ARMC];
-    }
-
-    public double getAscendant() {
-        return additionalPoints[SE_ASC];
-    }
-
-    public double getVertex() {
-        return additionalPoints[SE_VERTEX];
-    }
-
-    public double getEastPoint() {
-        return additionalPoints[SE_EQUASC];
-    }
-
-    public HouseSystems getSystem() {
-        return system;
-    }
-
-    public double[] getCusps() {
-        return cusps;
-    }
 }

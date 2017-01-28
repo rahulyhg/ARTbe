@@ -4,6 +4,7 @@ import com.kampherbeek.art.domain.SimpleDate;
 import com.kampherbeek.art.domain.SimpleTime;
 import com.kampherbeek.art.domain.TimeConstants;
 import com.kampherbeek.art.json.representation.JdnrRequest;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 import swisseph.SweDate;
 
@@ -14,7 +15,7 @@ public class JdnrCalculator {
         return defineDate(request).getJulDay();
     }
 
-    private SweDate defineDate(JdnrRequest request) {
+    private SweDate defineDate(@NonNull JdnrRequest request) {
         SimpleDate simpleDate = request.getSimpleDateTime().getSimpleDate();
         SimpleTime simpleTime = request.getSimpleDateTime().getSimpleTime();
         double ut = simpleTime.getHour() + simpleTime.getMinute() / (double) TimeConstants.MINUTES_PER_HOUR.getValue()

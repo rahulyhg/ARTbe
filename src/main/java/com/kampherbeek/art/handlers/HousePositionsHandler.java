@@ -7,6 +7,7 @@ import com.kampherbeek.art.json.representation.HousePositionsRequest;
 import com.kampherbeek.art.json.representation.HousePositionsResponse;
 import com.kampherbeek.art.json.validators.HousePositionsValidator;
 import com.kampherbeek.art.solvers.HousePositionsSolver;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,15 @@ public class HousePositionsHandler {
     private final HousePositionsSolver solver;
 
     @Autowired
-    public HousePositionsHandler(HousePositionsValidator validator, HousePositionsJsonConverter converter,
-                                 HousePositionsSolver solver) {
+    public HousePositionsHandler(@NonNull final HousePositionsValidator validator,
+                                 @NonNull final HousePositionsJsonConverter converter,
+                                 @NonNull final HousePositionsSolver solver) {
         this.validator = validator;
         this.converter = converter;
         this.solver = solver;
     }
 
-    public String handleRequest(String requestJson) {
+    public String handleRequest(@NonNull final String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
         String ERROR_TEXT = "Error in HousePositionsHandler";
         if (validatedObject.isValid()) {

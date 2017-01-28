@@ -1,5 +1,6 @@
 package com.kampherbeek.art.util;
 
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -15,11 +16,11 @@ public class PropertiesReader {
     private final Environment env;
 
     @Autowired
-    public PropertiesReader(Environment env) {
+    public PropertiesReader(@NonNull final Environment env) {
         this.env = env;
     }
 
-    public String getValueForProperty(String searchProp) {
+    public String readValueForProperty(@NonNull final String searchProp) {
         return env.getProperty(searchProp);
     }
 }

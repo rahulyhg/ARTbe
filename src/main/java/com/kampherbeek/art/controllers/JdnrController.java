@@ -1,6 +1,7 @@
 package com.kampherbeek.art.controllers;
 
 import com.kampherbeek.art.handlers.JdnrHandler;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,14 +16,14 @@ public class JdnrController {
     private final JdnrHandler handler;
 
     @Autowired
-    public JdnrController(JdnrHandler handler) {
+    public JdnrController(@NonNull JdnrHandler handler) {
         this.handler = handler;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
-    String getJdnr(@RequestParam(value = "json") String json) {
+    String retrieveJdnr(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

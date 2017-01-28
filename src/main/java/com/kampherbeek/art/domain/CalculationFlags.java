@@ -1,5 +1,6 @@
 package com.kampherbeek.art.domain;
 
+import lombok.Getter;
 import swisseph.SweConst;
 
 /**
@@ -15,19 +16,11 @@ public enum CalculationFlags {
     TOPOCTR(SweConst.SEFLG_TOPOCTR),
     SIDEREAL(SweConst.SEFLG_SIDEREAL);
 
-    private final int seFlagId;
+    @Getter
+    private final int flagId;
 
-    CalculationFlags(int seFlagId) {
-        this.seFlagId = seFlagId;
-    }
-
-    /**
-     * Return the id of this flag, this id corresponds with the value as used in the Swiss Ephemeris.
-     *
-     * @return id of the flag.
-     */
-    public int getFlagId() {
-        return seFlagId;
+    CalculationFlags(int flagId) {
+        this.flagId = flagId;
     }
 
 }

@@ -5,6 +5,7 @@ import com.kampherbeek.art.domain.SimpleDate;
 import com.kampherbeek.art.domain.SimpleTime;
 import com.kampherbeek.art.json.representation.JdnrRequest;
 import com.kampherbeek.art.json.representation.RequestInterface;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ public class JdnrValidator extends ValidatorParent {
     private static final Logger LOG = LoggerFactory.getLogger(JdnrValidator.class);
 
     @Override
-    protected boolean isValid(RequestInterface request) {
+    protected boolean validated(@NonNull final RequestInterface request) {
         try {
             JdnrRequest jdRequest = (JdnrRequest) request;
             SimpleDate simpleDate = jdRequest.getSimpleDateTime().getSimpleDate();
@@ -32,7 +33,7 @@ public class JdnrValidator extends ValidatorParent {
         }
     }
 
-    private boolean checkValue(int value, IntegerLimits limits) {
+    private boolean checkValue(final int value, @NonNull final IntegerLimits limits) {
         return value >= limits.getMinValue() && value <= limits.getMaxValue();
     }
 }

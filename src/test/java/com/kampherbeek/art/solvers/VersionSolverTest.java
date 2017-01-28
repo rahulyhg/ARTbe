@@ -23,7 +23,7 @@ public class VersionSolverTest {
 
     @Before
     public void setUp() throws Exception {
-        when(readerMock.getValueForProperty(anyString())).thenReturn(fullType);
+        when(readerMock.readValueForProperty(anyString())).thenReturn(fullType);
         solver = new VersionSolver(readerMock);
     }
 

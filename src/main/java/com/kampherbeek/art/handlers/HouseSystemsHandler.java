@@ -7,6 +7,7 @@ import com.kampherbeek.art.json.representation.HouseSystemsRequest;
 import com.kampherbeek.art.json.representation.HouseSystemsResponse;
 import com.kampherbeek.art.json.validators.LookupListValidator;
 import com.kampherbeek.art.solvers.HouseSystemsSolver;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +22,15 @@ public class HouseSystemsHandler {
     private final HouseSystemsSolver solver;
 
     @Autowired
-    public HouseSystemsHandler(final LookupListValidator validator,
-                               final HouseSystemsJsonConverter converter,
-                               final HouseSystemsSolver solver) {
+    public HouseSystemsHandler(@NonNull final LookupListValidator validator,
+                               @NonNull final HouseSystemsJsonConverter converter,
+                               @NonNull final HouseSystemsSolver solver) {
         this.validator = validator;
         this.converter = converter;
         this.solver = solver;
     }
 
-    public String handleRequest(String requestJson) {
+    public String handleRequest(@NonNull final String requestJson) {
 
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
         String ERROR_TEXT = "Error in HouseSystemsHandler";

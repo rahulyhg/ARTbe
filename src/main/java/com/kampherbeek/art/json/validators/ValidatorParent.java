@@ -3,6 +3,7 @@ package com.kampherbeek.art.json.validators;
 import com.kampherbeek.art.json.ValidatedObject;
 import com.kampherbeek.art.json.converters.ConverterParent;
 import com.kampherbeek.art.json.representation.RequestInterface;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,10 +13,11 @@ public abstract class ValidatorParent {
 
     private static final Logger LOG = LoggerFactory.getLogger(ValidatorParent.class);
 
-    public ValidatedObject handleJson(String jsonInput, ConverterParent converter) {
+    public ValidatedObject handleJson(@NonNull final String jsonInput,
+                                      @NonNull final ConverterParent converter) {
         try {
             RequestInterface request = converter.jsonRequest2Java(jsonInput);
-            if (isValid(request)) {
+            if (validated(request)) {
                 return new ValidatedObject(true, request);
             } else {
                 return new ValidatedObject(false, "Wrong value.");
@@ -26,5 +28,5 @@ public abstract class ValidatorParent {
         }
     }
 
-    protected abstract boolean isValid(RequestInterface request);
+    protected abstract boolean validated(@NonNull final RequestInterface request);
 }

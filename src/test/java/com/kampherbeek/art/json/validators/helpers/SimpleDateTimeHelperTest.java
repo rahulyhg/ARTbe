@@ -24,19 +24,19 @@ public class SimpleDateTimeHelperTest {
 
     @Before
     public void setUp() throws Exception {
-        when(dateHelperMock.isValid(anyObject())).thenReturn(true);
-        when(timeHelperMock.isValid(anyObject())).thenReturn(true);
+        when(dateHelperMock.checkDateValid(anyObject())).thenReturn(true);
+        when(timeHelperMock.checkTimeValid(anyObject())).thenReturn(true);
         dateTimeHelper = new SimpleDateTimeHelper(dateHelperMock, timeHelperMock);
     }
 
     @Test
     public void isValid() throws Exception {
-        assertTrue(dateTimeHelper.isValid(dateTimeMock));
+        assertTrue(dateTimeHelper.checkDateTimeValid(dateTimeMock));
     }
 
     @Test
     public void isValidWrongValue() throws Exception {
-        when(dateHelperMock.isValid(anyObject())).thenReturn(false);
-        assertFalse(dateTimeHelper.isValid(dateTimeMock));
+        when(dateHelperMock.checkDateValid(anyObject())).thenReturn(false);
+        assertFalse(dateTimeHelper.checkDateTimeValid(dateTimeMock));
     }
 }

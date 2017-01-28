@@ -18,10 +18,10 @@ public class JdnrHelperTest {
     @Test
     public void jdnrIsValid() throws Exception {
         double jdnrCorrect = 2857140.5;
-        assertTrue(validatorHelper.isValid(jdnrCorrect));
+        assertTrue(validatorHelper.checkJdnrValid(jdnrCorrect));
         double jdnr2High = 7857140.5;
-        assertFalse(validatorHelper.isValid(jdnr2High));
+        assertFalse(validatorHelper.checkJdnrValid(jdnr2High));
         double jdnr2Low = -3026605.5;
-        assertFalse(validatorHelper.isValid(jdnr2Low));
+        assertFalse(validatorHelper.checkJdnrValid(jdnr2Low));
     }
 }

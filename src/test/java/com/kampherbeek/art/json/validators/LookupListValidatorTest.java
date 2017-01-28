@@ -25,13 +25,13 @@ public class LookupListValidatorTest {
     public void isValid() throws Exception {
         String correctLocale = "nl";
         when(requestMock.getLocale()).thenReturn(correctLocale);
-        assertTrue(validator.isValid(requestMock));
+        assertTrue(validator.validated(requestMock));
     }
 
     @Test
     public void isValidWrongValue() throws Exception {
         String wrongLocale = "wrong";
         when(requestMock.getLocale()).thenReturn(wrongLocale);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 }

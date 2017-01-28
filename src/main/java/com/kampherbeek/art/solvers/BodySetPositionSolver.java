@@ -4,6 +4,7 @@ import com.kampherbeek.art.json.representation.BodyPositionRequest;
 import com.kampherbeek.art.json.representation.BodyPositionResponse;
 import com.kampherbeek.art.json.representation.BodySetPositionRequest;
 import com.kampherbeek.art.json.representation.BodySetPositionResponse;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,11 +17,11 @@ public class BodySetPositionSolver {
     private final BodyPositionSolver bodyPositionSolver;
 
     @Autowired
-    public BodySetPositionSolver(BodyPositionSolver bodyPositionSolver) {
+    public BodySetPositionSolver(@NonNull final BodyPositionSolver bodyPositionSolver) {
         this.bodyPositionSolver = bodyPositionSolver;
     }
 
-    public BodySetPositionResponse solveRequest(BodySetPositionRequest bodySetPositionRequest) {
+    public BodySetPositionResponse solveRequest(@NonNull final BodySetPositionRequest bodySetPositionRequest) {
         BodyPositionRequest bodyPositionRequest = createBodyPositionRequest(bodySetPositionRequest.getJdnr(),
                 bodySetPositionRequest.getFlagValue());
         List<BodyPositionResponse> allBodyPositions = new ArrayList<>();
@@ -31,7 +32,7 @@ public class BodySetPositionSolver {
         return new BodySetPositionResponse(allBodyPositions);
     }
 
-    private BodyPositionRequest createBodyPositionRequest(double jdnr, int flagValue) {
+    private BodyPositionRequest createBodyPositionRequest(final double jdnr, final int flagValue) {
         BodyPositionRequest request = new BodyPositionRequest();
         request.setJdnr(jdnr);
         request.setFlagValue(flagValue);

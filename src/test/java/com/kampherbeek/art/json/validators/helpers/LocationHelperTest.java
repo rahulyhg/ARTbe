@@ -29,12 +29,12 @@ public class LocationHelperTest {
 
     @Test
     public void locationIsValid() throws Exception {
-        assertTrue(validatorHelper.isValid(locationMock));
+        assertTrue(validatorHelper.checkLocationValid(locationMock));
     }
 
     @Test
     public void locationIsValidLongTooHigh() throws Exception {
         when(checkerMock.checkValue(anyDouble(), anyObject())).thenReturn(false);
-        assertFalse(validatorHelper.isValid(locationMock));
+        assertFalse(validatorHelper.checkLocationValid(locationMock));
     }
 }

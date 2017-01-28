@@ -4,6 +4,7 @@ import com.kampherbeek.art.calc.se.SEFrontend;
 import com.kampherbeek.art.domain.HousePositions;
 import com.kampherbeek.art.json.representation.HousePositionsRequest;
 import com.kampherbeek.art.json.representation.HousePositionsResponse;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,11 +12,11 @@ public class HousePositionsSolver {
 
     private final SEFrontend seFrontend;
 
-    public HousePositionsSolver(SEFrontend seFrontend) {
+    public HousePositionsSolver(@NonNull final SEFrontend seFrontend) {
         this.seFrontend = seFrontend;
     }
 
-    public HousePositionsResponse solveRequest(HousePositionsRequest request) {
+    public HousePositionsResponse solveRequest(@NonNull final HousePositionsRequest request) {
 
         HousePositions housePositions = seFrontend.calcHouses(request);
         return new HousePositionsResponse(housePositions);

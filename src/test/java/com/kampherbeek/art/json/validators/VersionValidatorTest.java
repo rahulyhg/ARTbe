@@ -25,13 +25,13 @@ public class VersionValidatorTest {
     public void isValid() throws Exception {
         String correctType = "full";
         when(requestMock.getVersionType()).thenReturn(correctType);
-        assertTrue(validator.isValid(requestMock));
+        assertTrue(validator.validated(requestMock));
     }
 
     @Test
     public void isValidWrongValue() throws Exception {
         String wrongType = "wrong";
         when(requestMock.getVersionType()).thenReturn(wrongType);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 }

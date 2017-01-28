@@ -1,6 +1,7 @@
 package com.kampherbeek.art.controllers;
 
 import com.kampherbeek.art.handlers.BodynamesHandler;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,14 +19,14 @@ public class BodynamesController {
     private final BodynamesHandler handler;
 
     @Autowired
-    public BodynamesController(BodynamesHandler handler) {
+    public BodynamesController(@NonNull BodynamesHandler handler) {
         this.handler = handler;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
-    String getBodyNames(@RequestParam(value = "json") String json) {
+    String retrieveBodyNames(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

@@ -1,8 +1,12 @@
 package com.kampherbeek.art.domain;
 
+import lombok.Getter;
+
 public class Location {
 
+    @Getter
     private double longitude;
+    @Getter
     private double latitude;
 
     public Location() {
@@ -14,11 +18,4 @@ public class Location {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
 }

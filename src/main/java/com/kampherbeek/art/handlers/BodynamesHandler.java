@@ -7,6 +7,7 @@ import com.kampherbeek.art.json.representation.BodynamesRequest;
 import com.kampherbeek.art.json.representation.BodynamesResponse;
 import com.kampherbeek.art.json.validators.LookupListValidator;
 import com.kampherbeek.art.solvers.BodynamesSolver;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +22,15 @@ public class BodynamesHandler {
     private final BodynamesSolver solver;
 
     @Autowired
-    public BodynamesHandler(final LookupListValidator validator,
-                            final BodynamesJsonConverter converter,
-                            final BodynamesSolver solver) {
+    public BodynamesHandler(@NonNull final LookupListValidator validator,
+                            @NonNull final BodynamesJsonConverter converter,
+                            @NonNull final BodynamesSolver solver) {
         this.validator = validator;
         this.converter = converter;
         this.solver = solver;
     }
 
-    public String handleRequest(String requestJson) {
+    public String handleRequest(@NonNull String requestJson) {
 
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
         String ERROR_TEXT = "Error in BodynamesHandler";

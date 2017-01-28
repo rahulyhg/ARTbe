@@ -26,25 +26,22 @@ public class EpsilonValidatorTest {
     public void isValid() throws Exception {
         double jdnrCorrect = 2857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnrCorrect);
-        assertTrue(validator.isValid(requestMock));
+        assertTrue(validator.validated(requestMock));
     }
 
     @Test
     public void isValidTooLow() throws Exception {
         double jdnr2Low = -3026605.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2Low);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
     @Test
     public void isValidTooHigh() throws Exception {
         double jdnr2High = 7857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2High);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
-    @Test
-    public void isValidNullValue() throws Exception {
-        assertFalse(validator.isValid(null));
-    }
+
 }

@@ -1,34 +1,19 @@
 package com.kampherbeek.art.json.representation;
 
 import com.kampherbeek.art.domain.Location;
+import lombok.Getter;
+import lombok.Setter;
 
 public class HousePositionsRequest implements RequestInterface {
 
+    @Getter
+    @Setter
     private int system;
+    @Getter
+    @Setter
     private double jdnr;
+    @Getter
+    @Setter
     private Location location;
 
-    public int getSystem() {
-        return system;
-    }
-
-    public void setSystem(int system) {
-        this.system = system;
-    }
-
-    public double getJdnr() {
-        return jdnr;
-    }
-
-    public void setJdnr(double jdnr) {
-        this.jdnr = jdnr;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
 }

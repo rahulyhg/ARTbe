@@ -7,6 +7,7 @@ import com.kampherbeek.art.json.representation.VersionRequest;
 import com.kampherbeek.art.json.representation.VersionResponse;
 import com.kampherbeek.art.json.validators.VersionValidator;
 import com.kampherbeek.art.solvers.VersionSolver;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,15 @@ public class VersionHandler {
     private final VersionSolver solver;
 
     @Autowired
-    public VersionHandler(VersionValidator validator, VersionJsonConverter converter, VersionSolver solver) {
+    public VersionHandler(@NonNull final VersionValidator validator,
+                          @NonNull final VersionJsonConverter converter,
+                          @NonNull final VersionSolver solver) {
         this.validator = validator;
         this.converter = converter;
         this.solver = solver;
     }
 
-    public String handleRequest(String requestJson) {
+    public String handleRequest(@NonNull final String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
         String ERROR_TEXT = "Error in VersionHandler";
         if (validatedObject.isValid()) {

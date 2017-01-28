@@ -35,7 +35,7 @@ public class BodySetPositionValidatorTest {
 
     @Test
     public void isValid() throws Exception {
-        assertTrue(validator.isValid(requestMock));
+        assertTrue(validator.validated(requestMock));
     }
 
     private List<Integer> createInternalIds() {
@@ -69,30 +69,26 @@ public class BodySetPositionValidatorTest {
     public void isValidJdnr2High() throws Exception {
         double jdnr2High = 7857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2High);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
     @Test
     public void isValidJdnr2Low() throws Exception {
         double jdnr2Low = -3026605.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2Low);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
     @Test
     public void isValidInternalIdsWrong() throws Exception {
         when(requestMock.getInternalIds()).thenReturn(internalIdsFalse);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
     @Test
     public void isValidInternalIdswithNegative() throws Exception {
         when(requestMock.getInternalIds()).thenReturn(internalIdsWithNegative);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
-    @Test
-    public void isValidRequestNull() throws Exception {
-        assertFalse(validator.isValid(null));
-    }
 }

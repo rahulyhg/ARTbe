@@ -1,6 +1,7 @@
 package com.kampherbeek.art.controllers;
 
 import com.kampherbeek.art.handlers.BodyPositionHandler;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,14 +16,14 @@ public class BodyPositionController {
     private final BodyPositionHandler handler;
 
     @Autowired
-    public BodyPositionController(BodyPositionHandler handler) {
+    public BodyPositionController(@NonNull BodyPositionHandler handler) {
         this.handler = handler;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
-    String getBodyPosition(@RequestParam(value = "json") String json) {
+    String retrieveBodyPosition(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

@@ -21,6 +21,8 @@ public class ValidatorParentTest {
     private VersionRequest requestMock = mock(VersionRequest.class);
     @Mock
     private VersionJsonConverter converterMock = mock(VersionJsonConverter.class);
+    @Mock
+    private IOException ioExceptionMock = mock(IOException.class);
     private ValidatorParent validator;
 
     @Before
@@ -50,7 +52,9 @@ public class ValidatorParentTest {
     @SuppressWarnings("unchecked")
     @Test
     public void handleJsonInvalid() throws Exception {
-        when(converterMock.jsonRequest2Java(anyString())).thenThrow(IOException.class);
+
+        when(ioExceptionMock.getMessage()).thenReturn("Error");
+        when(converterMock.jsonRequest2Java(anyString())).thenThrow(ioExceptionMock);
         String jsonInputError = "{\"dummy\":\"xxx\"}";
         ValidatedObject validatedObject = validator.handleJson(jsonInputError, converterMock);
         assertFalse(validatedObject.isValid());

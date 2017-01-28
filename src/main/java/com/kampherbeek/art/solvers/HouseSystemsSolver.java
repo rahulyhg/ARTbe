@@ -4,6 +4,7 @@ import com.kampherbeek.art.domain.HouseSystems;
 import com.kampherbeek.art.json.representation.HouseSystemsRequest;
 import com.kampherbeek.art.json.representation.HouseSystemsResponse;
 import com.kampherbeek.art.json.representation.StandardSelectionItem;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.ResourceBundle;
 @Component
 public class HouseSystemsSolver {
 
-    public HouseSystemsResponse solveRequest(HouseSystemsRequest request) {
+    public HouseSystemsResponse solveRequest(@NonNull final HouseSystemsRequest request) {
         ResourceBundle bundle = ResourceBundle.getBundle("messages/messages", new Locale(request.getLocale()));
         List<StandardSelectionItem> allHouses = new ArrayList<>();
         for (HouseSystems system : HouseSystems.values()) {

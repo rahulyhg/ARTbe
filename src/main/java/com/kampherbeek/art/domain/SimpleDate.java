@@ -1,9 +1,15 @@
 package com.kampherbeek.art.domain;
 
+import lombok.Getter;
+
 public class SimpleDate {
+    @Getter
     private int year;
+    @Getter
     private int month;
+    @Getter
     private int day;
+    @Getter
     private boolean gregorian;
 
     public SimpleDate() {
@@ -17,19 +23,4 @@ public class SimpleDate {
         this.gregorian = gregorian;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public boolean isGregorian() {
-        return gregorian;
-    }
 }

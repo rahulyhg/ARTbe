@@ -29,42 +29,42 @@ public class BodyPositionValidatorTest {
 
     @Test
     public void isValid() throws Exception {
-        assertTrue(validator.isValid(requestMock));
+        assertTrue(validator.validated(requestMock));
     }
 
     @Test
     public void isValidJdnr2High() throws Exception {
         double jdnr2High = 7857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2High);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
     @Test
     public void isValidJdnr2Low() throws Exception {
         double jdnr2Low = -3026605.5;
         when(requestMock.getJdnr()).thenReturn(jdnr2Low);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
     @Test
     public void isValidInternalIdWrong() throws Exception {
         int internalIdFalse = 33333;
         when(requestMock.getInternalId()).thenReturn(internalIdFalse);
-        assertFalse(validator.isValid(requestMock));
+        assertFalse(validator.validated(requestMock));
     }
 
     @Test
     public void isValidNullValue() throws Exception {
         int internalIdReserved = -1;
         when(requestMock.getInternalId()).thenReturn(internalIdReserved);
-        assertFalse(validator.isValid(null));
+        assertFalse(validator.validated(requestMock));
     }
 
     @Test
     public void isValidValueNegative() throws Exception {
         int internalIdNegative = -2;
         when(requestMock.getInternalId()).thenReturn(internalIdNegative);
-        assertFalse(validator.isValid(null));
+        assertFalse(validator.validated(requestMock));
     }
 
 }

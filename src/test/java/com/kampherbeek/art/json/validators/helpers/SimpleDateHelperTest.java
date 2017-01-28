@@ -30,12 +30,12 @@ public class SimpleDateHelperTest {
 
     @Test
     public void isSimpleDateValid() throws Exception {
-        assertTrue(validatorHelper.isValid(dateMock));
+        assertTrue(validatorHelper.checkDateValid(dateMock));
     }
 
     @Test
     public void isSimpleDateValidWrongMonth() throws Exception {
         when(checkerMock.checkValue(anyInt(), (IntegerLimits) anyObject())).thenReturn(false);
-        assertFalse(validatorHelper.isValid(dateMock));
+        assertFalse(validatorHelper.checkDateValid(dateMock));
     }
 }

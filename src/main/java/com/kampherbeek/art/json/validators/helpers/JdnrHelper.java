@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JdnrHelper {
 
-    public boolean isValid(double jdnr) {
+    public boolean checkJdnrValid(double jdnr) {
         return jdnr >= FloatingLimits.JULIAN_DAY_NR.getMinValue() && jdnr <= FloatingLimits.JULIAN_DAY_NR.getMaxValue();
     }
 }

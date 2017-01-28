@@ -5,6 +5,7 @@ import com.kampherbeek.art.domain.CalculationFlags;
 import com.kampherbeek.art.domain.HousePositions;
 import com.kampherbeek.art.json.representation.BodyPositionRequest;
 import com.kampherbeek.art.json.representation.HousePositionsRequest;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import swisseph.SwissEph;
@@ -18,7 +19,8 @@ public class SEFrontend {
     private final HousePositionsCalculator housesCalculator;
 
     @Autowired
-    public SEFrontend(HousePositionsCalculator housesCalculator, BodyPositionCalculator bodyCalculator) {
+    public SEFrontend(@NonNull HousePositionsCalculator housesCalculator,
+                      @NonNull BodyPositionCalculator bodyCalculator) {
         this.housesCalculator = housesCalculator;
         this.bodyCalculator = bodyCalculator;
         swissEph = new SwissEph();
@@ -26,12 +28,12 @@ public class SEFrontend {
         bodyCalculator.setSwissEph(swissEph);
     }
 
-    public HousePositions calcHouses(HousePositionsRequest request) {
+    public HousePositions calcHouses(@NonNull HousePositionsRequest request) {
         int flagValue = CalculationFlags.SWIEPH.getFlagId();
         return housesCalculator.calcHouses(request.getSystem(), request.getLocation(), request.getJdnr(), flagValue);
     }
 
-    public BodyPosition calcBody(BodyPositionRequest request) {
+    public BodyPosition calcBody(@NonNull BodyPositionRequest request) {
         return bodyCalculator.calcBody(request.getInternalId(), request.getJdnr(), request.getFlagValue());
     }
 }

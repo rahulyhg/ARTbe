@@ -5,6 +5,7 @@ import com.kampherbeek.art.domain.BodyPosition;
 import com.kampherbeek.art.domain.Bodynames;
 import com.kampherbeek.art.json.representation.BodyPositionRequest;
 import com.kampherbeek.art.json.representation.BodyPositionResponse;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -15,17 +16,17 @@ public class BodyPositionSolver {
     private static final Logger LOG = LoggerFactory.getLogger(BodyPositionSolver.class);
     private final SEFrontend seFrontend;
 
-    public BodyPositionSolver(SEFrontend seFrontend) {
+    public BodyPositionSolver(@NonNull final SEFrontend seFrontend) {
         this.seFrontend = seFrontend;
     }
 
-    public BodyPositionResponse solveRequest(BodyPositionRequest request) {
+    public BodyPositionResponse solveRequest(@NonNull final BodyPositionRequest request) {
         BodyPosition bodyPosition = seFrontend.calcBody(request);
         Bodynames bodyname = getBodyname4Id(request.getInternalId());
         return new BodyPositionResponse(bodyname, bodyPosition);
     }
 
-    private Bodynames getBodyname4Id(int id) {
+    private Bodynames getBodyname4Id(final int id) {
         for (Bodynames name : Bodynames.values()) {
             if (name.getInternalId() == id) {
                 return name;

@@ -1,8 +1,11 @@
 package com.kampherbeek.art.domain;
 
+import lombok.Getter;
+import lombok.NonNull;
+
 /**
  * Enum for HouseSystems. The value for seId corresponds with the indexes as used by the Swiss Ephemeris.
- * IF the system is not supported by the SE the value for seId = '#'.
+ * If the system is not supported by the SE the value for seId = '#'.
  * internalId is the value used internally in ART.
  */
 public enum HouseSystems {
@@ -25,42 +28,20 @@ public enum HouseSystems {
     GAUQUELIN('G', 15, 36, "housesystems.gauquelin"),
     APC('Y', 16, 12, "housesystems.apc");
 
+    @Getter
     private final char seId;
+    @Getter
     private final int internalId;
+    @Getter
     private final int nrOfCusps;
+    @Getter
     private final String rbKey;
 
-    HouseSystems(char seId, int internalId, int nrOfCusps, String rbKey) {
+    HouseSystems(char seId, int internalId, int nrOfCusps, @NonNull String rbKey) {
         this.seId = seId;
         this.internalId = internalId;
         this.nrOfCusps = nrOfCusps;
         this.rbKey = rbKey;
     }
 
-    /**
-     * Getter for seId, the value as used by the Swiss Ephemeris.
-     * If a system is not supported by the SE, this value will be '#'.
-     *
-     * @return Value for seId, the internalId as used by the Swiss Ephemeris, or '#' if SE does not handle the system.
-     */
-    public char getSeId() {
-        return seId;
-    }
-
-    public int getInternalId() {
-        return internalId;
-    }
-
-    public int getNrOfCusps() {
-        return nrOfCusps;
-    }
-
-    /**
-     * Getter for rbKey
-     *
-     * @return key to access Resource Bundle.
-     */
-    public String getRbKey() {
-        return rbKey;
-    }
 }

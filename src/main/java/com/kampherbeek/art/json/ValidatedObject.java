@@ -1,20 +1,18 @@
 package com.kampherbeek.art.json;
 
+import lombok.Getter;
+import lombok.NonNull;
+
 public class ValidatedObject {
 
+    @Getter
     private final boolean isValid;
+    @Getter
     private final Object object;
 
-    public ValidatedObject(boolean isValid, Object object) {
+    public ValidatedObject(final boolean isValid, @NonNull final Object object) {
         this.isValid = isValid;
         this.object = object;
     }
 
-    public boolean isValid() {
-        return isValid;
-    }
-
-    public Object getObject() {
-        return object;
-    }
 }

@@ -7,6 +7,7 @@ import com.kampherbeek.art.json.representation.BodyPositionRequest;
 import com.kampherbeek.art.json.representation.BodyPositionResponse;
 import com.kampherbeek.art.json.validators.BodyPositionValidator;
 import com.kampherbeek.art.solvers.BodyPositionSolver;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,15 @@ public class BodyPositionHandler {
     private final BodyPositionSolver solver;
 
     @Autowired
-    public BodyPositionHandler(BodyPositionValidator validator, BodyPositionJsonConverter converter,
-                               BodyPositionSolver solver) {
+    public BodyPositionHandler(@NonNull BodyPositionValidator validator,
+                               @NonNull BodyPositionJsonConverter converter,
+                               @NonNull BodyPositionSolver solver) {
         this.validator = validator;
         this.converter = converter;
         this.solver = solver;
     }
 
-    public String handleRequest(String requestJson) {
+    public String handleRequest(@NonNull String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
         String ERROR_TEXT = "Error in BodyPositionHandler";
         if (validatedObject.isValid()) {

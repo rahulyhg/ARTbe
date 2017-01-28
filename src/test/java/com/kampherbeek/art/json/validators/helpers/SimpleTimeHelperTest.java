@@ -30,12 +30,12 @@ public class SimpleTimeHelperTest {
 
     @Test
     public void isValid() throws Exception {
-        assertTrue(helper.isValid(timeMock));
+        assertTrue(helper.checkTimeValid(timeMock));
     }
 
     @Test
     public void isValidWrongValue() throws Exception {
         when(checkerMock.checkValue(anyInt(), (IntegerLimits) anyObject())).thenReturn(false);
-        assertFalse(helper.isValid(timeMock));
+        assertFalse(helper.checkTimeValid(timeMock));
     }
 }

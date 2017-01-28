@@ -1,9 +1,14 @@
 package com.kampherbeek.art.domain;
 
+import lombok.Getter;
+
 public class SimpleTime {
 
+    @Getter
     private int hour;
+    @Getter
     private int minute;
+    @Getter
     private int second;
 
     public SimpleTime() {
@@ -14,17 +19,5 @@ public class SimpleTime {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
-    }
-
-    public int getHour() {
-        return hour;
-    }
-
-    public int getMinute() {
-        return minute;
-    }
-
-    public int getSecond() {
-        return second;
     }
 }

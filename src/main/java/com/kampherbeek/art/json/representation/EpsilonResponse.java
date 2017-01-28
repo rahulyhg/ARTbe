@@ -1,14 +1,12 @@
 package com.kampherbeek.art.json.representation;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class EpsilonResponse implements ResponseInterface {
 
+    @Getter
+    @Setter
     private double epsilon;
 
-    public double getEpsilon() {
-        return epsilon;
-    }
-
-    public void setEpsilon(double epsilon) {
-        this.epsilon = epsilon;
-    }
 }

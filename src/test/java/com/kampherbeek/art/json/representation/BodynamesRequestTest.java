@@ -14,12 +14,6 @@ public class BodynamesRequestTest {
         request = new BodynamesRequest();
     }
 
-    @Test
-    public void setGetLocale() throws Exception {
-        String locale = "nl";
-        request.setLocale(locale);
-        assertEquals(locale, request.getLocale());
-    }
 
     @Test
     public void getDefaultLocale() throws Exception {

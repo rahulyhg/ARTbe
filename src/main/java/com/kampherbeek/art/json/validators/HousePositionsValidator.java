@@ -4,6 +4,7 @@ import com.kampherbeek.art.json.representation.HousePositionsRequest;
 import com.kampherbeek.art.json.representation.RequestInterface;
 import com.kampherbeek.art.json.validators.helpers.JdnrHelper;
 import com.kampherbeek.art.json.validators.helpers.LocationHelper;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +18,19 @@ public class HousePositionsValidator extends ValidatorParent {
     private final JdnrHelper jdnrHelper;
 
     @Autowired
-    public HousePositionsValidator(LocationHelper locationHelper, JdnrHelper jdnrHelper) {
+    public HousePositionsValidator(@NonNull final LocationHelper locationHelper,
+                                   @NonNull final JdnrHelper jdnrHelper) {
         super();
         this.locationHelper = locationHelper;
         this.jdnrHelper = jdnrHelper;
     }
 
     @Override
-    protected boolean isValid(RequestInterface request) {
+    protected boolean validated(@NonNull final RequestInterface request) {
         try {
             HousePositionsRequest hpRequest = (HousePositionsRequest) request;
-            return (jdnrHelper.isValid(hpRequest.getJdnr()))
-                    && (locationHelper.isValid(hpRequest.getLocation()));
+            return (jdnrHelper.checkJdnrValid(hpRequest.getJdnr()))
+                    && (locationHelper.checkLocationValid(hpRequest.getLocation()));
         } catch (Exception e) {
             LOG.error("Exception: " + e.getMessage());
             return false;

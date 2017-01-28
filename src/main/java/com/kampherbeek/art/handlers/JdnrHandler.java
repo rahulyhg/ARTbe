@@ -32,16 +32,16 @@ public class JdnrHandler {
 
     public String handleRequest(@NonNull final String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
-        String ERROR_TEXT = "Error in JdnrHandler";
+        String errorText = "Error in JdnrHandler";
         if (validatedObject.isValid()) {
             JdnrResponse response = solver.solveRequest((JdnrRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error("Exception: " + e.getMessage());
-                return ERROR_TEXT;
+                LOG.error("Exception: " + e);
+                return errorText;
             }
         }
-        return ERROR_TEXT;
+        return errorText;
     }
 }

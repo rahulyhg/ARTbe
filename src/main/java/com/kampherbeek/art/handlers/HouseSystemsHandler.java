@@ -33,16 +33,16 @@ public class HouseSystemsHandler {
     public String handleRequest(@NonNull final String requestJson) {
 
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
-        String ERROR_TEXT = "Error in HouseSystemsHandler";
+        String errorText = "Error in HouseSystemsHandler";
         if (validatedObject.isValid()) {
             HouseSystemsResponse response = solver.solveRequest((HouseSystemsRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error("Exception: " + e.getMessage());
-                return ERROR_TEXT;
+                LOG.error("Exception: " + e);
+                return errorText;
             }
         }
-        return ERROR_TEXT;
+        return errorText;
     }
 }

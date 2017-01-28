@@ -32,16 +32,16 @@ public class VersionHandler {
 
     public String handleRequest(@NonNull final String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
-        String ERROR_TEXT = "Error in VersionHandler";
+        String errorText = "Error in VersionHandler";
         if (validatedObject.isValid()) {
             VersionResponse response = solver.solveRequest((VersionRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error("Exception: " + e.getMessage());
-                return ERROR_TEXT;
+                LOG.error("Exception: " + e);
+                return errorText;
             }
         }
-        return ERROR_TEXT;
+        return errorText;
     }
 }

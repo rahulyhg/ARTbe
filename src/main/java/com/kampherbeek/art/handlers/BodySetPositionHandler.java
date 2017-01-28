@@ -33,17 +33,17 @@ public class BodySetPositionHandler {
 
     public String handleRequest(@NonNull String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
-        String ERROR_TEXT = "Error in BodySetPositionHandler";
+        String errorText = "Error in BodySetPositionHandler";
         if (validatedObject.isValid()) {
             BodySetPositionResponse response = solver.solveRequest((BodySetPositionRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error(ERROR_TEXT + ": " + e.getMessage());
-                return ERROR_TEXT;
+                LOG.error(errorText + ": " + e);
+                return errorText;
             }
         }
-        return ERROR_TEXT;
+        return errorText;
     }
 }
 

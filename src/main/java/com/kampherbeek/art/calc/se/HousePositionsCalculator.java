@@ -25,10 +25,10 @@ public class HousePositionsCalculator {
         double[] additionalPositions = new double[10];
         int returnCode = 0;
         try {
-            returnCode = swissEph.swe_houses(jdnr, flagValue, location.getLatitude(), location.getLongitude(),
+            swissEph.swe_houses(jdnr, flagValue, location.getLatitude(), location.getLongitude(),
                     system.getSeId(), cuspPositions, additionalPositions);
         } catch (Exception e) {
-            LOG.error("Exception: " + e.getMessage());
+            LOG.error("Exception: " + e);
             throw new RuntimeException(String.format("Error when calculating houses, flagValue: %1$d . Returncode: %2$d .",
                     flagValue, returnCode));
         }
@@ -41,7 +41,7 @@ public class HousePositionsCalculator {
                 return system;
             }
         }
-        LOG.error("Searching for non-existing system: " + internalId);
+        LOG.error("Searching for non-existing system: %d", internalId);
         throw new RuntimeException("HouseSystem not found");
     }
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class VersionController {
 
     private final VersionHandler handler;
-    private final String shortValue = "{\"versionType\":\"full\"}";
+    private static final String SHORTVALUE = "{\"versionType\":\"full\"}";
 
     @Autowired
     public VersionController(@NonNull VersionHandler handler) {
@@ -22,9 +22,8 @@ public class VersionController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public
     @ResponseBody
-    String retrieveVersion(@RequestParam(value = "json", required = false, defaultValue = shortValue) String json) {
+    public String retrieveVersion(@RequestParam(value = "json", required = false, defaultValue = SHORTVALUE) String json) {
         return handler.handleRequest(json);
     }
 }

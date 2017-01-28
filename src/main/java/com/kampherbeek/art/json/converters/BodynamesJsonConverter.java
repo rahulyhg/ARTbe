@@ -9,6 +9,7 @@ import java.io.IOException;
 @Component
 public class BodynamesJsonConverter extends ConverterParent {
 
+    @Override
     public BodynamesRequest jsonRequest2Java(@NonNull final String input) throws IOException {
         return mapper.readValue(input, BodynamesRequest.class);
     }

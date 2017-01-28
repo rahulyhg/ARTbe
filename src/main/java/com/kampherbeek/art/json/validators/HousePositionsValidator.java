@@ -32,7 +32,7 @@ public class HousePositionsValidator extends ValidatorParent {
             return (jdnrHelper.checkJdnrValid(hpRequest.getJdnr()))
                     && (locationHelper.checkLocationValid(hpRequest.getLocation()));
         } catch (Exception e) {
-            LOG.error("Exception: " + e.getMessage());
+            LOG.error("Exception: " + e);
             return false;
         }
     }

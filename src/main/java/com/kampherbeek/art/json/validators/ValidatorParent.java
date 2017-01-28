@@ -23,7 +23,7 @@ public abstract class ValidatorParent {
                 return new ValidatedObject(false, "Wrong value.");
             }
         } catch (IOException e) {
-            LOG.error(String.format("IOExeption when processing JSON : %s . Message : %s", jsonInput, e.getMessage()));
+            LOG.error(String.format("IOExeption when processing JSON : %s . Message : %s", jsonInput, e));
             return new ValidatedObject(false, e.getMessage());
         }
     }

@@ -24,9 +24,8 @@ public class BodynamesController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public
     @ResponseBody
-    String retrieveBodyNames(@RequestParam(value = "json") String json) {
+    public String retrieveBodyNames(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

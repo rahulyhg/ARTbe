@@ -19,7 +19,6 @@ public class CalculatedChartValidator extends ValidatorParent {
     public CalculatedChartValidator(@NonNull final JdnrHelper jdnrHelper,
                                     @NonNull final LocationHelper locationHelper,
                                     @NonNull final SimpleDateTimeHelper dateTimeHelper) {
-        JdnrHelper jdnrHelper1 = jdnrHelper;
         this.locationHelper = locationHelper;
         this.dateTimeHelper = dateTimeHelper;
     }

@@ -33,16 +33,16 @@ public class BodynamesHandler {
     public String handleRequest(@NonNull String requestJson) {
 
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
-        String ERROR_TEXT = "Error in BodynamesHandler";
+        String errorText = "Error in BodynamesHandler";
         if (validatedObject.isValid()) {
             BodynamesResponse response = solver.solveRequest((BodynamesRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error("Exception: " + e.getMessage());
-                return ERROR_TEXT;
+                LOG.error("Exception: " + e);
+                return errorText;
             }
         }
-        return ERROR_TEXT;
+        return errorText;
     }
 }

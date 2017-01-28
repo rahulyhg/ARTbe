@@ -18,9 +18,9 @@ public class BodyPositionValidator extends ValidatorParent {
     protected boolean validated(@NonNull final RequestInterface request) {
         try {
             BodyPositionRequest bpRequest = (BodyPositionRequest) request;
-            return (jdnrIsValid(bpRequest.getJdnr()) && internalIdIsValid(bpRequest.getInternalId()));
+            return jdnrIsValid(bpRequest.getJdnr()) && internalIdIsValid(bpRequest.getInternalId());
         } catch (Exception e) {
-            LOG.error("Exception: " + e.getMessage());
+            LOG.error("Exception: " + e);
             return false;
         }
     }

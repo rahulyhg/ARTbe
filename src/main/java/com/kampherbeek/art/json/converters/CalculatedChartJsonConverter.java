@@ -8,7 +8,7 @@ import java.io.IOException;
 
 @Component
 public class CalculatedChartJsonConverter extends ConverterParent {
-
+@Override
     public CalculatedChartRequest jsonRequest2Java(@NonNull final String input) throws IOException {
         return mapper.readValue(input, CalculatedChartRequest.class);
     }

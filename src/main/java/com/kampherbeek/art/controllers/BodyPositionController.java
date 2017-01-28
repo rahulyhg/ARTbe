@@ -16,14 +16,13 @@ public class BodyPositionController {
     private final BodyPositionHandler handler;
 
     @Autowired
-    public BodyPositionController(@NonNull BodyPositionHandler handler) {
+    public BodyPositionController(@NonNull final BodyPositionHandler handler) {
         this.handler = handler;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public
     @ResponseBody
-    String retrieveBodyPosition(@RequestParam(value = "json") String json) {
+    public String retrieveBodyPosition(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

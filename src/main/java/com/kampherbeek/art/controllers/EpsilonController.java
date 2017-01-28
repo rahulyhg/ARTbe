@@ -21,9 +21,8 @@ public class EpsilonController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public
     @ResponseBody
-    String retrieveEpsilon(@RequestParam(value = "json") String json) {
+    public String retrieveEpsilon(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

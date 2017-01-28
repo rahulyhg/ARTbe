@@ -13,7 +13,6 @@ import swisseph.SwissEph;
 @Component
 public class SEFrontend {
 
-    //    private static final SEFrontend oneAndOnlyInstance = new SEFrontend();
     private final SwissEph swissEph;
     private final BodyPositionCalculator bodyCalculator;
     private final HousePositionsCalculator housesCalculator;

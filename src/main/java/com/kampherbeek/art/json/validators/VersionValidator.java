@@ -13,6 +13,6 @@ public class VersionValidator extends ValidatorParent {
         final String versionType = ((VersionRequest) request).getVersionType();
         final String fullType = "Full";
         final String shortType = "Short";
-        return (versionType.equalsIgnoreCase(shortType) || versionType.equalsIgnoreCase(fullType));
+        return versionType.equalsIgnoreCase(shortType) || versionType.equalsIgnoreCase(fullType);
     }
 }

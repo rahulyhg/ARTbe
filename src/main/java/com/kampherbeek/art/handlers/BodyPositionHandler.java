@@ -32,16 +32,16 @@ public class BodyPositionHandler {
 
     public String handleRequest(@NonNull String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
-        String ERROR_TEXT = "Error in BodyPositionHandler";
+        String errorText = "Error in BodyPositionHandler";
         if (validatedObject.isValid()) {
             BodyPositionResponse response = solver.solveRequest((BodyPositionRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error(ERROR_TEXT + ": " + e.getMessage());
-                return ERROR_TEXT;
+                LOG.error(errorText + ": " + e);
+                return errorText;
             }
         }
-        return ERROR_TEXT;
+        return errorText;
     }
 }

@@ -8,7 +8,7 @@ import java.io.IOException;
 
 @Component
 public class VersionJsonConverter extends ConverterParent {
-
+@Override
     public VersionRequest jsonRequest2Java(@NonNull final String input) throws IOException {
         return mapper.readValue(input, VersionRequest.class);
     }

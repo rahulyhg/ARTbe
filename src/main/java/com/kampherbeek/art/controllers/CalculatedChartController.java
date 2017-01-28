@@ -21,9 +21,8 @@ public class CalculatedChartController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public
     @ResponseBody
-    String retrieveCalculatedChart(@RequestParam(value = "json") String json) {
+    public String retrieveCalculatedChart(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

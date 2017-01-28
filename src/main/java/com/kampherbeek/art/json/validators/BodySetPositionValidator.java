@@ -20,9 +20,9 @@ public class BodySetPositionValidator extends ValidatorParent {
     protected boolean validated(@NonNull final RequestInterface request) {
         try {
             BodySetPositionRequest bspRequest = (BodySetPositionRequest) request;
-            return (jdnrIsValid(bspRequest.getJdnr()) && allInternalIdsAreValid(bspRequest.getInternalIds()));
+            return jdnrIsValid(bspRequest.getJdnr()) && allInternalIdsAreValid(bspRequest.getInternalIds());
         } catch (Exception e) {
-            LOG.error("Exception: " + e.getMessage());
+            LOG.error("Exception: " + e);
             return false;
         }
     }

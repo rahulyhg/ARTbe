@@ -33,16 +33,16 @@ public class EpsilonHandler {
 
     public String handleRequest(@NonNull String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
-        String ERROR_TEXT = "Error in EpsilonHandler";
+        String errorText = "Error in EpsilonHandler";
         if (validatedObject.isValid()) {
             EpsilonResponse response = solver.solveRequest((EpsilonRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error("Exception: " + e.getMessage());
-                return ERROR_TEXT;
+                LOG.error("Exception: " + e);
+                return errorText;
             }
         }
-        return ERROR_TEXT;
+        return errorText;
     }
 }

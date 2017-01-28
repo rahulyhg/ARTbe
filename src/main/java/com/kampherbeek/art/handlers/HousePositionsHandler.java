@@ -32,16 +32,16 @@ public class HousePositionsHandler {
 
     public String handleRequest(@NonNull final String requestJson) {
         ValidatedObject validatedObject = validator.handleJson(requestJson, converter);
-        String ERROR_TEXT = "Error in HousePositionsHandler";
+        String errorText = "Error in HousePositionsHandler";
         if (validatedObject.isValid()) {
             HousePositionsResponse response = solver.solveRequest((HousePositionsRequest) validatedObject.getObject());
             try {
                 return converter.java2JsonResponse(response);
             } catch (JsonProcessingException e) {
-                LOG.error("HousePositionsHandler: " + e.getMessage());
-                return ERROR_TEXT;
+                LOG.error("HousePositionsHandler: " + e);
+                return errorText;
             }
         }
-        return ERROR_TEXT;
+        return errorText;
     }
 }

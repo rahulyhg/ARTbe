@@ -21,9 +21,8 @@ public class BodySetPositionController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public
     @ResponseBody
-    String retrieveBodySetPosition(@RequestParam(value = "json") String json) {
+    public String retrieveBodySetPosition(@RequestParam(value = "json") String json) {
         return handler.handleRequest(json);
     }
 }

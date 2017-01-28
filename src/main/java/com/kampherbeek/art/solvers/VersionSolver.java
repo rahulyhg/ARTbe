@@ -22,20 +22,21 @@ public class VersionSolver {
     }
 
     public VersionResponse solveRequest(@NonNull final VersionRequest request) {
-        final String PROP_VERSION_FULL = "version.full";
-        final String PROP_VERSION_SHORT = "version.short";
-        final String TYPE_FULL = "full";
-        final String TYPE_SHORT = "short";
+        final String propVersionFull = "version.full";
+        final String propVersionShort = "version.short";
+        final String typeFull = "full";
+        final String typeShort = "short";
+        final String versionKey = "version";
         String property;
         String versionType = request.getVersionType();
-        if (versionType.equalsIgnoreCase(TYPE_FULL)) {
-            property = PROP_VERSION_FULL;
+        if (versionType.equalsIgnoreCase(typeFull)) {
+            property = propVersionFull;
         } else {
-            property = PROP_VERSION_SHORT;
-            versionType = TYPE_SHORT;
+            property = propVersionShort;
+            versionType = typeShort;
         }
-        String VERSION_KEY = "version";
-        String versionLabel = bundle.getString(VERSION_KEY);
+
+        String versionLabel = bundle.getString(versionKey);
         String versionId = versionLabel + " " + reader.readValueForProperty(property);
         return new VersionResponse(versionType, versionId);
     }

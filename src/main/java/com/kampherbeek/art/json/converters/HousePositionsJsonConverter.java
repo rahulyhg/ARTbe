@@ -9,6 +9,7 @@ import java.io.IOException;
 @Component
 public class HousePositionsJsonConverter extends ConverterParent {
 
+    @Override
     public HousePositionsRequest jsonRequest2Java(@NonNull final String input) throws IOException {
         return mapper.readValue(input, HousePositionsRequest.class);
     }

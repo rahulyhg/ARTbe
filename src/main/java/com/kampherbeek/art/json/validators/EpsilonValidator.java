@@ -19,7 +19,7 @@ public class EpsilonValidator extends ValidatorParent {
             EpsilonRequest epsRequest = (EpsilonRequest) request;
             return checkValue(epsRequest.getJdnr());
         } catch (Exception e) {
-            LOG.error("Exception when validating EpsilonRequest: " + e.getMessage());
+            LOG.error("Exception when validating EpsilonRequest: " + e);
             return false;
         }
     }

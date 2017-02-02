@@ -1,6 +1,7 @@
 package com.kampherbeek.art.calc.se;
 
 import com.kampherbeek.art.domain.BodyPosition;
+import com.kampherbeek.art.exceptions.UnknownItemException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -40,7 +41,7 @@ public class BodyPositionCalculatorTest {
         assertNotNull(bodyPosition);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = UnknownItemException.class)
     public void calcBodyWrongId() throws Exception {
         calculator.setSwissEph(swissEphMock);
         calculator.calcBody(987654, 1234567.89, 1);

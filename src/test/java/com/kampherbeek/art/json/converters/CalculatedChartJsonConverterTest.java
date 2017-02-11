@@ -18,7 +18,6 @@ import static org.mockito.Mockito.when;
 public class CalculatedChartJsonConverterTest {
 
     private final int houseSystemId = HouseSystems.ALCABITIUS.getInternalId();
-    private final int flagValue = 258;
     private final double latitude = 55.44;
     private final double longitude = 18.17;
     private final boolean isGregorian = true;
@@ -36,6 +35,7 @@ public class CalculatedChartJsonConverterTest {
     private SimpleTime timeMock = mock(SimpleTime.class);
     @Mock
     private SimpleDateTime dateTimeMock = mock(SimpleDateTime.class);
+    private CalculationPreferences preferences;
     private List<Integer> bodyIds;
     private CalculatedChartJsonConverter converter;
 
@@ -52,17 +52,24 @@ public class CalculatedChartJsonConverterTest {
         when(timeMock.getSecond()).thenReturn(second);
         when(dateTimeMock.getSimpleDate()).thenReturn(dateMock);
         when(dateTimeMock.getSimpleTime()).thenReturn(timeMock);
+        preferences = createPreferences();
         bodyIds = createBodyIds();
         converter = new CalculatedChartJsonConverter();
     }
 
     @Test
     public void jsonRequest2Java() throws Exception {
-        String jsonRequest = "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2002,\"month\":3,\"day\":15,\"gregorian\":true},\"simpleTime\":{\"hour\":13,\"minute\":54,\"second\":43}},\"location\":{\"longitude\":18.17,\"latitude\":55.44},\"flagValue\":258,\"houseSystemId\":12,\"bodyIds\":[0,1]}\n";
+        String jsonRequest = "{\"simpleDateTime\":{"+
+                "\"simpleDate\":{\"year\":2002,\"month\":3,\"day\":15,\"gregorian\":true}," +
+                "\"simpleTime\":{\"hour\":13,\"minute\":54,\"second\":43}}," +
+                "\"location\":{\"longitude\":18.17,\"latitude\":55.44}," +
+                "\"calculationPreferences\":{\"flags\":[\"SPEED\"]}," +
+                "\"houseSystemId\":12," +
+                "\"bodyIds\":[0,1]}\n";
         CalculatedChartRequest request = converter.jsonRequest2Java(jsonRequest);
         assertEquals(day, request.getSimpleDateTime().getSimpleDate().getDay());
         assertEquals(latitude, request.getLocation().getLatitude(), DOUBLE_MARGIN.getValue());
-        assertEquals(flagValue, request.getFlagValue());
+        assertEquals(preferences.getFlags().size(), request.getCalculationPreferences().getFlags().size());
         assertEquals(bodyIds.get(0), request.getBodyIds().get(0));
         assertEquals(houseSystemId, request.getHouseSystemId());
     }
@@ -79,9 +86,8 @@ public class CalculatedChartJsonConverterTest {
         request.setSimpleDateTime(simpleDateTime);
         request.setHouseSystemId(HouseSystems.ALCABITIUS.getInternalId());
         request.setBodyIds(createBodyIds());
-        request.setFlagValue(flagValue);
+        request.setCalculationPreferences(preferences);
         String json = converter.java2JsonRequest(request);
-        System.out.println(json);
         assertTrue(json.contains("simpleDateTime"));
     }
 
@@ -91,4 +97,12 @@ public class CalculatedChartJsonConverterTest {
         bodyIds.add(1);
         return bodyIds;
     }
+
+    private CalculationPreferences createPreferences() {
+        List<CalculationFlags> flags = new ArrayList<>();
+        flags.add(CalculationFlags.SPEED);
+        CalculationPreferences preferences = new CalculationPreferences(flags);
+        return preferences;
+    }
+
 }

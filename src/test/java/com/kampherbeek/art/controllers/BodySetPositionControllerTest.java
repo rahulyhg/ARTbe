@@ -25,7 +25,8 @@ public class BodySetPositionControllerTest {
 
     @Test
     public void getBodySetPosition() throws Exception {
-        final String jsonParam = "{\"jdnr\":1234567.89,\"flagValue\":1,\"internalIds\":[0,1,2,3]}";
+        final String jsonParam =
+                "{\"jdnr\":1234567.89,\"calculationPreferences\":{\"flags\":[\"SPEED\"]},\"internalIds\":[0,1,2,3]}";
         this.mockMvc.perform(get("/bodysetposition").param("json", jsonParam)).andDo(print()).
                 andExpect(status().isOk()).andExpect(content().string(containsString("positions")));
     }

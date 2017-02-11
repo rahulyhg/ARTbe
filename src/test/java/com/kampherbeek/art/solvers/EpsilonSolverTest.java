@@ -42,31 +42,3 @@ public class EpsilonSolverTest {
                 DOUBLE_MARGIN.getValue());
     }
 }
-
-
-/*
-
-    @Mock
-    private HousePositionsRequest requestMock = mock(HousePositionsRequest.class);
-    @Mock
-    private HousePositionsResponse responseMock = mock(HousePositionsResponse.class);
-    @Mock
-    private SEFrontend seFrontendMock = mock(SEFrontend.class);
-    @Mock
-    private HousePositions housePositionsMock = mock(HousePositions.class);
-    private HousePositionsSolver solver;
-
-
-
-    @Before
-    public void setUp() throws Exception {
-        when(responseMock.getPositions()).thenReturn(housePositionsMock);
-        when(seFrontendMock.calcHouses(anyObject())).thenReturn(housePositionsMock);
-        solver = new HousePositionsSolver(seFrontendMock);
-    }
-
-    @Test
-    public void solveRequest() throws Exception {
-        assertEquals(housePositionsMock, solver.solveRequest(requestMock).getPositions());
-    }
- */

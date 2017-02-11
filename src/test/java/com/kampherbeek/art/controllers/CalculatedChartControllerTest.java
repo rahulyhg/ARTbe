@@ -25,7 +25,13 @@ public class CalculatedChartControllerTest {
 
     @Test
     public void getCalculatedChart() throws Exception {
-        final String jsonParam = "{\"simpleDateTime\":{\"simpleDate\":{\"year\":2002,\"month\":3,\"day\":15,\"gregorian\":true},\"simpleTime\":{\"hour\":13,\"minute\":54,\"second\":43}},\"location\":{\"longitude\":18.17,\"latitude\":55.44},\"flagValue\":258,\"houseSystemId\":12,\"bodyIds\":[0,1]}\n";
+        final String jsonParam = "{\"simpleDateTime\":{"+
+                "\"simpleDate\":{\"year\":2002,\"month\":3,\"day\":15,\"gregorian\":true}," +
+                "\"simpleTime\":{\"hour\":13,\"minute\":54,\"second\":43}}," +
+                "\"location\":{\"longitude\":18.17,\"latitude\":55.44}," +
+                "\"calculationPreferences\":{\"flags\":[\"SPEED\"]}," +
+                "\"houseSystemId\":12," +
+                "\"bodyIds\":[0,1]}\n";
         this.mockMvc.perform(get("/calculatedchart").param("json", jsonParam)).andDo(print()).
                 andExpect(status().isOk()).andExpect(content().string(containsString("bodySetPositionResponse")));
     }

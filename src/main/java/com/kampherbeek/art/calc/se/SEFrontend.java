@@ -16,12 +16,15 @@ public class SEFrontend {
     private final SwissEph swissEph;
     private final BodyPositionCalculator bodyCalculator;
     private final HousePositionsCalculator housesCalculator;
+    private final SeFlags2IntCreator seFlags2IntCreator;
 
     @Autowired
     public SEFrontend(@NonNull HousePositionsCalculator housesCalculator,
-                      @NonNull BodyPositionCalculator bodyCalculator) {
+                      @NonNull BodyPositionCalculator bodyCalculator,
+                      @NonNull SeFlags2IntCreator seFlags2IntCreator) {
         this.housesCalculator = housesCalculator;
         this.bodyCalculator = bodyCalculator;
+        this.seFlags2IntCreator = seFlags2IntCreator;
         swissEph = new SwissEph();
         housesCalculator.setSwissEph(swissEph);
         bodyCalculator.setSwissEph(swissEph);
@@ -33,7 +36,8 @@ public class SEFrontend {
     }
 
     public BodyPosition calcBody(@NonNull BodyPositionRequest request) {
-        return bodyCalculator.calcBody(request.getInternalId(), request.getJdnr(), request.getFlagValue());
+        int flags = seFlags2IntCreator.createFlags(request.getCalculationPreferences().getFlags());
+        return bodyCalculator.calcBody(request.getInternalId(), request.getJdnr(), flags);
     }
 }
 

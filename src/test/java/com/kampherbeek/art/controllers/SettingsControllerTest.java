@@ -18,16 +18,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class BodyPositionControllerTest {
+public class SettingsControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void getBodyPosition() throws Exception {
-        final String jsonParam =
-                "{\"internalId\":3,\"jdnr\":1234567.89,\"calculationPreferences\":{\"flags\":[\"SPEED\"]}}";
-        this.mockMvc.perform(get("/bodyposition").param("json", jsonParam)).andDo(print()).
-                andExpect(status().isOk()).andExpect(content().string(containsString("position")));
+    public void retrieveSettings() throws Exception {
+        this.mockMvc.perform(get("/settings")).andDo(print()).andExpect(status().isOk()).
+                andExpect(content().string(containsString("settings")));
     }
 }
+

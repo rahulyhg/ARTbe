@@ -1,5 +1,6 @@
 package com.kampherbeek.art.json.representation;
 
+import com.kampherbeek.art.domain.CalculationPreferences;
 import com.kampherbeek.art.domain.Location;
 import com.kampherbeek.art.domain.SimpleDateTime;
 import lombok.Getter;
@@ -17,7 +18,7 @@ public class CalculatedChartRequest implements RequestInterface {
     private Location location;
     @Getter
     @Setter
-    private int flagValue;
+    private CalculationPreferences calculationPreferences;
     @Getter
     @Setter
     private int houseSystemId;

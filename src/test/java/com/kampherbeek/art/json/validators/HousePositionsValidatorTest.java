@@ -3,12 +3,14 @@ package com.kampherbeek.art.json.validators;
 import com.kampherbeek.art.domain.HouseSystems;
 import com.kampherbeek.art.domain.Location;
 import com.kampherbeek.art.json.representation.HousePositionsRequest;
+import com.kampherbeek.art.json.representation.VersionRequest;
 import com.kampherbeek.art.json.validators.helpers.JdnrHelper;
 import com.kampherbeek.art.json.validators.helpers.LocationHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyDouble;
 import static org.mockito.Matchers.anyObject;
@@ -17,10 +19,13 @@ import static org.mockito.Mockito.when;
 
 public class HousePositionsValidatorTest {
 
+
     @Mock
     private Location locationMock = mock(Location.class);
     @Mock
     private HousePositionsRequest requestMock = mock(HousePositionsRequest.class);
+    @Mock
+    private VersionRequest faultyRequestMock = mock(VersionRequest.class);
     @Mock
     private LocationHelper locationHelperMock = mock(LocationHelper.class);
     @Mock
@@ -43,5 +48,8 @@ public class HousePositionsValidatorTest {
         assertTrue(validator.validated(requestMock));
     }
 
-
+    @Test
+    public void isValidException() throws Exception {
+        assertFalse(validator.validated(faultyRequestMock));
+    }
 }

@@ -55,4 +55,6 @@ public class HousePositionsCalculatorTest {
         calculator.setSwissEph(null);
         calculator.calcHouses(2, locationMock, 1234567.89, 1);
     }
+
+
 }

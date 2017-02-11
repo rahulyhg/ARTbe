@@ -1,6 +1,7 @@
 package com.kampherbeek.art.json.validators;
 
 import com.kampherbeek.art.json.representation.EpsilonRequest;
+import com.kampherbeek.art.json.representation.VersionRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -14,6 +15,8 @@ public class EpsilonValidatorTest {
 
     @Mock
     private EpsilonRequest requestMock = mock(EpsilonRequest.class);
+    @Mock
+    private VersionRequest faultyRequestMock = mock(VersionRequest.class);
 
     private EpsilonValidator validator;
 
@@ -43,5 +46,9 @@ public class EpsilonValidatorTest {
         assertFalse(validator.validated(requestMock));
     }
 
+    @Test
+    public void isValidException() throws Exception {
+        assertFalse(validator.validated(faultyRequestMock));
+    }
 
 }

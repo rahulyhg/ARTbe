@@ -11,13 +11,13 @@ import java.util.List;
 public class CalculationPreferences {
 
     @Getter
-    private final List<CalculationFlags> flags;
+    private List<CalculationFlags> flags;
+
+    public CalculationPreferences() {
+        super();
+    }
 
     public CalculationPreferences(@NonNull List<CalculationFlags> flags) {
         this.flags = flags;
     }
-
-
-
-
 }

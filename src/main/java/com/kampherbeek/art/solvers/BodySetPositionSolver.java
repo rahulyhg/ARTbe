@@ -1,5 +1,6 @@
 package com.kampherbeek.art.solvers;
 
+import com.kampherbeek.art.domain.CalculationPreferences;
 import com.kampherbeek.art.json.representation.BodyPositionRequest;
 import com.kampherbeek.art.json.representation.BodyPositionResponse;
 import com.kampherbeek.art.json.representation.BodySetPositionRequest;
@@ -23,7 +24,7 @@ public class BodySetPositionSolver {
 
     public BodySetPositionResponse solveRequest(@NonNull final BodySetPositionRequest bodySetPositionRequest) {
         BodyPositionRequest bodyPositionRequest = createBodyPositionRequest(bodySetPositionRequest.getJdnr(),
-                bodySetPositionRequest.getFlagValue());
+                bodySetPositionRequest.getCalculationPreferences());
         List<BodyPositionResponse> allBodyPositions = new ArrayList<>();
         for (int internalId : bodySetPositionRequest.getInternalIds()) {
             bodyPositionRequest.setInternalId(internalId);
@@ -32,10 +33,11 @@ public class BodySetPositionSolver {
         return new BodySetPositionResponse(allBodyPositions);
     }
 
-    private BodyPositionRequest createBodyPositionRequest(final double jdnr, final int flagValue) {
+    private BodyPositionRequest createBodyPositionRequest(final double jdnr,
+                                                          @NonNull final CalculationPreferences calculationPreferences) {
         BodyPositionRequest request = new BodyPositionRequest();
         request.setJdnr(jdnr);
-        request.setFlagValue(flagValue);
+        request.setCalculationPreferences(calculationPreferences);
         return request;
     }
 }

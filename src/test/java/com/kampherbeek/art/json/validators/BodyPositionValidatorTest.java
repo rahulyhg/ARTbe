@@ -1,6 +1,8 @@
 package com.kampherbeek.art.json.validators;
 
+import com.kampherbeek.art.domain.CalculationPreferences;
 import com.kampherbeek.art.json.representation.BodyPositionRequest;
+import com.kampherbeek.art.json.representation.VersionRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -14,14 +16,17 @@ public class BodyPositionValidatorTest {
 
     @Mock
     private BodyPositionRequest requestMock = mock(BodyPositionRequest.class);
+    @Mock
+    private VersionRequest faultyRequestMock = mock(VersionRequest.class);
+    @Mock
+    private CalculationPreferences preferencesMock = mock(CalculationPreferences.class);
     private BodyPositionValidator validator;
 
     @Before
     public void setUp() throws Exception {
         double jdnrCorrect = 2857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnrCorrect);
-        int flagValue = 1;
-        when(requestMock.getFlagValue()).thenReturn(flagValue);
+        when(requestMock.getCalculationPreferences()).thenReturn(preferencesMock);
         int internalIdCorrect = 3;
         when(requestMock.getInternalId()).thenReturn(internalIdCorrect);
         validator = new BodyPositionValidator();
@@ -66,5 +71,11 @@ public class BodyPositionValidatorTest {
         when(requestMock.getInternalId()).thenReturn(internalIdNegative);
         assertFalse(validator.validated(requestMock));
     }
+
+    @Test
+    public void isValidException() throws Exception {
+        assertFalse(validator.validated(faultyRequestMock));
+    }
+
 
 }

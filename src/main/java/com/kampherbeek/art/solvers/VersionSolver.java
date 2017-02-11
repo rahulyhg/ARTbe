@@ -17,7 +17,7 @@ public class VersionSolver {
     private final PropertiesReader reader;
 
     @Autowired
-    public VersionSolver(@NonNull final  PropertiesReader reader) {
+    public VersionSolver(@NonNull final PropertiesReader reader) {
         this.reader = reader;
     }
 

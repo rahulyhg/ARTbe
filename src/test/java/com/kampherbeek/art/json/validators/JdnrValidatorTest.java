@@ -4,6 +4,7 @@ import com.kampherbeek.art.domain.SimpleDate;
 import com.kampherbeek.art.domain.SimpleDateTime;
 import com.kampherbeek.art.domain.SimpleTime;
 import com.kampherbeek.art.json.representation.JdnrRequest;
+import com.kampherbeek.art.json.representation.VersionRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -17,6 +18,8 @@ public class JdnrValidatorTest {
 
     @Mock
     private JdnrRequest requestMock = mock(JdnrRequest.class);
+    @Mock
+    private VersionRequest faultyRequestMock = mock(VersionRequest.class);
     @Mock
     private SimpleDateTime simpleDateTimeMock = mock(SimpleDateTime.class);
     @Mock
@@ -60,5 +63,9 @@ public class JdnrValidatorTest {
         assertFalse(validator.validated(requestMock));
     }
 
+    @Test
+    public void isValidException() throws Exception {
+        assertFalse(validator.validated(faultyRequestMock));
+    }
 
 }

@@ -34,7 +34,7 @@ public class CalculatedChartSolver {
     private BodySetPositionRequest createBodySetPositionRequest(@NonNull final CalculatedChartRequest chartRequest,
                                                                 final double jdnr) {
         BodySetPositionRequest bodySetPositionRequest = new BodySetPositionRequest();
-        bodySetPositionRequest.setFlagValue(chartRequest.getFlagValue());
+        bodySetPositionRequest.setCalculationPreferences(chartRequest.getCalculationPreferences());
         bodySetPositionRequest.setJdnr(jdnr);
         bodySetPositionRequest.setInternalIds(chartRequest.getBodyIds());
         return bodySetPositionRequest;

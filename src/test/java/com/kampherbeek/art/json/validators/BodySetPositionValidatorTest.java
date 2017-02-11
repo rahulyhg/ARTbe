@@ -1,5 +1,6 @@
 package com.kampherbeek.art.json.validators;
 
+import com.kampherbeek.art.domain.CalculationPreferences;
 import com.kampherbeek.art.json.representation.BodySetPositionRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,8 @@ public class BodySetPositionValidatorTest {
 
     @Mock
     private BodySetPositionRequest requestMock = mock(BodySetPositionRequest.class);
+    @Mock
+    private CalculationPreferences preferencesMock = mock(CalculationPreferences.class);
     private List<Integer> internalIdsFalse;
     private List<Integer> internalIdsWithNegative;
     private BodySetPositionValidator validator;
@@ -27,8 +30,7 @@ public class BodySetPositionValidatorTest {
         internalIdsFalse = createInternalIdsWithError();
         double jdnrCorrect = 2857140.5;
         when(requestMock.getJdnr()).thenReturn(jdnrCorrect);
-        int flagValue = 1;
-        when(requestMock.getFlagValue()).thenReturn(flagValue);
+        when(requestMock.getCalculationPreferences()).thenReturn(preferencesMock);
         when(requestMock.getInternalIds()).thenReturn(internalIdsCorrect);
         validator = new BodySetPositionValidator();
     }

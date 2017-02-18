@@ -39,5 +39,9 @@ public class SEFrontend {
         int flags = seFlags2IntCreator.createFlags(request.getCalculationPreferences().getFlags());
         return bodyCalculator.calcBody(request.getInternalId(), request.getJdnr(), flags);
     }
+
+    public BodyPosition calcBody(int internalId, double jdnr, int flags) {
+        return bodyCalculator.calcBody(internalId, jdnr, flags);
+    }
 }
 

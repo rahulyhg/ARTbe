@@ -26,6 +26,12 @@ public class BodyPositionSolver {
         return new BodyPositionResponse(bodyname, bodyPosition);
     }
 
+    public BodyPositionResponse solveRequest(int internalId, double jdnr, int flags) {
+        BodyPosition bodyPosition = seFrontend.calcBody(internalId, jdnr, flags);
+        Bodynames bodyname = getBodyname4Id(internalId);
+        return new BodyPositionResponse(bodyname, bodyPosition);
+    }
+
     private Bodynames getBodyname4Id(final int id) {
         for (Bodynames name : Bodynames.values()) {
             if (name.getInternalId() == id) {

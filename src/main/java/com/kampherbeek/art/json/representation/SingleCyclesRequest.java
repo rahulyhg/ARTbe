@@ -20,4 +20,6 @@ public class SingleCyclesRequest implements RequestInterface {
     private PeriodResultFormat periodResultFormat;
     @Getter @Setter
     private SingleCyclesMethod singleCyclesMethod;
+    @Getter @Setter
+    private String locale;
 }

@@ -3,6 +3,7 @@ package com.kampherbeek.art.periods;
 import com.kampherbeek.art.calc.se.SeFlags2IntCreator;
 import com.kampherbeek.art.domain.CalculationPreferences;
 import com.kampherbeek.art.domain.SingleCyclesMethod;
+import com.kampherbeek.art.exceptions.UnknownItemException;
 import com.kampherbeek.art.json.representation.BodyPositionResponse;
 import com.kampherbeek.art.json.representation.SingleCyclesRequest;
 import com.kampherbeek.art.solvers.BodyPositionSolver;
@@ -47,9 +48,9 @@ public class PeriodValueDefiner {
         switch (singleCyclesMethod) {
             case DISTANCE: return bodyPositionResponse.getPosition().getCoordinates().getDistance();
             case POSITION: return bodyPositionResponse.getPosition().getCoordinates().getMainValue();
-            case DEVIATION: return bodyPositionResponse.getPosition().getSpeed().getDeviation();
+            case DEVIATION: return bodyPositionResponse.getPosition().getCoordinates().getDeviation();
             case SPEED: return bodyPositionResponse.getPosition().getSpeed().getMainValue();
-            default: throw new RuntimeException("Unknown value for SingleCyclesMethod");
+            default: throw new UnknownItemException("SingleCyclesMethod", singleCyclesMethod.name());
         }
     }
 

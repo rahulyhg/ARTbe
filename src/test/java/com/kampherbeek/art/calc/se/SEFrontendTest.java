@@ -62,6 +62,16 @@ public class SEFrontendTest {
         assertEquals(bodyPosMock, bodyPosition);
     }
 
+
+    @Test
+    public void calcBodyWithSeparateParams() throws Exception {
+        int internalId = 1;
+        double jdnr = 12345678.5;
+        int flags = 1;
+        BodyPosition bodyPosition = seFrontend.calcBody(internalId, jdnr, flags);
+        assertEquals(bodyPosMock, bodyPosition);
+    }
+
     private List<CalculationFlags> constructFlags() {
         List<CalculationFlags> flags = new ArrayList<>();
         flags.add(CalculationFlags.EQUATORIAL);

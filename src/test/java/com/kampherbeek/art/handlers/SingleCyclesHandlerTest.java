@@ -2,10 +2,10 @@ package com.kampherbeek.art.handlers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kampherbeek.art.json.ValidatedObject;
-import com.kampherbeek.art.json.converters.HousePositionsJsonConverter;
-import com.kampherbeek.art.json.representation.HousePositionsRequest;
-import com.kampherbeek.art.json.validators.HousePositionsValidator;
-import com.kampherbeek.art.solvers.HousePositionsSolver;
+import com.kampherbeek.art.json.converters.SingleCyclesJsonConverter;
+import com.kampherbeek.art.json.representation.SingleCyclesRequest;
+import com.kampherbeek.art.json.validators.SingleCyclesValidator;
+import com.kampherbeek.art.solvers.SingleCyclesSolver;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,16 +16,19 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class HousePositionsHandlerTest {
+public class SingleCyclesHandlerTest {
 
-    private final String jsonRequest = "{\"system\":4,\"jdnr\":2457139.8,\"location\":{\"longitude\":6.9,\"latitude\":52.23}}";
+    private final String jsonRequest = "{\"internalId\":3,\"startJdnr\":1234567.89,\"endJdnr\":1234867.89," +
+            "\"calculationPreferences\":{\"flags\":[\"SWIEPH\",\"SPEED\"]},\"periodResultFormat\":\"JSON\"," +
+            "\"singleCyclesMethod\":\"SPEED\",\"locale\":\"en\"}";
     private final String correctResponse = "{\"dummy4correct\":\"response\"}";
-    private HousePositionsValidator validatorMock = mock(HousePositionsValidator.class);
-    private HousePositionsJsonConverter converterMock = mock(HousePositionsJsonConverter.class);
-    private HousePositionsSolver solverMock = mock(HousePositionsSolver.class);
+
+    private SingleCyclesValidator validatorMock = mock(SingleCyclesValidator.class);
+    private SingleCyclesJsonConverter converterMock = mock(SingleCyclesJsonConverter.class);
+    private SingleCyclesSolver solverMock = mock(SingleCyclesSolver.class);
     private ValidatedObject validatedObjectMock = mock(ValidatedObject.class);
-    private HousePositionsRequest requestMock = mock(HousePositionsRequest.class);
-    private HousePositionsHandler handler;
+    private SingleCyclesRequest requestMock = mock(SingleCyclesRequest.class);
+    private SingleCyclesHandler handler;
 
     @Before
     public void setUp() throws Exception {
@@ -34,7 +37,8 @@ public class HousePositionsHandlerTest {
         when(validatedObjectMock.getObject()).thenReturn(requestMock);
         when(validatorMock.handleJson(anyString(), anyObject())).thenReturn(validatedObjectMock);
         when(converterMock.java2JsonResponse(anyObject())).thenReturn(correctResponse);
-        handler = new HousePositionsHandler(validatorMock, converterMock, solverMock);
+        handler = new SingleCyclesHandler(validatorMock, converterMock, solverMock);
+
     }
 
     @Test
@@ -48,7 +52,7 @@ public class HousePositionsHandlerTest {
     public void handleRequestResponseNull() throws Exception {
         when(converterMock.java2JsonResponse(anyObject())).thenThrow(JsonProcessingException.class);
         String result = handler.handleRequest(jsonRequest);
-        assertTrue(result.contains("Error in HousePositionsHandler"));
+        assertTrue(result.contains("Error in SingleCyclesHandler"));
     }
 
     @Test
@@ -56,6 +60,8 @@ public class HousePositionsHandlerTest {
         when(validatedObjectMock.isValid()).thenReturn(false);
         String invalidJsonRequest = "{\"xxx\": \"yyy\"}";
         String result = handler.handleRequest(invalidJsonRequest);
-        assertTrue(result.contains("Error in HousePositionsHandler"));
+        assertTrue(result.contains("Error in SingleCyclesHandler"));
     }
+
 }
+
